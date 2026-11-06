@@ -156,7 +156,6 @@
   "Use Paste in editors that need it": "必要に応じてエディタで貼り付けを使用します",
   "Use exclamation marks sparingly.": "感嘆符は控えめに使用します。",
   "Use short paragraphs to separate distinct points.": "異なるポイントを区別するために短い段落を使用します。",
-  "Use the Inigo browser extension for this field. Browser text is not read through Accessibility, to protect private browsing.": "このフィールドでは Inigo ブラウザ拡張機能を使用します。ブラウザのテキストはアクセシビリティを通じて読み取られず、プライベートブラウジングを保護します。",
   "Want to try it again?": "もう一度試してみたいですか？",
   "We'll check text access, prepare offline writing, then try a real rewrite together.": "テキストアクセスを確認し、オフラインでの書き込みを準備し、実際に一緒に書き換えを試みます。",
   "Write in the apps you already use": "既に使っているアプリで書き込み",

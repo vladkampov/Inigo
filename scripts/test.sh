@@ -7,12 +7,8 @@ export SWIFTPM_MODULECACHE_OVERRIDE=/tmp/inigo-swift-cache
 swift test --disable-sandbox
 NODE_BIN="${INIGO_NODE:-$(command -v node || true)}"
 if [ -z "$NODE_BIN" ]; then NODE_BIN="$HOME/.nvm/versions/node/v24.16.0/bin/node"; fi
-"$NODE_BIN" --check BrowserExtension/content.js
-"$NODE_BIN" --check BrowserExtension/background.js
-"$NODE_BIN" --check BrowserExtension/native-host.mjs
 "$NODE_BIN" --check CloudBridge/bridge.mjs
 
-"$NODE_BIN" --test BrowserExtension/tests/privacy.mjs
 
 "$NODE_BIN" --test CloudBridge/tests/oauth.mjs
 
