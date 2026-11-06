@@ -1,0 +1,96 @@
+name: Release
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing draft release tag to retry (v0.2.0-beta.2)
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: release
+  cancel-in-progress: false
+jobs:
+  version:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    outputs:
+      created: ${{ steps.release.outputs.release_created }}
+      tag: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+      - name: Run CI for bot-created release PRs
+        if: steps.release.outputs.prs_created == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_PRS: ${{ steps.release.outputs.prs }}
+        run: |
+          python3 - <<'PYCODE'
+          import json, os, subprocess
+          for pr in json.loads(os.environ['RELEASE_PRS']):
+              subprocess.run(['gh','workflow','run','ci.yml','--repo','vladkampov/Inigo','--ref',pr['headBranchName']], check=True)
+          PYCODE
+  sign:
+    needs: version
+    if: >-
+      always() && github.ref == 'refs/heads/main' &&
+      vars.RELEASE_SIGNING_ENABLED == 'true' &&
+      (needs.version.outputs.created == 'true' || github.event_name == 'workflow_dispatch')
+    runs-on: macos-15
+    timeout-minutes: 60
+    environment: release
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ needs.version.outputs.tag || inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+      DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate draft and select release commit
+        run: python3 scripts/ci-release.py select
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+      - name: Install dependencies
+        run: |
+          bash scripts/bootstrap.sh
+          npm ci --prefix CloudBridge --ignore-scripts
+      - name: Import signing credentials
+        env:
+          DEVELOPER_ID_P12_BASE64: ${{ secrets.DEVELOPER_ID_P12_BASE64 }}
+          DEVELOPER_ID_P12_PASSWORD: ${{ secrets.DEVELOPER_ID_P12_PASSWORD }}
+          APPLE_API_PRIVATE_KEY: ${{ secrets.APPLE_API_PRIVATE_KEY }}
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_ISSUER_ID: ${{ secrets.APPLE_API_ISSUER_ID }}
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: python3 scripts/ci-release.py credentials
+      - name: Build, sign, notarize and verify
+        env:
+          INIGO_SIGN_IDENTITY: 'Developer ID Application: Vladyslav Kampov (JKAL24VVB9)'
+          INIGO_NOTARY_PROFILE: inigo-ci
+          INIGO_UPDATE_PUBLIC_KEY: 'M0q+asXEhGvjD9kZ0eEKIWa3corPo2j/PGHSCWMKfOs='
+          INIGO_SPARKLE_KEY_FILE: ${{ runner.temp }}/inigo-signing/sparkle.key
+        run: |
+          printf '%s\n' "$((1000 + GITHUB_RUN_NUMBER))" > BUILD_NUMBER
+          bash scripts/release.sh
+          python3 scripts/ci-release.py verify
+      - name: Attach verified artifacts to draft
+        run: python3 scripts/ci-release.py upload
+      - name: Remove runner credentials
+        if: always()
+        run: python3 scripts/ci-release.py cleanup

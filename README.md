@@ -35,6 +35,10 @@ editing can fall back to Copy. Google Docs and Slack rich-content replacement ar
 not broadly certified. [Compatibility matrix](docs/compatibility.md).
 
 ## Build
+
+For Xcode, open **Inigo.xcodeproj**, select the **Inigo** scheme and **My Mac**.
+Choose your team under Signing & Capabilities. See [Xcode setup](Xcode/README.md).
+
 ```sh
 git clone https://github.com/vladkampov/Inigo.git
 cd Inigo
