@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Inigo</title>
+        <item>
+            <title>0.2.0</title>
+            <pubDate>Fri, 06 Nov 2026 20:56:08 +0000</pubDate>
+            <sparkle:version>1016</sparkle:version>
+            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/vladkampov/Inigo/releases/download/v0.2.0-beta.5/Inigo-0.2.0-beta.5.zip" length="29653505" type="application/octet-stream" sparkle:edSignature="hlWoMC8Mn37i8cmUQD+i7fACOtkG7x6Jg71MdF/mxQEm5SJquONl+YZC/vDcFX2UE0DU5v0F4rDQ79WPcFszDA==" />
+        </item>
+    </channel>
+</rss>
