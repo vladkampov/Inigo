@@ -21,7 +21,48 @@ struct EditorSnapshot {
 }
 
 @MainActor
+struct InvocationSource {
+    let appID: String
+    let pid: pid_t
+    func allowed(exclusions: Set<String>) -> Bool {
+        InvocationPolicy.allowsSource(appID, ownAppID: Bundle.main.bundleIdentifier, exclusions: exclusions)
+            && NSRunningApplication(processIdentifier: pid)?.bundleIdentifier == appID
+    }
+}
+
+@MainActor
 final class AccessibilityEditor {
+    func invocationSource(exclusions: Set<String>) throws -> InvocationSource {
+        guard let app = NSWorkspace.shared.frontmostApplication,
+              InvocationPolicy.allowsSource(app.bundleIdentifier, ownAppID: Bundle.main.bundleIdentifier, exclusions: exclusions),
+              let appID = app.bundleIdentifier else {
+            throw InigoError.message("This app is excluded, or no editable field is focused.")
+        }
+        if let element = focused(), attribute(element, kAXSubroleAttribute) as? String == kAXSecureTextFieldSubrole {
+            throw InigoError.message("Focus an ordinary text field. Secure fields are never read.")
+        }
+        return InvocationSource(appID: appID, pid: app.processIdentifier)
+    }
+    private func permitsImplicitDraft(_ element: AXUIElement, app: NSRunningApplication) -> Bool {
+        var current: AXUIElement? = element
+        var seen: [AXUIElement] = []
+        var web = false, complete = false
+        for _ in 0..<64 {
+            guard let node = current, !seen.contains(where: { CFEqual($0, node) }) else { break }
+            seen.append(node)
+            let role = attribute(node, kAXRoleAttribute) as? String
+            if role == "AXWebArea" { web = true }
+            if role == kAXApplicationRole { complete = true; break }
+            guard let parent = attribute(node, kAXParentAttribute), CFGetTypeID(parent) == AXUIElementGetTypeID() else { break }
+            current = (parent as! AXUIElement)
+        }
+        let info = app.bundleURL.flatMap { Bundle(url: $0) }?.infoDictionary
+        let schemes = (info?["CFBundleURLTypes"] as? [[String: Any]] ?? [])
+            .flatMap { $0["CFBundleURLSchemes"] as? [String] ?? [] }.map { $0.lowercased() }
+        return InvocationPolicy.permitsImplicitDraft(appID: app.bundleIdentifier ?? "", hasWebAncestor: web,
+            handlesWebURLs: schemes.contains("http") || schemes.contains("https"), ancestryComplete: complete)
+    }
+
     private func attribute(_ element: AXUIElement, _ name: String) -> CFTypeRef? {
         var value: CFTypeRef?
         guard AXUIElementCopyAttributeValue(element, name as CFString, &value) == .success else { return nil }
@@ -59,12 +100,12 @@ final class AccessibilityEditor {
     func capture(exclusions: Set<String>, compatibilityPaste: Bool) throws -> EditorSnapshot {
         guard AXIsProcessTrusted() else { throw InigoError.message("Allow Inigo in System Settings → Privacy & Security → Accessibility, then try again.") }
         guard let app = NSWorkspace.shared.frontmostApplication, let appID = app.bundleIdentifier, appID != Bundle.main.bundleIdentifier, !exclusions.contains(appID), let element = focused() else { throw InigoError.message("This app is excluded, or no editable field is focused.") }
-        let browser = ["com.google.Chrome", "com.apple.Safari", "org.mozilla.firefox", "com.microsoft.edgemac"].contains(appID)
+        let browser = !permitsImplicitDraft(element, app: app)
         let role = attribute(element, kAXRoleAttribute) as? String ?? ""
         let subrole = attribute(element, kAXSubroleAttribute) as? String ?? ""
         guard [kAXTextAreaRole, kAXTextFieldRole, kAXComboBoxRole].contains(role), subrole != kAXSecureTextFieldSubrole else { throw InigoError.message("Focus an ordinary text field. Secure fields are never read.") }
         guard let text = attribute(element, kAXValueAttribute) as? String, text.utf16.count <= 100_000, let selection = range(element, kAXSelectedTextRangeAttribute) else { throw InigoError.message("This editor does not expose a safe text selection.") }
-        if browser && selection.length == 0 { throw InigoError.message("Select the browser text you want Inigo to refine or translate.") }
+        if browser && selection.length == 0 { throw InigoError.message("Select up to 20,000 characters.") }
         let target = try TextSafety.targetRange(text: text, selection: selection, messageField: appID == "com.tinyspeck.slackmacgap" || role == kAXTextFieldRole)
         guard target.length > 0, target.length <= 20_000 else { throw InigoError.message("Select a draft of up to 20,000 characters to refine.") }
         var settable: DarwinBoolean = false

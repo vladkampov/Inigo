@@ -25,10 +25,7 @@ final class LocalEngine: NSObject, ObservableObject, URLSessionDownloadDelegate 
     private var token = UUID().uuidString
     private let port = Int.random(in: 30000...49000)
     private lazy var downloadSession = URLSession(configuration: .ephemeral, delegate: self, delegateQueue: nil)
-    private let session: URLSession = {
-        let c = URLSessionConfiguration.ephemeral; c.timeoutIntervalForRequest = 120; c.urlCache = nil
-        return URLSession(configuration: c)
-    }()
+    private let session: URLSession = LocalServer.session()
     static var support: URL { FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("Inigo") }
     var modelURL: URL { configuration.kind == .file ? URL(fileURLWithPath:configuration.filePath) : Self.support.appendingPathComponent("Models/\(configuration.preset?.filename ?? Self.modelName)") }
     override convenience init() {

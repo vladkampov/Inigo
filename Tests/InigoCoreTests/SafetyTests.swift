@@ -68,3 +68,22 @@ final class SafetyTests: XCTestCase {
         XCTAssertThrowsError(try ProtectedDraft("Hello").restore("  "))
     }
 }
+
+final class InvocationPolicyTests: XCTestCase {
+    func testExclusionsApplyToCapturedSourceEvenAfterPickerOpens() {
+        XCTAssertFalse(InvocationPolicy.allowsSource("example.passwords", ownAppID:"app.inigo.personal", exclusions:["example.passwords"]))
+        XCTAssertFalse(InvocationPolicy.allowsSource(nil, ownAppID:"app.inigo.personal", exclusions:[]))
+        XCTAssertFalse(InvocationPolicy.allowsSource("app.inigo.personal", ownAppID:"app.inigo.personal", exclusions:[]))
+        XCTAssertTrue(InvocationPolicy.allowsSource("com.apple.TextEdit", ownAppID:"app.inigo.personal", exclusions:[]))
+        XCTAssertFalse(InvocationPolicy.allowsSource("com.apple.TextEdit", ownAppID:"app.inigo.personal", exclusions:["com.apple.TextEdit"]))
+    }
+    func testUnknownBrowsersAndWebAncestryFailClosed() {
+        for id in ["com.brave.Browser", "com.google.Chrome.canary", "company.newBrowser", "unknown.native"] {
+            XCTAssertFalse(InvocationPolicy.permitsImplicitDraft(appID:id,hasWebAncestor:false,handlesWebURLs:false,ancestryComplete:true))
+        }
+        XCTAssertFalse(InvocationPolicy.permitsImplicitDraft(appID:"com.apple.TextEdit",hasWebAncestor:true,handlesWebURLs:false,ancestryComplete:true))
+        XCTAssertFalse(InvocationPolicy.permitsImplicitDraft(appID:"com.apple.TextEdit",hasWebAncestor:false,handlesWebURLs:true,ancestryComplete:true))
+        XCTAssertFalse(InvocationPolicy.permitsImplicitDraft(appID:"com.apple.TextEdit",hasWebAncestor:false,handlesWebURLs:false,ancestryComplete:false))
+        XCTAssertTrue(InvocationPolicy.permitsImplicitDraft(appID:"com.apple.TextEdit",hasWebAncestor:false,handlesWebURLs:false,ancestryComplete:true))
+    }
+}

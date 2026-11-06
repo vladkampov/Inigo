@@ -36,7 +36,6 @@
 		8F6E562BEFE2BDA7C1D047C9 /* DiagnosticEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541C0D1BCEA0CE4925CAE5A8 /* DiagnosticEvent.swift */; };
 		9C47A59C40C904E324889E79 /* OnboardingCelebration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DE3AA5B7DDEE14AD91149E /* OnboardingCelebration.swift */; };
 		A4C2E565D512395E820F908E /* InigoCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE9240D95FEF94404C71A9D7 /* InigoCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		ACCD6F3C3CF80D1454483A90 /* BrowserBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F329DB823D183F66668281 /* BrowserBridge.swift */; };
 		B800A2225F12B1BAE092CACC /* InigoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B4D9BC8B749F79DB97BD33 /* InigoApp.swift */; };
 		C1CBF1784576B684D4E73351 /* SafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A7A754C8346D6847F1219E /* SafetyTests.swift */; };
 		C702096BE7F6347E0A7A2F59 /* TranslationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6C8348E235E5566A49815 /* TranslationPicker.swift */; };
@@ -113,7 +112,6 @@
 		88D3A0D881C01EF7AB74FAD5 /* UpdateSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSettings.swift; sourceTree = "<group>"; };
 		9050DAF09BD42210039CFD39 /* Editor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
 		B1BC8C7F6BBA95AB990DA1C0 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
-		B7F329DB823D183F66668281 /* BrowserBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserBridge.swift; sourceTree = "<group>"; };
 		BC243C655035ACA9A9B20D32 /* WriteVerificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVerificationTests.swift; sourceTree = "<group>"; };
 		BE9240D95FEF94404C71A9D7 /* InigoCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InigoCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C148A29E01C9B5BAD48DE781 /* Inigo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inigo.png; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				B1BC8C7F6BBA95AB990DA1C0 /* AppModel.swift */,
-				B7F329DB823D183F66668281 /* BrowserBridge.swift */,
 				37B705CCB6B3B85FA39CAC75 /* CloudEngine.swift */,
 				7E827E7AA96572A8726CCFF4 /* CompatibilityPaste.swift */,
 				9050DAF09BD42210039CFD39 /* Editor.swift */,
@@ -428,7 +425,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0623744164F0A89632E72371 /* AppModel.swift in Sources */,
-				ACCD6F3C3CF80D1454483A90 /* BrowserBridge.swift in Sources */,
 				EC557DF5D0B9C7F0C881C237 /* CloudEngine.swift in Sources */,
 				8AD5B02EF94E17F6A9529EF2 /* CompatibilityPaste.swift in Sources */,
 				FACBB4079E1A9427EA69AE95 /* Editor.swift in Sources */,

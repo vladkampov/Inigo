@@ -20,7 +20,6 @@ enum InigoApp {
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMenuItemValidation {
     let model = AppModel()
-    let browser = BrowserBridge()
     private var translationExpiry: Task<Void,Never>?
     private var translationWindow: NSWindow?
     private var languageChanges: AnyCancellable?
@@ -36,7 +35,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         model.updates.start()
         model.showTranslationPicker = { [weak self] in self?.openTranslation() }
         model.registerShortcut()
-        try? browser.start(model:model)
         item = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
         let menuIcon = NSImage(contentsOf:Bundle.main.url(forResource:"InigoMenu",withExtension:"png")!)
         menuIcon?.isTemplate = true; menuIcon?.size = NSSize(width:18,height:18)
@@ -143,32 +141,38 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         resizeHUD(); hud?.orderFrontRegardless()
     }
     @objc func refineService(_ pasteboard: NSPasteboard, userData: String?, error: AutoreleasingUnsafeMutablePointer<NSString?>) {
+        guard let source = try? model.editor.invocationSource(exclusions: model.preferences.excludedApps) else {
+            error.pointee = L("This app is excluded, or no editable field is focused.") as NSString; return
+        }
         guard let text = pasteboard.string(forType:.string), text.utf16.count <= 20_000 else { error.pointee = L("Select up to 20,000 characters.") as NSString; return }
-        if let snapshot = try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste), snapshot.draft == text, snapshot.canReplace {
+        if let snapshot = try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste), snapshot.pid == source.pid, snapshot.appID == source.appID, snapshot.draft == text, snapshot.canReplace {
             model.refine()
-        } else { model.rewriteReference(text,action:.refine) }
+        } else { model.rewriteReference(text,action:.refine,source:source) }
     }
     @objc func translateService(_ pasteboard: NSPasteboard, userData: String?, error: AutoreleasingUnsafeMutablePointer<NSString?>) {
+        guard let source = try? model.editor.invocationSource(exclusions: model.preferences.excludedApps) else {
+            error.pointee = L("This app is excluded, or no editable field is focused.") as NSString; return
+        }
         guard let text = pasteboard.string(forType:.string), text.utf16.count <= 20_000 else { error.pointee = L("Select up to 20,000 characters.") as NSString; return }
-        showTranslation(text:text, snapshot:try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste))
+        showTranslation(text:text, snapshot:try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste),source:source)
     }
     @objc func openTranslation() {
-        showTranslation(text:model.editor.selectedReference(exclusions:model.preferences.excludedApps),snapshot:try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste))
+        showTranslation(text:model.editor.selectedReference(exclusions:model.preferences.excludedApps),snapshot:try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste),source:try? model.editor.invocationSource(exclusions:model.preferences.excludedApps))
     }
-    private func showTranslation(text: String?, snapshot: EditorSnapshot?) {
+    private func showTranslation(text: String?, snapshot: EditorSnapshot?, source: InvocationSource?) {
         translationWindow?.close()
         let window = NSWindow(contentRect:NSRect(x:0,y:0,width:520,height:510),styleMask:[.titled,.closable],backing:.buffered,defer:false)
         window.title = L("Translate"); window.isReleasedWhenClosed = false; window.delegate = self
         window.contentView = NSHostingView(rootView:TranslationPicker(preferences:model.preferences,hasSelection:text != nil || snapshot != nil) { [weak self] language in
-            if let snapshot, snapshot.canReplace, text == nil || text == snapshot.draft {
+            if let source, source.allowed(exclusions: self?.model.preferences.excludedApps ?? []), let snapshot, snapshot.pid == source.pid, snapshot.appID == source.appID, snapshot.canReplace, text == nil || text == snapshot.draft {
                 NSRunningApplication(processIdentifier:snapshot.pid)?.activate()
                 Task { @MainActor [weak self] in
                     try? await Task.sleep(for:.milliseconds(250))
                     guard let self else { return }
                     if self.model.editor.unchanged(snapshot) { self.model.refine(action:.translate(language)) }
-                    else { self.model.rewriteReference(snapshot.draft,action:.translate(language)) }
+                    else { self.model.rewriteReference(snapshot.draft,action:.translate(language),source:source) }
                 }
-            } else if let text = text ?? snapshot?.draft { self?.model.rewriteReference(text,action:.translate(language)) }
+            } else if let source, let text = text ?? snapshot?.draft { self?.model.rewriteReference(text,action:.translate(language),source:source) }
             else { self?.model.pendingTranslation = language }
             self?.translationWindow?.close()
         })
@@ -189,8 +193,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         return true
     }
     @objc func checkForUpdates() { model.updates.check() }
-    @objc func quitApp() { browser.stop(); model.stop(); NSApp.terminate(nil) }
-    func applicationWillTerminate(_ notification: Notification) { browser.stop(); model.stop() }
+    @objc func quitApp() { model.stop(); NSApp.terminate(nil) }
+    func applicationWillTerminate(_ notification: Notification) { model.stop() }
 }
 struct RootSettings: View {
     @ObservedObject var model: AppModel

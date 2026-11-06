@@ -67,7 +67,7 @@ final class AppModel: ObservableObject {
                     let output = try await (mode == "Local" ? self.local.rewrite(request) : self.cloud.rewrite(request))
                     try Task.checkCancellation()
                     guard self.generation == runID else { return }
-                    guard self.preferences.mode == mode, self.editor.unchanged(snapshot) else { throw CancellationError() }
+                    guard InvocationPolicy.allowsSource(snapshot.appID, ownAppID: Bundle.main.bundleIdentifier, exclusions:self.preferences.excludedApps), self.preferences.mode == mode, self.editor.unchanged(snapshot) else { throw CancellationError() }
                     let result = try protected.restore(output)
                     self.monitor?.cancel(); self.monitor = nil
                     if result == snapshot.draft { self.message = "Already clear · no changes"; self.hudSucceeded?() }
@@ -91,13 +91,17 @@ final class AppModel: ObservableObject {
                 self.working = false; self.monitor?.cancel(); self.monitor = nil
             }
         } catch {
-            if let selection = editor.selectedReference(exclusions:preferences.excludedApps) {
-                rewriteReference(selection,action:action)
+            if let source = try? editor.invocationSource(exclusions:preferences.excludedApps),
+               let selection = editor.selectedReference(exclusions:preferences.excludedApps) {
+                rewriteReference(selection,action:action,source:source)
             } else { message = error.localizedDescription; showHUD?() }
         }
     }
-    func rewriteReference(_ text: String, action: RewriteAction) {
+    func rewriteReference(_ text: String, action: RewriteAction, source: InvocationSource) {
         cancel(); clearResult(); hudAnchor = editor.focusedFrame()
+        guard source.allowed(exclusions: preferences.excludedApps) else {
+            message = "This app is excluded, or no editable field is focused."; showHUD?(); return
+        }
         guard !text.isEmpty, text.utf16.count <= 20_000 else { message = "Select up to 20,000 characters."; showHUD?(); return }
         working = true; message = "Working on your selection…"; showHUD?()
         let runID = generation
@@ -105,8 +109,10 @@ final class AppModel: ObservableObject {
             guard let self else { return }
             do {
                 let protected = try ProtectedDraft(text)
+                guard source.allowed(exclusions: preferences.excludedApps) else { throw CancellationError() }
                 let output = try await local.rewrite(RewriteRequest(draft:protected.masked,action:action))
                 try Task.checkCancellation(); guard generation == runID else { return }
+                guard source.allowed(exclusions: preferences.excludedApps) else { throw CancellationError() }
                 fallback = try protected.restore(output); message = "Your selection is ready"; expireFallback()
             } catch { guard generation == runID else { return }; if !(error is CancellationError) { reports.capture(.rewriteFailed) }; message = error.localizedDescription }
             working = false
