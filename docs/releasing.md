@@ -3,15 +3,16 @@
 The intended channel is GitHub Releases, not the Mac App Store. The Apple
 Developer membership supports Developer ID signing and Apple's notarization.
 
-## Before the first public release
-- Create `vladkampov/Inigo` privately, review source and licenses, then choose
-  public visibility deliberately. Run `python3 scripts/github-setup.py` to
-  inspect commands; `--apply --create-private` creates/configures the private repo.
-- GitHub currently blocks branch protection on this account’s private-repository plan. Enable it after public visibility or a plan upgrade. Add a ruleset for main: PR review, passing CI, no force pushes/deletions.
-  Solo-maintainer exceptions should be explicit. Set Actions to read-only by default.
-- Enable private vulnerability reporting, secret scanning/push protection where
-  available, and a protected `github-pages` environment. Establish a private
-  security/conduct contact. Publish a stable privacy policy.
+## Before the first public binary release
+- Source publication review passed on 2026-11-06; repository is public.
+- Main ruleset is active: PRs, up-to-date passing CI, resolved conversations,
+  linear history, no force pushes/deletions and no bypass actors. Required approvals
+  are zero for the solo maintainer; add a reviewer when another maintainer joins.
+- Private vulnerability reporting, secret scanning/push protection and Dependabot
+  security updates are enabled. The release environment allows only main.
+- Signing credentials still need to be uploaded through the local helper; signing
+  remains disabled. Establish a dedicated confidential conduct contact before a
+  broader launch. See docs/publication-review.md for remaining gates.
 - Set up a **Developer ID Application** certificate in Keychain. Apple Development
   is insufficient for direct distribution. Do not commit certificates/private keys.
 - Store notarization credentials using `xcrun notarytool store-credentials`;
@@ -24,7 +25,7 @@ Developer membership supports Developer ID signing and Apple's notarization.
 - Configure Sentry only if wanted. Reports are off by default and content-free.
   Before adding its public DSN, configure IP removal, retention and access controls,
   update PRIVACY.md and test synthetic ingestion. No DSN means no reporting.
-- The repository currently exists privately. Make it public only after release review so distributed Help links are accessible.
+- Repository Help links are public. No binary release or update feed has been published yet.
 
 ## Versioning
 VERSION is SemVer; BUILD_NUMBER is a strictly increasing public build number.

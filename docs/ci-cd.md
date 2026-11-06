@@ -31,16 +31,16 @@ stable. Reruns retain their build number and cannot replace uploaded assets.
 
 ## Protection prerequisite
 
-The repository is currently private on a plan that rejects branch rules (HTTP
-403). The owner chose a separate publication review before making it public.
-Do not change visibility as part of this setup. After review/publication:
+The publication review passed on 2026-11-06. The repository is public, the main
+ruleset is active, and the release environment allows only main. Signing remains
+disabled until credentials are configured. The configuration is:
 
-1. Apply `.github/rulesets/main.json` via GitHub Rulesets import or API. It requires
+1. `.github/rulesets/main.json` is applied and enforced. It requires
    PRs, passing/up-to-date `tests`, resolved conversations, squash/linear history,
    and blocks deletion/force pushes. No bypass list. Zero required approvals is
    intentional for a solo maintainer who cannot approve their own PR; change to
    one when another maintainer is available.
-2. Create an environment named `release`; restrict deployment branches to exactly
+2. The `release` environment restricts deployment branches to exactly
    `main` (selected branches, not arbitrary tags). Add a required reviewer if
    desired; this adds a human gate before each signing job.
 3. Keep repository default token permissions read-only. GitHub's combined
