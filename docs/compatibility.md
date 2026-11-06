@@ -18,7 +18,7 @@ remain unverified. Public release requires a clean-Mac test matrix.
 | Slack | Rich-content preservation not live-certified; protected rich content falls back |
 | Browser AX | Explicit selection only, including private windows; no surrounding context |
 | Google Docs | Structured rich editing not implemented; use copyable fallback |
-| Optional Chrome extension | Source/privacy tests present; manual compatibility gate remains |
+| Browser selections via macOS | Explicit selection only; editor-specific replacement must be verified; copyable fallback available |
 | Optional Safari wrapper | Not shipped/activated; signing and integration remain |
 | RTL/interface locales | 24 machine-translated catalogs; human review required |
 | Updates | Sparkle integrated; signed N→N+1 installation test pending published feed |

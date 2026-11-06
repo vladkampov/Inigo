@@ -128,3 +128,18 @@ public struct StyleProfile: Codable, Sendable {
         StylePreference.allCases.filter { (evidence[language]?[$0.rawValue] ?? 0) >= 3 }.map(\.instruction)
     }
 }
+
+/// Fail closed for unknown sources and web surfaces; never infer browser privacy
+/// from a short list of browser bundle identifiers.
+public enum InvocationPolicy {
+    public static func allowsSource(_ appID: String?, ownAppID: String?, exclusions: Set<String>) -> Bool {
+        guard let appID, !appID.isEmpty, appID != ownAppID else { return false }
+        return !exclusions.contains(appID)
+    }
+    public static func permitsImplicitDraft(appID: String, hasWebAncestor: Bool, handlesWebURLs: Bool, ancestryComplete: Bool) -> Bool {
+        guard ancestryComplete, !hasWebAncestor, !handlesWebURLs else { return false }
+        return ["com.apple.TextEdit", "com.apple.Notes", "com.apple.iWork.Pages",
+                "com.microsoft.Word", "com.apple.dt.Xcode", "com.tinyspeck.slackmacgap",
+                "com.openai.chat", "com.openai.codex"].contains(appID)
+    }
+}

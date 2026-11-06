@@ -8,3 +8,5 @@ test('nonce, subject and authorized party are bound to the pending account',()=>
 test('missing expiry and ambiguous audience are rejected',()=>{assert.throws(()=>validateClaims({sub:'account'},{clientID:'client'}));assert.throws(()=>validateClaims({...identity,aud:['client','other']},{clientID:'client'}))});
 test('hidden and malformed catalog entries cannot be selected',()=>{assert.equal(selectModel([{slug:'hidden',visibility:'hidden'}]),undefined);assert.equal(selectModel([{slug:'first',visibility:'list'},{slug:'model-mini',visibility:'list'}]).slug,'model-mini')});
 test('authorization code and verifier use form encoding',()=>{assert.equal(form({code:'a+b&c',code_verifier:'x/y'}).get('code'),'a+b&c');assert.ok(form({code:'a+b&c'}).toString().includes('%2B'))});
+
+test('authorization endpoints reject credentials and nonstandard ports',()=>{for(const url of ['https://user:secret@auth.openai.com/token','https://auth.openai.com:8443/token','https://auth.openai.com.attacker.example/token'])assert.throws(()=>safeEndpoint(url));});
