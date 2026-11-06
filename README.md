@@ -8,7 +8,7 @@ Inigo is a native macOS menu-bar app for refining and translating writing in the
 app you already use. Local models keep your writing on your Mac.
 
 **Status: experimental pre-release.** Source is available for review and contributions.
-Download the [public beta](https://github.com/vladkampov/Inigo/releases/tag/v0.2.0-beta.5). See [release gates](docs/releasing.md).
+Download the [public beta](https://github.com/vladkampov/Inigo/releases/tag/v0.2.0-beta.7). See [release gates](docs/releasing.md).
 
 ## What it does
 - **⌥I** refines a selection or current paragraph; **⌥⇧I** translates.
