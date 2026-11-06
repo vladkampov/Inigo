@@ -3,5 +3,6 @@
   "feedURL": "https://vladkampov.github.io/Inigo/appcast.xml",
   "publicEDKey": "M0q+asXEhGvjD9kZ0eEKIWa3corPo2j/PGHSCWMKfOs=",
   "sentryDSN": "",
-  "supportURL": "https://buymeacoffee.com/kampov"
+  "supportURL": "https://buymeacoffee.com/kampov",
+  "betaFeedURL": "https://raw.githubusercontent.com/vladkampov/Inigo/update-feed/beta/appcast.xml"
 }

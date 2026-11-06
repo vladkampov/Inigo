@@ -41,13 +41,14 @@ final class AppModel: ObservableObject {
         translationShortcutConflict = !translationShortcut.register(key:preferences.translationShortcutKey,modifiers:preferences.translationShortcutModifiers)
         translationPickerShortcutConflict = !translationPickerShortcut.register(key:preferences.translationPickerShortcutKey,modifiers:preferences.translationPickerShortcutModifiers)
     }
-    func refine(action: RewriteAction = .refine) {
+    func refine(action: RewriteAction = .refine, capturedSnapshot: EditorSnapshot? = nil) {
         let action = action == .refine ? (pendingTranslation.map(RewriteAction.translate) ?? action) : action
         pendingTranslation = nil
         cancel(); clearResult()
         hudAnchor = editor.focusedFrame()
         do {
-            let snapshot = try editor.capture(exclusions:preferences.excludedApps, compatibilityPaste:preferences.compatibilityPaste)
+            let snapshot = try capturedSnapshot ?? editor.capture(exclusions:preferences.excludedApps, compatibilityPaste:preferences.compatibilityPaste)
+            guard InvocationPolicy.allowsSource(snapshot.appID, ownAppID:Bundle.main.bundleIdentifier, exclusions:preferences.excludedApps), editor.unchanged(snapshot) else { throw CancellationError() }
             let protected = try ProtectedDraft(snapshot.draft)
             let language = Preferences.language(snapshot.draft)
             let request = RewriteRequest(draft:protected.masked,context:snapshot.context,style:action == .refine ? preferences.profile.preferences(for:language) : [],action:action)

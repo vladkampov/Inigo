@@ -1,0 +1,25 @@
+name: Publish beta update feed
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+permissions:
+  contents: read
+concurrency:
+  group: update-feed
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event_name == 'release' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Verify public beta and publish feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/prepare-beta-feed.py --publish
