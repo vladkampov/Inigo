@@ -47,6 +47,14 @@ def credentials():
     run(['security','set-key-partition-list','-S','apple-tool:,apple:,codesign:','-s','-k',password,keychain], stdout=subprocess.DEVNULL)
     old = json.loads((STATE/'original-keychains.json').read_text())
     run(['security','list-keychains','-d','user','-s',keychain,*old])
+    identities = output(['security','find-identity','-v','-p','codesigning',keychain])
+    expected = 'Developer ID Application: Vladyslav Kampov (JKAL24VVB9)'
+    matches = re.findall(r'([A-Fa-f0-9]{40}) "'+re.escape(expected)+r'"', identities)
+    if len(matches) != 1:
+        print(identities) # Certificate subjects/fingerprints only; no private material.
+        raise ValueError('The exported P12 must contain the expected valid Developer ID Application certificate AND its private key')
+    with open(os.environ['GITHUB_ENV'],'a') as f:
+        f.write(f'INIGO_SIGN_KEYCHAIN={keychain}\nINIGO_SIGN_HASH={matches[0]}\n')
     run(['xcrun','notarytool','store-credentials','inigo-ci','--key',str(STATE/'apple.p8'),'--key-id',os.environ['APPLE_API_KEY_ID'],'--issuer',os.environ['APPLE_API_ISSUER_ID'],'--keychain',keychain])
     with open(os.environ['GITHUB_ENV'],'a') as f: f.write(f'INIGO_NOTARY_KEYCHAIN={keychain}\n')
 def verify():
