@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Prepare a beta feed from published releases; verify archive with the pinned public key."""
-import base64, hashlib, json, os, pathlib, re, subprocess, sys, tempfile, xml.etree.ElementTree as ET
+"""Prepare an isolated beta or stable feed from published releases; verify archive with the pinned public key."""
+import argparse, base64, hashlib, json, os, pathlib, re, subprocess, sys, tempfile, xml.etree.ElementTree as ET
 ROOT=pathlib.Path(__file__).resolve().parent.parent
 NS='{http://www.andymatuschak.org/xml-namespaces/sparkle}'
 REPO='vladkampov/Inigo'
@@ -20,9 +20,18 @@ def validate_item(data, tag):
     if not 0<length<256*1024*1024: raise ValueError('Invalid archive size')
     return int(build),name,signature,length
 
+def eligible_release(release, channel):
+    if channel not in ('beta', 'stable'): raise ValueError('Unknown update channel')
+    pattern = r'v\d+\.\d+\.\d+-beta\.\d+' if channel == 'beta' else r'v\d+\.\d+\.\d+'
+    return not release['draft'] and release['prerelease'] == (channel == 'beta') and re.fullmatch(pattern, release['tag_name']) is not None
+
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--channel',choices=['beta','stable'],default='beta')
+    parser.add_argument('--publish',action='store_true')
+    args=parser.parse_args();channel=args.channel
     pages=json.loads(output(['gh','api','--paginate','--slurp',f'repos/{REPO}/releases?per_page=100']))
-    releases=[r for page in pages for r in page if not r['draft'] and r['prerelease'] and re.fullmatch(r'v\d+\.\d+\.\d+-beta\.\d+',r['tag_name'])]
+    releases=[r for page in pages for r in page if eligible_release(r,channel)]
     candidates=[]
     with tempfile.TemporaryDirectory() as temp:
         temp=pathlib.Path(temp)
@@ -34,9 +43,9 @@ def main():
             data=(folder/'appcast.xml').read_bytes()
             build,name,signature,length=validate_item(data,tag)
             candidates.append((build,tag,folder,name,signature,length))
-        if not candidates: raise ValueError('No published signed beta')
+        if not candidates: raise ValueError(f'No published signed {channel} release')
         build,tag,folder,name,signature,length=max(candidates,key=lambda x:x[0])
-        if sum(c[0]==build for c in candidates)!=1: raise ValueError('Duplicate beta build numbers')
+        if sum(c[0]==build for c in candidates)!=1: raise ValueError('Duplicate release build numbers')
         for pattern in [name,'SHA256SUMS']:
             run(['gh','release','download',tag,'--repo',REPO,'--pattern',pattern,'--dir',str(folder)])
         archive=folder/name
@@ -47,14 +56,16 @@ def main():
         (folder/'public.der').write_bytes(bytes.fromhex('302a300506032b6570032100')+key)
         (folder/'signature').write_bytes(signature)
         run([os.environ.get('INIGO_OPENSSL','openssl'),'pkeyutl','-verify','-pubin','-keyform','DER','-inkey',str(folder/'public.der'),'-rawin','-in',str(archive),'-sigfile',str(folder/'signature')])
-        dest=ROOT/'updates/beta';dest.mkdir(parents=True,exist_ok=True)
+        dest=ROOT/'updates'/channel;dest.mkdir(parents=True,exist_ok=True)
         (dest/'appcast.xml').write_bytes((folder/'appcast.xml').read_bytes())
-        if '--publish' in sys.argv:
-            publish((folder/'appcast.xml').read_bytes(),build)
-        print(f'Prepared published beta {tag}, build {build}; SHA256 and Ed25519 verified.')
+        if args.publish:
+            publish((folder/'appcast.xml').read_bytes(),build,channel)
+        print(f'Prepared published {channel} {tag}, build {build}; SHA256 and Ed25519 verified.')
 def api(method,path,payload):
     return subprocess.check_output(['gh','api','--method',method,f'repos/{REPO}/{path}','--input','-'],input=json.dumps(payload).encode())
-def publish(data,build):
+def publish(data,build,channel='beta'):
+    if channel not in ('beta','stable'):raise ValueError('Unknown update channel')
+    path=f'{channel}/appcast.xml'
     branch='update-feed'
     refs=json.loads(output(['gh','api',f'repos/{REPO}/git/matching-refs/heads/{branch}']))
     if not any(r['ref']==f'refs/heads/{branch}' for r in refs):
@@ -63,8 +74,8 @@ def publish(data,build):
     # Read the tree to distinguish a missing feed from API/access failures.
     tree=json.loads(output(['gh','api',f'repos/{REPO}/git/trees/{branch}?recursive=1']))
     if tree.get('truncated'):raise ValueError('Cannot inspect complete feed tree')
-    entry=next((e for e in tree['tree'] if e['path']=='beta/appcast.xml'),None)
-    body={'message':f'chore: publish verified beta feed build {build}','branch':branch,'content':base64.b64encode(data).decode()}
+    entry=next((e for e in tree['tree'] if e['path']==path),None)
+    body={'message':f'chore: publish verified {channel} feed build {build}','branch':branch,'content':base64.b64encode(data).decode()}
     if entry:
         blob=json.loads(output(['gh','api',f'repos/{REPO}/git/blobs/{entry["sha"]}']))
         old=base64.b64decode(blob['content'])
@@ -74,5 +85,5 @@ def publish(data,build):
             if old!=data:raise ValueError('Refusing different artifacts for same build')
             print('Feed already current.');return
         body['sha']=entry['sha']
-    api('PUT','contents/beta/appcast.xml',body)
+    api('PUT',f'contents/{path}',body)
 if __name__=='__main__':main()

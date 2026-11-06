@@ -26,3 +26,33 @@ class BetaFeedTests(unittest.TestCase):
   with patch.object(feed,'output',side_effect=responses),patch.object(feed,'api') as api:
    with self.assertRaises(ValueError):feed.publish(self.data(url='https://changed.example').encode(),1016)
    api.assert_not_called()
+
+class ChannelIsolationTests(unittest.TestCase):
+ def test_release_flags_and_versions_must_agree(self):
+  for tag,prerelease,expected in [('v1.0.0',False,'stable'),('v1.0.0-beta.1',True,'beta'),('v1.0.0',True,None),('v1.0.0-beta.1',False,None),('v1.0.0-rc.1',True,None)]:
+   for channel in ['stable','beta']:
+    with self.subTest(tag=tag,channel=channel):
+     release={'tag_name':tag,'prerelease':prerelease,'draft':False}
+     self.assertEqual(feed.eligible_release(release,channel),channel==expected)
+     release['draft']=True
+     self.assertFalse(feed.eligible_release(release,channel))
+ def test_stable_publish_does_not_touch_beta(self):
+  import json
+  from unittest.mock import patch
+  responses=[json.dumps([{'ref':'refs/heads/update-feed'}]),json.dumps({'tree':[{'path':'beta/appcast.xml','sha':'beta'}]})]
+  with patch.object(feed,'output',side_effect=responses),patch.object(feed,'api') as api:
+   feed.publish(b'<rss/>',2000,'stable')
+   self.assertEqual(api.call_args.args[1],'contents/stable/appcast.xml')
+   self.assertNotIn('sha',api.call_args.args[2])
+ def test_unknown_channel_fails_before_network(self):
+  from unittest.mock import patch
+  with patch.object(feed,'output') as output:
+   with self.assertRaises(ValueError):feed.publish(b'',2000,'../beta')
+   output.assert_not_called()
+ def test_missing_stable_does_not_publish_beta(self):
+  from unittest.mock import patch
+  import json
+  releases=[[{'tag_name':'v1.0.0-beta.1','prerelease':True,'draft':False}]]
+  with patch.object(feed.sys,'argv',['feed','--channel','stable','--publish']),patch.object(feed,'output',return_value=json.dumps(releases)),patch.object(feed,'publish') as publish:
+   with self.assertRaisesRegex(ValueError,'No published signed stable'):feed.main()
+   publish.assert_not_called()

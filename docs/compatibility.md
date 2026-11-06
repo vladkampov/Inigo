@@ -14,15 +14,17 @@ remain unverified. Public release requires a clean-Mac test matrix.
 | Clipboard transaction | Isolated tests preserve all items and avoid overwriting new copies |
 | Readback | Delayed writes, cancellation, CR/LF and Unicode equivalence tested |
 | TextEdit | Selection and Services exercised; in-place trust depends on signing |
-| Codex/ChatGPT | User reported successful paste with occasional false warning; fixes need user retry |
+| Codex/ChatGPT | User confirmed picker translation/replacement works; earlier intermittent copy-only result remains unresolved (#21) |
 | Slack | Rich-content preservation not live-certified; protected rich content falls back |
 | Browser AX | Explicit selection only, including private windows; no surrounding context |
 | Google Docs | Structured rich editing not implemented; use copyable fallback |
 | Browser selections via macOS | Explicit selection only; editor-specific replacement must be verified; copyable fallback available |
-| Optional Safari wrapper | Not shipped/activated; signing and integration remain |
 | RTL/interface locales | 24 machine-translated catalogs; human review required |
-| Updates | Sparkle integrated; signed N→N+1 installation test pending published feed |
+| Updates | Real beta.6 (1018) → beta.7 (1020) Sparkle install/relaunch passed; preferences retained; stable channel still pending |
 | Error reporting | Content-free opt-in integration; no live endpoint configured |
 
 No universal “works in every editor” claim. Ad-hoc development builds can lose
-Accessibility grants after rebuild. Developer ID signing and notarization passed for 0.2.0-beta.1; clean-Mac testing remains.
+Accessibility grants after rebuild. Developer ID signing and notarization passed in CI through 0.2.0-beta.7.
+Clean-Mac onboarding/offline and editor matrices remain incomplete. A second Mac
+was reported to launch successfully; work-Mac Chrome/Slack focus failures remain
+unreproduced and are not established to be device-management restrictions.

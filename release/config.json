@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/vladkampov/Inigo",
-  "feedURL": "https://vladkampov.github.io/Inigo/appcast.xml",
+  "feedURL": "https://raw.githubusercontent.com/vladkampov/Inigo/update-feed/stable/appcast.xml",
   "publicEDKey": "M0q+asXEhGvjD9kZ0eEKIWa3corPo2j/PGHSCWMKfOs=",
   "sentryDSN": "",
   "supportURL": "https://buymeacoffee.com/kampov",
