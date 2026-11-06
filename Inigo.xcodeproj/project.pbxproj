@@ -10,6 +10,7 @@
 		0623744164F0A89632E72371 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC8C7F6BBA95AB990DA1C0 /* AppModel.swift */; };
 		0721E9F58558A4EDE39749D1 /* ClipboardPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8291161CB7A840679FAD6C /* ClipboardPolicy.swift */; };
 		1BA9F6901A56DCAC0A6BA224 /* LocalEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF91376B3A3BC24549CF1E8 /* LocalEngine.swift */; };
+		C15CA5CC1C3043A89E043101 /* VerifiedModelDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15CA5CC1C3043A89E043102 /* VerifiedModelDownload.swift */; };
 		1D0162D522E24647BD3D38A6 /* ErrorReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA875EC2E0C84572A01288C7 /* ErrorReports.swift */; };
 		1D1D7452F353F5A87F4B2906 /* DiagnosticEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6CE4C2EA84B38CFF37BAEC /* DiagnosticEventTests.swift */; };
 		20370977C4018D3EE521779B /* ClipboardPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3411617517247FEEC6ADD0 /* ClipboardPolicyTests.swift */; };
@@ -96,6 +97,7 @@
 		3B3411617517247FEEC6ADD0 /* ClipboardPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPolicyTests.swift; sourceTree = "<group>"; };
 		3E3F015DC8D6FA80EE59F355 /* ModelSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionTests.swift; sourceTree = "<group>"; };
 		3FF91376B3A3BC24549CF1E8 /* LocalEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEngine.swift; sourceTree = "<group>"; };
+		C15CA5CC1C3043A89E043102 /* VerifiedModelDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifiedModelDownload.swift; sourceTree = "<group>"; };
 		43A34756990246333222616B /* Rewrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewrite.swift; sourceTree = "<group>"; };
 		47DE3AA5B7DDEE14AD91149E /* OnboardingCelebration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCelebration.swift; sourceTree = "<group>"; };
 		541C0D1BCEA0CE4925CAE5A8 /* DiagnosticEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticEvent.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				DA875EC2E0C84572A01288C7 /* ErrorReports.swift */,
 				36B4D9BC8B749F79DB97BD33 /* InigoApp.swift */,
 				3FF91376B3A3BC24549CF1E8 /* LocalEngine.swift */,
+				C15CA5CC1C3043A89E043102 /* VerifiedModelDownload.swift */,
 				365D2CDE3C53441FDA615163 /* Localization.swift */,
 				82EB1E1BD4EB6D00283480D8 /* LocalServer.swift */,
 				D04596586670AC3752B89835 /* ModelSettings.swift */,
@@ -431,6 +434,7 @@
 				1D0162D522E24647BD3D38A6 /* ErrorReports.swift in Sources */,
 				B800A2225F12B1BAE092CACC /* InigoApp.swift in Sources */,
 				1BA9F6901A56DCAC0A6BA224 /* LocalEngine.swift in Sources */,
+				C15CA5CC1C3043A89E043101 /* VerifiedModelDownload.swift in Sources */,
 				533A73E8BEDEDD9B845AD672 /* LocalServer.swift in Sources */,
 				6EB3A0E5119845802B4E00E0 /* Localization.swift in Sources */,
 				F541CC6403D9A0F7770E00F7 /* ModelSettings.swift in Sources */,
