@@ -1,6 +1,8 @@
 name: Publish update feed
 on:
   workflow_dispatch:
+  release:
+    types: [published]
 permissions:
   contents: read
 concurrency:
@@ -8,7 +10,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   publish:
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name == 'release' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -19,9 +21,14 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
+          ref: main
           persist-credentials: false
-      - name: Validate release feed
-        run: python3 scripts/check-appcast.py updates/appcast.xml
+      - name: Prepare verified published beta feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 scripts/prepare-beta-feed.py
+          python3 scripts/check-appcast.py updates/beta/appcast.xml
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
         with:
           path: updates

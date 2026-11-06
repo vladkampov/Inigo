@@ -16,6 +16,14 @@ class ReleaseTests(unittest.TestCase):
    self.assertFalse(data['SUAutomaticallyUpdate']);self.assertFalse(data['SUAllowsAutomaticUpdates'])
    self.assertFalse(data['SUEnableSystemProfiling']);self.assertTrue(data['SUVerifyUpdateBeforeExtraction'])
    self.assertNotIn('SUPublicEDKey',data);self.assertNotIn('SUFeedURL',data)
+ def test_enabled_beta_uses_separate_feed(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   file=pathlib.Path(tmp)/'Info.plist';file.write_bytes(plistlib.dumps({}))
+   env=dict(os.environ,INIGO_ENABLE_UPDATES='1');env.pop('INIGO_UPDATE_PUBLIC_KEY',None)
+   subprocess.run(['python3',str(root/'scripts/configure-bundle.py'),str(file)],env=env,check=True)
+   data=plistlib.loads(file.read_bytes());config=json.loads((root/'release/config.json').read_text())
+   self.assertEqual(data['SUFeedURL'],config['betaFeedURL'])
+   self.assertEqual(data['SUPublicEDKey'],config['publicEDKey'])
  def test_issue_forms_match_labels(self):
   labels={x['name'] for x in json.loads((root/'.github/labels.json').read_text())}
   for file in (root/'.github/ISSUE_TEMPLATE').glob('*.yml'):

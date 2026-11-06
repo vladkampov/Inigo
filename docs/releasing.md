@@ -91,3 +91,16 @@ See [CI/CD setup](ci-cd.md) for the implemented Release Please workflow, signing
 secrets, branch protection and activation steps. Version PR automation is ready;
 signed CI builds remain gated until the protected environment and secrets exist.
 Public publishing and update-feed deployment remain deliberate review steps.
+
+## Beta update rollout
+
+Beta.5 was published with updates disabled. It requires one manual upgrade to the
+first update-enabled beta; it cannot discover a new feed retroactively. New beta
+builds use `/beta/appcast.xml`, with hourly checks, no automatic installation and
+no system profiling. The Pages workflow verifies the highest published beta's
+checksum and Ed25519 signature and deploys after publication. Stable builds use
+the separate `/appcast.xml` endpoint, which is not yet live.
+
+Validate an actual update between two update-enabled, notarized public betas,
+including the prompt, installation, relaunch, retained preferences and current
+version. Archive verification alone is not an end-to-end installation test.

@@ -20,6 +20,7 @@ enum InigoApp {
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMenuItemValidation {
     let model = AppModel()
+    private var restoringTranslation = false
     private var translationExpiry: Task<Void,Never>?
     private var translationWindow: NSWindow?
     private var languageChanges: AnyCancellable?
@@ -75,7 +76,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         for (title, action, key) in [("Undo","undo:","z"),("Cut","cut:","x"),("Copy","copy:","c"),("Paste","paste:","v"),("Select All","selectAll:","a")] { edit.addItem(NSMenuItem(title:L(title),action:NSSelectorFromString(action),keyEquivalent:key)) }
         editItem.submenu = edit; main.addItem(editItem); NSApp.mainMenu = main
     }
-    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool { openSettings(); return true }
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        guard translationWindow == nil, !restoringTranslation else { return false }
+        openSettings(); return true
+    }
     @objc func openSettings() {
         if settings == nil {
             let window = NSWindow(contentRect:NSRect(x:0,y:0,width:790,height:570),styleMask:[.titled,.closable,.miniaturizable],backing:.buffered,defer:false)
@@ -164,17 +168,29 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         let window = NSWindow(contentRect:NSRect(x:0,y:0,width:520,height:510),styleMask:[.titled,.closable],backing:.buffered,defer:false)
         window.title = L("Translate"); window.isReleasedWhenClosed = false; window.delegate = self
         window.contentView = NSHostingView(rootView:TranslationPicker(preferences:model.preferences,hasSelection:text != nil || snapshot != nil) { [weak self] language in
-            if let source, source.allowed(exclusions: self?.model.preferences.excludedApps ?? []), let snapshot, snapshot.pid == source.pid, snapshot.appID == source.appID, snapshot.canReplace, text == nil || text == snapshot.draft {
-                NSRunningApplication(processIdentifier:snapshot.pid)?.activate()
-                Task { @MainActor [weak self] in
-                    try? await Task.sleep(for:.milliseconds(250))
-                    guard let self else { return }
-                    if self.model.editor.unchanged(snapshot) { self.model.refine(action:.translate(language)) }
-                    else { self.model.rewriteReference(snapshot.draft,action:.translate(language),source:source) }
-                }
-            } else if let source, let text = text ?? snapshot?.draft { self?.model.rewriteReference(text,action:.translate(language),source:source) }
-            else { self?.model.pendingTranslation = language }
-            self?.translationWindow?.close()
+            guard let self else { return }
+            self.restoringTranslation = true
+            self.translationWindow?.close()
+            guard let source, source.allowed(exclusions:self.model.preferences.excludedApps) else {
+                self.restoringTranslation = false
+                if text == nil && snapshot == nil { self.model.pendingTranslation = language }
+                return
+            }
+            NSRunningApplication(processIdentifier:source.pid)?.activate()
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                defer { self.restoringTranslation = false }
+                // Closing the picker must precede focus restoration. Never recapture a different field.
+                try? await Task.sleep(for:.milliseconds(300))
+                guard source.allowed(exclusions:self.model.preferences.excludedApps) else { return }
+                if let snapshot, snapshot.pid == source.pid, snapshot.appID == source.appID,
+                   snapshot.canReplace, text == nil || text == snapshot.draft,
+                   self.model.editor.unchanged(snapshot) {
+                    self.model.refine(action:.translate(language),capturedSnapshot:snapshot)
+                } else if let captured = text ?? snapshot?.draft {
+                    self.model.rewriteReference(captured,action:.translate(language),source:source)
+                } else { self.model.pendingTranslation = language }
+            }
         })
         window.center(); translationWindow = window
         translationExpiry = Task { [weak self] in

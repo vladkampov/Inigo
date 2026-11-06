@@ -68,7 +68,7 @@ def verify():
         run(['ditto','-x','-k',str(archive),temp])
         app = str(pathlib.Path(temp)/'Inigo.app')
         run(['codesign','--verify','--deep','--strict',app])
-        run(['xcrun','stapler','validate',app])
+        run([sys.executable,str(ROOT/'scripts/notary-ticket.py'),'validate',app])
         run(['spctl','--assess','--type','execute','--verbose',app])
 def upload():
     if release()['assets']: raise ValueError('Refusing to overwrite existing assets')
