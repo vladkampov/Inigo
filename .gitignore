@@ -23,3 +23,5 @@ xcuserdata/
 *.xcuserstate
 
 updates/beta/appcast.xml
+
+updates/stable/appcast.xml

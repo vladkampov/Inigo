@@ -1,6 +1,12 @@
-name: Publish beta update feed
+name: Publish update feed
 on:
   workflow_dispatch:
+    inputs:
+      channel:
+        description: Published release channel to verify
+        type: choice
+        options: [beta, stable]
+        default: beta
   release:
     types: [published]
 permissions:
@@ -19,7 +25,8 @@ jobs:
         with:
           ref: main
           persist-credentials: false
-      - name: Verify public beta and publish feed
+      - name: Verify published release and publish isolated feed
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python3 scripts/prepare-beta-feed.py --publish
+          CHANNEL: ${{ github.event_name == 'release' && (github.event.release.prerelease && 'beta' || 'stable') || inputs.channel }}
+        run: python3 scripts/prepare-beta-feed.py --channel "$CHANNEL" --publish
