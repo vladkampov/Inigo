@@ -19,3 +19,5 @@ release/artifacts/
 benchmarks/results/*-runtime.log
 __pycache__/
 *.pyc
+xcuserdata/
+*.xcuserstate
