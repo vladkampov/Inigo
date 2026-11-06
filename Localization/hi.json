@@ -245,5 +245,6 @@
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "मूल्यवर्द्धन के लिए डिफ़ॉल्ट से बंद। रिपोर्ट में केवल त्रुटि श्रेणी, ऐप संस्करण और macOS मुख्य संस्करण शामिल हैं। कोई लिखना, क्लिपबोर्ड सामग्री, फ़ाइल पथ या उपयोग विश्लेषण नहीं। प्रदाता अभी भी कनेक्शन मेटाडेटा प्राप्त करता है।",
   "Error reporting is not configured for this build.": "इस बिल्ड के लिए त्रुटि रिपोर्टिंग कॉन्फ़िगर नहीं की गई है।",
   "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "एक M5 पर 24 GB में, 9B ने लगभग 4 सेकंड में सबसे विश्वसनीय अंग्रेजी, पोलिश और यूक्रेनियन परिणाम दिए। 4B ने लगभग 2 सेकंड लिए; 2B लगभग 1 सेकंड, अधिक गुणवत्तापूर्ण त्रुटियों के साथ। सभी परिणाम अभी भी समीक्षा की आवश्यकता रखते हैं।",
-  "The model returned the wrong language. Your original text is unchanged.": "मॉडल गलत भाषा लौटाया। आपका मूल पाठ अपरिवर्तित है।"
+  "The model returned the wrong language. Your original text is unchanged.": "मॉडल गलत भाषा लौटाया। आपका मूल पाठ अपरिवर्तित है।",
+  "Coffee support is coming soon.": "कॉफी सपोर्ट जल्द ही आने वाला है।"
 }

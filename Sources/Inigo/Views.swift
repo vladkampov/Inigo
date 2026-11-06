@@ -105,7 +105,7 @@ struct SettingsView: View {
                     if let url = title == "Contribute on GitHub" ? SupportLinks.repository : SupportLinks.issue(title) { NSWorkspace.shared.open(url) }
                 }.disabled(SupportLinks.repository == nil)
             }
-            Text(L("Support links are coming soon.")).font(.caption).foregroundStyle(.secondary)
+            if SupportLinks.coffee == nil { Text(L("Coffee support is coming soon.")).font(.caption).foregroundStyle(.secondary) }
         }
     }
     var privacy: some View {

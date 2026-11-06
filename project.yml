@@ -1,0 +1,91 @@
+name: Inigo
+options:
+  bundleIdPrefix: app.inigo
+  deploymentTarget:
+    macOS: "15.0"
+  createIntermediateGroups: true
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MACOSX_DEPLOYMENT_TARGET: "15.0"
+    ARCHS: arm64
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    exactVersion: 2.10.1
+fileGroups:
+  - README.md
+  - docs/releasing.md
+  - Xcode/README.md
+  - VERSION
+  - BUILD_NUMBER
+targets:
+  InigoCore:
+    type: framework
+    platform: macOS
+    sources: [Sources/InigoCore]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.inigo.core
+        GENERATE_INFOPLIST_FILE: YES
+        MACH_O_TYPE: staticlib
+        SKIP_INSTALL: YES
+        CODE_SIGNING_ALLOWED: NO
+  Inigo:
+    type: application
+    platform: macOS
+    sources:
+      - Sources/Inigo
+      - path: Assets/Inigo.icns
+        buildPhase: resources
+      - path: Assets/Inigo.png
+        buildPhase: resources
+      - path: Assets/InigoMenu.png
+        buildPhase: resources
+    dependencies:
+      - target: InigoCore
+        embed: false
+      - package: Sparkle
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.inigo.personal
+        INFOPLIST_FILE: Xcode/Info.plist
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: Apple Development
+        ENABLE_HARDENED_RUNTIME: YES
+        ENABLE_APP_SANDBOX: NO
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/../Frameworks"
+        SKIP_INSTALL: NO
+    postBuildScripts:
+      - name: Bundle local runtime and translations
+        path: scripts/xcode-resources.sh
+        basedOnDependencyAnalysis: false
+        showEnvVars: false
+  InigoCoreTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources: [Tests/InigoCoreTests]
+    dependencies:
+      - target: InigoCore
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGNING_ALLOWED: NO
+schemes:
+  Inigo:
+    build:
+      targets:
+        Inigo: all
+    run:
+      config: Debug
+      commandLineArguments:
+        "--settings": true
+    test:
+      config: Debug
+      targets: [InigoCoreTests]
+    archive:
+      config: Release
