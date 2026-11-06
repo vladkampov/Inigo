@@ -8,7 +8,7 @@ class ReleaseSafety(unittest.TestCase):
             with self.subTest(value=value), patch.dict(os.environ, RELEASE_TAG=value):
                 with self.assertRaises(ValueError): ci.tag()
     def test_never_modify_published_release(self):
-        with patch.dict(os.environ, RELEASE_TAG='v0.2.0-beta.2'), patch.object(ci,'output',return_value='{"draft":false}'):
+        with patch.dict(os.environ, RELEASE_TAG='v0.2.0-beta.2'), patch.object(ci,'output',return_value='[[{"tag_name":"v0.2.0-beta.2","draft":false}]]'):
             with self.assertRaises(ValueError): ci.release()
     def test_never_overwrite_assets(self):
         with patch.object(ci,'release',return_value={'assets':[{'name':'existing.zip'}]}), patch.object(ci,'run') as run:
@@ -27,3 +27,7 @@ class ReleaseSafety(unittest.TestCase):
                 ci.cleanup()
                 self.assertEqual(run.call_args_list[0].args[0],['security','list-keychains','-d','user','-s','/original/login.keychain-db'])
                 self.assertFalse(state.exists())
+
+    def test_finds_unpublished_draft_by_tag_in_list(self):
+        with patch.dict(os.environ, RELEASE_TAG='v0.2.0-beta.3'), patch.object(ci,'output',return_value='[[{"tag_name":"v0.2.0-beta.2","draft":true}],[{"tag_name":"v0.2.0-beta.3","draft":true}]]'):
+            self.assertEqual(ci.release()['tag_name'],'v0.2.0-beta.3')

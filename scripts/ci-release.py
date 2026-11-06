@@ -13,7 +13,10 @@ def tag():
         raise ValueError('Invalid release tag')
     return value
 def release():
-    data = json.loads(output(['gh','api',f'repos/vladkampov/Inigo/releases/tags/{tag()}']))
+    pages = json.loads(output(['gh','api','--paginate','--slurp','repos/vladkampov/Inigo/releases?per_page=100']))
+    matches = [item for page in pages for item in page if item['tag_name'] == tag()]
+    if len(matches) != 1: raise ValueError('Expected exactly one matching release')
+    data = matches[0]
     if not data['draft']: raise ValueError('Only draft releases may be built or modified')
     return data
 def select():
