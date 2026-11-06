@@ -245,5 +245,6 @@
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "默认关闭。报告仅包含错误类别、应用版本和 macOS 主版本号。不包含任何书写内容、剪贴板内容、文件路径或使用分析。提供商仍会接收连接元数据。",
   "Error reporting is not configured for this build.": "此构建未配置错误报告。",
   "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "在配备 24 GB 内存的 M5 上，9B 在约 4 秒内提供了最准确的英文、波兰语和乌克兰语结果。4B 耗时约 2 秒；2B 耗时约 1 秒，但质量错误更多。所有结果仍需审核。",
-  "The model returned the wrong language. Your original text is unchanged.": "模型返回了错误的语言。您的原始文本保持不变。"
+  "The model returned the wrong language. Your original text is unchanged.": "模型返回了错误的语言。您的原始文本保持不变。",
+  "Coffee support is coming soon.": "咖啡支持即将推出。"
 }
