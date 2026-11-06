@@ -6,7 +6,8 @@ cd "$(dirname "$0")/.."
 : "${INIGO_NOTARY_PROFILE:?Set a notarytool Keychain profile}"
 : "${INIGO_UPDATE_PUBLIC_KEY:?Set the Sparkle Ed25519 public key}"
 VERSION=$(python3 scripts/version.py)
-export INIGO_STAGE_ONLY=1 INIGO_PUBLIC_LINKS=1 INIGO_ENABLE_UPDATES=1
+export INIGO_STAGE_ONLY=1 INIGO_PUBLIC_LINKS=1
+export INIGO_ENABLE_UPDATES="${INIGO_ENABLE_UPDATES:-1}"
 bash scripts/test.sh
 BUILD_LOG=$(mktemp)
 trap 'rm -f "$BUILD_LOG"' EXIT
