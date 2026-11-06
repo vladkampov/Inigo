@@ -2,6 +2,13 @@
 
 Versions follow Semantic Versioning. Pre-1.0 releases are experimental.
 
+## [0.2.0-beta.6](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.5...v0.2.0-beta.6) (2026-11-06)
+
+
+### Features
+
+* enable beta updates and preserve translation targets ([#17](https://github.com/vladkampov/Inigo/issues/17)) ([145785f](https://github.com/vladkampov/Inigo/commit/145785fdad0a403a2bdb9c14830c40d9f5128453))
+
 ## [0.2.0-beta.5](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.4...v0.2.0-beta.5) (2026-11-06)
 
 
