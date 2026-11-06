@@ -244,7 +244,7 @@
   "Send optional error reports": "İsteğe bağlı hata raporlarını gönder",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "Varsayılan olarak kapalı. Raporlar sadece hata kategorisi, uygulama sürümü ve macOS ana sürümünü içerir. Yazma, panoya kopyalanan içerik, dosya yolları veya kullanım analizleri dahil değildir. Sağlayıcı hala bağlantı metadatalarını alır.",
   "Error reporting is not configured for this build.": "Bu derleme için hata raporlaması yapılandırılmamıştır.",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "M5 üzerinde 24 GB bellek ile 9B, yaklaşık 4 saniyede en sadık İngilizce, Lehçe ve Ukraynaca sonuçları verdi. 4B yaklaşık 2 saniye aldı; 2B ise yaklaşık 1 saniye aldı, ancak daha fazla kalite hatası içerdi. Tüm sonuçlar hala gözden geçirilmelidir.",
   "The model returned the wrong language. Your original text is unchanged.": "Model yanlış dili döndürdü. Orijinal metininiz değişmedi.",
-  "Coffee support is coming soon.": "Kahve desteği yakında geliyor."
+  "Coffee support is coming soon.": "Kahve desteği yakında geliyor.",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Mac’inize uygun bir model seçin. Kalite ve hız, dile ve göreve göre değişir."
 }

@@ -244,7 +244,7 @@
   "Send optional error reports": "اختیاری غلطی رپورٹ بھیجیں",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "پیش فرض بند۔ رپورٹس میں صرف غلطی کی کٹیگری، ایپ ورژن اور macOS کا بڑا ورژن شامل ہوتا ہے۔ کوئی لکھائی، کلپ بورڈ کا مواد، فائل کے راستے یا استعمال کی تجزیہ نہیں شامل ہوتا۔ فراہم کنندہ اب بھی کنیکشن کے میٹا ڈیٹا کو وصول کرتا ہے۔",
   "Error reporting is not configured for this build.": "اس بیلڈ کے لیے غلطی رپورٹنگ ترتیب نہیں دی گئی۔",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "ایک M5 پر 24 GB میں، 9B نے تقریباً 4 سیکنڈ میں سب سے وفادار انگریزی، پولش اور یوکرینین نتائج دیے۔ 4B نے تقریباً 2 سیکنڈ لگائے؛ 2B تقریباً 1 سیکنڈ لگایا، زیادہ معیاری غلطیوں کے ساتھ۔ سب سے نتائج اب بھی جائزہ لینے کی ضرورت ہیں۔",
   "The model returned the wrong language. Your original text is unchanged.": "ماڈل غلط زبان واپس کر دیا۔ آپ کا اصل متن تبدیل نہیں ہوا۔",
-  "Coffee support is coming soon.": "کافی کی سپورٹ جلد ہی آئے گی۔"
+  "Coffee support is coming soon.": "کافی کی سپورٹ جلد ہی آئے گی۔",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "اپنے Mac کے لیے موزوں ماڈل منتخب کریں۔ معیار اور رفتار زبان اور کام کے لحاظ سے مختلف ہوتے ہیں۔"
 }

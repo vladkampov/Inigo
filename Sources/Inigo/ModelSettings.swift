@@ -48,7 +48,7 @@ struct ModelSettings: View {
                     }
                 }
             }
-            Text(L("On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.")).font(.caption).foregroundStyle(.secondary)
+            Text(L("Choose a model that fits your Mac. Quality and speed vary by language and task.")).font(.caption).foregroundStyle(.secondary)
             Text(L("Downloads are verified before use. Models start automatically and release memory when idle.")).font(.caption).foregroundStyle(.secondary)
             Divider()
             DisclosureGroup(L("Use your own local model")) {

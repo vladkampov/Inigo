@@ -244,7 +244,7 @@
   "Send optional error reports": "ارسال گزارش‌های خطای اختیاری",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "پیش‌فرض غیرفعال است. گزارش‌ها شامل فقط دسته‌بندی خطا، نسخه برنامه و نسخه اصلی macOS هستند. هیچ نوشتاری، محتوای کلیپ‌بورد، مسیر فایل یا تحلیل استفاده ارسال نمی‌شود. ارائه‌دهنده همچنان متادیتای اتصال را دریافت می‌کند.",
   "Error reporting is not configured for this build.": "گزارش خطا برای این نسخه تنظیم نشده است.",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "در یک M5 با 24 گیگابایت، مدل 9B نتایج انگلیسی، لهستانی و اوکراینی وفادارانه‌تری را در حدود 4 ثانیه ارائه داد. مدل 4B حدود 2 ثانیه و مدل 2B حدود 1 ثانیه زمان برد، با خطاهای باکیفیت بیشتر. نتایج همچنان نیاز به بررسی دارند.",
   "The model returned the wrong language. Your original text is unchanged.": "مدل زبان اشتباهی را برگرداند. متن اصلی شما تغییر نکرده است.",
-  "Coffee support is coming soon.": "پشتیبانی قهوه به زودی در دسترس خواهد بود."
+  "Coffee support is coming soon.": "پشتیبانی قهوه به زودی در دسترس خواهد بود.",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "مدلی متناسب با مک خود انتخاب کنید. کیفیت و سرعت بسته به زبان و کار متفاوت است."
 }

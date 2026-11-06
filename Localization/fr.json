@@ -244,7 +244,7 @@
   "Send optional error reports": "Envoyer des rapports d'erreurs optionnels",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "Désactivé par défaut. Les rapports incluent uniquement la catégorie d'erreur, la version de l'application et la version majeure de macOS. Aucun écrit, aucun contenu de presse, aucun chemin de fichier ou aucune analyse d'utilisation n'est inclus. Le fournisseur reçoit toujours les métadonnées de connexion.",
   "Error reporting is not configured for this build.": "Le signalement d'erreur n'est pas configuré pour cette version.",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "Sur une puce M5 avec 24 Go, le modèle 9B a fourni les résultats les plus fidèles en anglais, polonais et ukrainien, en environ 4 secondes. Le modèle 4B a pris environ 2 secondes ; le modèle 2B environ 1 seconde, avec plus d'erreurs de qualité. Tous les résultats nécessitent toujours une révision.",
   "The model returned the wrong language. Your original text is unchanged.": "Le modèle a retourné la mauvaise langue. Votre texte original est inchangé.",
-  "Coffee support is coming soon.": "Le support de café arrive bientôt."
+  "Coffee support is coming soon.": "Le support de café arrive bientôt.",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Choisissez un modèle adapté à votre Mac. La qualité et la vitesse varient selon la langue et la tâche."
 }
