@@ -1,0 +1,70 @@
+[
+  {
+    "finish_reason": "stop",
+    "language": "en",
+    "seconds": 1.4580399990081787,
+    "timings": {
+      "cache_n": 186,
+      "predicted_ms": 1181.93,
+      "predicted_n": 40,
+      "predicted_per_second": 32.996877987698085,
+      "predicted_per_token_ms": 30.30589743589744,
+      "prompt_ms": 257.547,
+      "prompt_n": 58,
+      "prompt_per_second": 225.20161368604562,
+      "prompt_per_token_ms": 4.44046551724138
+    },
+    "evidence_note": "Historical timing only; text payload removed. Not a run of the current fixtures."
+  },
+  {
+    "finish_reason": "stop",
+    "language": "pl",
+    "seconds": 1.9518380165100098,
+    "timings": {
+      "cache_n": 186,
+      "predicted_ms": 1788.599,
+      "predicted_n": 60,
+      "predicted_per_second": 32.986711946053866,
+      "predicted_per_token_ms": 30.31523728813559,
+      "prompt_ms": 160.014,
+      "prompt_n": 71,
+      "prompt_per_second": 443.71117527216364,
+      "prompt_per_token_ms": 2.253718309859155
+    },
+    "evidence_note": "Historical timing only; text payload removed. Not a run of the current fixtures."
+  },
+  {
+    "finish_reason": "stop",
+    "language": "uk",
+    "seconds": 2.322698950767517,
+    "timings": {
+      "cache_n": 186,
+      "predicted_ms": 2152.379,
+      "predicted_n": 72,
+      "predicted_per_second": 32.986755585331395,
+      "predicted_per_token_ms": 30.31519718309859,
+      "prompt_ms": 164.808,
+      "prompt_n": 83,
+      "prompt_per_second": 503.6163293044027,
+      "prompt_per_token_ms": 1.9856385542168673
+    },
+    "evidence_note": "Historical timing only; text payload removed. Not a run of the current fixtures."
+  },
+  {
+    "finish_reason": "stop",
+    "language": "en",
+    "seconds": 1.7614740133285522,
+    "timings": {
+      "cache_n": 186,
+      "predicted_ms": 1599.974,
+      "predicted_n": 53,
+      "predicted_per_second": 32.50052813358217,
+      "predicted_per_token_ms": 30.768730769230768,
+      "prompt_ms": 157.829,
+      "prompt_n": 71,
+      "prompt_per_second": 449.8539558636245,
+      "prompt_per_token_ms": 2.222943661971831
+    },
+    "evidence_note": "Historical timing only; text payload removed. Not a run of the current fixtures."
+  }
+]

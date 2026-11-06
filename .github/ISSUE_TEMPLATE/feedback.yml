@@ -1,0 +1,38 @@
+{
+  "name": "Share feedback",
+  "description": "Tell us what works or could be clearer.",
+  "labels": [
+    "feedback",
+    "needs triage"
+  ],
+  "body": [
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "Use synthetic examples only. Do not include workplace text, credentials or personal information. Security issues belong in private vulnerability reports."
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "feedback",
+      "attributes": {
+        "label": "Your feedback",
+        "description": "Please keep examples anonymous."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "input",
+      "id": "version",
+      "attributes": {
+        "label": "Inigo version",
+        "description": "Optional"
+      },
+      "validations": {
+        "required": false
+      }
+    }
+  ]
+}

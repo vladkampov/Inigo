@@ -1,0 +1,102 @@
+[
+  {
+    "name": "bug",
+    "color": "d73a4a",
+    "description": "Something is not working"
+  },
+  {
+    "name": "enhancement",
+    "color": "a2eeef",
+    "description": "Feature or behavior improvement"
+  },
+  {
+    "name": "feedback",
+    "color": "d4c5f9",
+    "description": "General user feedback"
+  },
+  {
+    "name": "good first issue",
+    "color": "7057ff",
+    "description": "Scoped task with clear acceptance criteria"
+  },
+  {
+    "name": "help wanted",
+    "color": "008672",
+    "description": "Contributions welcome"
+  },
+  {
+    "name": "needs triage",
+    "color": "ededed",
+    "description": "Awaiting maintainer assessment"
+  },
+  {
+    "name": "needs reproduction",
+    "color": "fbca04",
+    "description": "Synthetic reproduction needed"
+  },
+  {
+    "name": "blocked",
+    "color": "b60205",
+    "description": "Waiting on an external prerequisite"
+  },
+  {
+    "name": "documentation",
+    "color": "0075ca",
+    "description": "Documentation improvements"
+  },
+  {
+    "name": "translation",
+    "color": "5319e7",
+    "description": "Interface or model language quality"
+  },
+  {
+    "name": "accessibility",
+    "color": "0e8a16",
+    "description": "Keyboard, screen-reader or motion access"
+  },
+  {
+    "name": "editor safety",
+    "color": "b60205",
+    "description": "Capture, replacement, formatting or Undo"
+  },
+  {
+    "name": "models",
+    "color": "c2e0c6",
+    "description": "Model quality, speed or compatibility"
+  },
+  {
+    "name": "updates",
+    "color": "bfd4f2",
+    "description": "Packaging, signing and updates"
+  },
+  {
+    "name": "privacy",
+    "color": "f9d0c4",
+    "description": "Data minimization and privacy"
+  },
+  {
+    "name": "testing",
+    "color": "bfdadc",
+    "description": "Automated or manual verification"
+  },
+  {
+    "name": "dependencies",
+    "color": "0366d6",
+    "description": "Dependency maintenance"
+  },
+  {
+    "name": "duplicate",
+    "color": "cfd3d7",
+    "description": "Already tracked"
+  },
+  {
+    "name": "wontfix",
+    "color": "ffffff",
+    "description": "Not planned"
+  },
+  {
+    "name": "priority: high",
+    "color": "b60205",
+    "description": "Important before the next release"
+  }
+]

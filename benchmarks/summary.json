@@ -1,0 +1,62 @@
+[
+  {
+    "model": "2B",
+    "hardware": {
+      "chip": "Apple M5",
+      "memory_bytes": "25769803776",
+      "macos": "26.6.2"
+    },
+    "startup_seconds": 0.514154792,
+    "peak_process_rss_bytes": 1927348224,
+    "token_checks_passed": 39,
+    "outputs": 42,
+    "refine": {
+      "median_seconds": 0.87,
+      "p95_seconds": 1.21
+    },
+    "translate": {
+      "median_seconds": 0.99,
+      "p95_seconds": 1.24
+    }
+  },
+  {
+    "model": "4B",
+    "hardware": {
+      "chip": "Apple M5",
+      "memory_bytes": "25769803776",
+      "macos": "26.6.2"
+    },
+    "startup_seconds": 0.5135286670000028,
+    "peak_process_rss_bytes": 4098408448,
+    "token_checks_passed": 41,
+    "outputs": 42,
+    "refine": {
+      "median_seconds": 1.97,
+      "p95_seconds": 3.13
+    },
+    "translate": {
+      "median_seconds": 2.2,
+      "p95_seconds": 2.63
+    }
+  },
+  {
+    "model": "9B",
+    "hardware": {
+      "chip": "Apple M5",
+      "memory_bytes": "25769803776",
+      "macos": "26.6.2"
+    },
+    "startup_seconds": 1.0238256669999828,
+    "peak_process_rss_bytes": 7044923392,
+    "token_checks_passed": 42,
+    "outputs": 42,
+    "refine": {
+      "median_seconds": 3.97,
+      "p95_seconds": 6.52
+    },
+    "translate": {
+      "median_seconds": 4.19,
+      "p95_seconds": 5.07
+    }
+  }
+]

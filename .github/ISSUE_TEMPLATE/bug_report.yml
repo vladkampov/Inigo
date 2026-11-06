@@ -1,0 +1,71 @@
+{
+  "name": "Report a bug",
+  "description": "Something is not working as expected.",
+  "labels": [
+    "bug",
+    "needs triage"
+  ],
+  "body": [
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "Use synthetic examples only. Do not include workplace text, credentials or personal information. Security issues belong in private vulnerability reports."
+      }
+    },
+    {
+      "type": "input",
+      "id": "version",
+      "attributes": {
+        "label": "Inigo version",
+        "description": "For example 0.2.0"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "input",
+      "id": "environment",
+      "attributes": {
+        "label": "Mac, macOS and target app versions",
+        "description": "Include memory and selected model, if relevant."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "steps",
+      "attributes": {
+        "label": "Steps to reproduce",
+        "description": "Use a small synthetic example."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "expected",
+      "attributes": {
+        "label": "Expected behavior",
+        "description": "What should happen?"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "actual",
+      "attributes": {
+        "label": "Actual behavior",
+        "description": "Did the original text change? Did Undo work?"
+      },
+      "validations": {
+        "required": true
+      }
+    }
+  ]
+}
