@@ -244,7 +244,7 @@
   "Send optional error reports": "Відправка необов'язкових звітів про помилки",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "Вимкнено за замовчуванням. Звіти містять лише категорію помилки, версію програми та основну версію macOS. Не міститься жодного тексту, вмісту буфера обміну, шляхів до файлів або аналітики використання. Поставник все одно отримує метадані з'єднання.",
   "Error reporting is not configured for this build.": "Звіт про помилки не налаштовано для цієї версії.",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "На M5 з 24 ГБ 9B дало найщиріші результати англійською, польською та українською мовами приблизно за 4 секунди. 4B зайняло близько 2 секунд; 2B — близько 1 секунди, з більшою кількістю якісних помилок. Всі результати все одно потребують перегляду.",
   "The model returned the wrong language. Your original text is unchanged.": "Модель повернула неправильну мову. Ваш оригінальний текст залишився незмінним.",
-  "Coffee support is coming soon.": "Підтримка кави наближається."
+  "Coffee support is coming soon.": "Підтримка кави наближається.",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Виберіть модель, що підходить вашому Mac. Якість і швидкість залежать від мови та завдання."
 }

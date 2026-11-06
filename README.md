@@ -7,13 +7,13 @@
 Inigo is a native macOS menu-bar app for refining and translating writing in the
 app you already use. Local models keep your writing on your Mac.
 
-**Status: experimental pre-release.** Source is being prepared for publication.
+**Status: experimental pre-release.** Source is available for review and contributions.
 There is no endorsed public installer yet. See [release gates](docs/releasing.md).
 
 ## What it does
 - **⌥I** refines a selection or current paragraph; **⌥⇧I** translates.
   Both shortcuts are editable.
-- Translates between 24 languages, including English, Polish and Ukrainian.
+- Offers 24 translation targets and interface languages.
   The interface follows macOS or your override, with RTL layouts.
 - Replaces text only when the editor can be checked safely. Read-only selections
   and unsupported editors get a small copyable result.
@@ -22,8 +22,8 @@ There is no endorsed public installer yet. See [release gates](docs/releasing.md
 - Never sends your message, captures screenshots or collects conversation history.
 
 ## Model choice
-Our [EN/PL/UK benchmark](benchmarks/report.md) on an M5 with 24 GB found 9B most
-faithful at about four seconds per short request. 4B had a median of roughly two seconds;
+Our [multilingual benchmark](benchmarks/report.md) on an M5 with 24 GB found 9B most
+faithful on the tested language sample at about four seconds per short request. 4B had a median of roughly two seconds;
 2B roughly one, with more quality errors. These are median timings, not guarantees.
 Existing model selections do not switch automatically. Review wording before sending.
 

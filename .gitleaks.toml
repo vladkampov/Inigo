@@ -1,0 +1,8 @@
+[extend]
+useDefault = true
+
+# Sparkle public verification key intentionally ships in the app. Not a secret.
+[[allowlists]]
+description = "Inigo's committed Sparkle public verification key only"
+regexTarget = "match"
+regexes = ['''M0q\+asXEhGvjD9kZ0eEKIWa3corPo2j/PGHSCWMKfOs=''']

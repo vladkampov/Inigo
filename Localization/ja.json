@@ -244,7 +244,7 @@
   "Send optional error reports": "オプションのエラーレポートを送信",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "デフォルトはオフ。レポートにはエラーカテゴリ、アプリバージョン、macOS メジャーバージョンのみが含まれます。書面、クリップボードの内容、ファイルパス、または使用分析は含まれません。プロバイダーは接続メタデータをまだ受信します。",
   "Error reporting is not configured for this build.": "このビルドではエラー報告が設定されていません。",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "M5 で 24 GB の場合、9B が約 4 秒で最も忠実な英語、ポーランド語、ウクライナ語の結果を与えました。4B は約 2 秒、2B は約 1 秒かかり、より多くの品質エラーがありました。すべての結果はまだレビューが必要です。",
   "The model returned the wrong language. Your original text is unchanged.": "モデルが誤った言語を返しました。元のテキストは変更されません。",
-  "Coffee support is coming soon.": "コーヒーサポートが近日公開されます。"
+  "Coffee support is coming soon.": "コーヒーサポートが近日公開されます。",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "お使いのMacに合ったモデルを選んでください。品質と速度は言語やタスクによって異なります。"
 }

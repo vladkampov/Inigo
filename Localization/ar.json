@@ -244,7 +244,7 @@
   "Send optional error reports": "إرسال تقارير أخطاء اختيارية",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "مغلق افتراضياً. تتضمن التقارير فئة الخطأ فقط، إصدار التطبيق، وإصدار macOS الرئيسي. لا توجد كتابة، ولا محتوى الحافظة، ولا مسارات ملفات، ولا تحليلات الاستخدام. يستقبل المزود بيانات الاتصال فقط.",
   "Error reporting is not configured for this build.": "لا يتم إعداد تقارير الأخطاء لهذا الإصدار.",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "على M5 بـ 24 جيجابايت، أعطى 9B أفضل نتائج بالإنجليزية والبولندية والأوكرانية بدقة عالية في حوالي 4 ثوانٍ. استغرق 4B حوالي 2 ثوانٍ؛ 2B حوالي ثانية واحدة، مع المزيد من أخطاء الجودة. لا تزال جميع النتائج بحاجة للمراجعة.",
   "The model returned the wrong language. Your original text is unchanged.": "عاد النموذج بلغة خاطئة. النص الأصلي غير مُعدّل.",
-  "Coffee support is coming soon.": "يدعم قهوة قريباً."
+  "Coffee support is coming soon.": "يدعم قهوة قريباً.",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "اختر نموذجًا يناسب جهاز Mac الخاص بك. تختلف الجودة والسرعة حسب اللغة والمهمة."
 }

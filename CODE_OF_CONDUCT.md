@@ -8,6 +8,6 @@ and publishing private information are not acceptable. Do not post private
 messages, workplace drafts, credentials or personal contact details in issues.
 
 Maintainers may edit or remove harmful content and restrict participation.
-For private reports, contact @vladkampov using a private contact method listed on
-their GitHub profile. If none is available, use GitHub's report-abuse tools.
-Maintainers must establish a dedicated private contact before public launch.
+Use GitHub’s private report-abuse tools for harassment or other platform-policy
+violations. For security vulnerabilities, use the private route in SECURITY.md.
+A dedicated maintainer conduct-reporting channel is not available yet.

@@ -244,7 +244,7 @@
   "Send optional error reports": "ঐচ্ছিক ত্রুটি রিপোর্ট পাঠান",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "ডিফল্টভাবে বন্ধ। রিপোর্টে শুধুমাত্র ত্রুটি ক্যাটাগরি, অ্যাপ ভার্সন এবং macOS মেজর ভার্সন অন্তর্ভুক্ত থাকে। লেখা, ক্লিপবোর্ডের বিষয়বস্তু, ফাইল পথ বা ব্যবহার বিশ্লেষণ নেই। প্রোভাইডার এখনও সংযোগের মেটাডেটা পায়।",
   "Error reporting is not configured for this build.": "এই বিল্ডের জন্য ত্রুটি রিপোর্টিং কনফিগার করা নেই।",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "একটি M5-এ ২৪ জিবি মেমোরিতে, ৯বি (9B) প্রায় ৪ সেকেন্ডে সবচেয়ে সঠিক ইংরেজি, পোলিশ এবং ইউক্রেনীয় ফলাফল দিল। ৪বি (4B) প্রায় ২ সেকেন্ডে, ২বি (2B) প্রায় ১ সেকেন্ডে, তবে বেশি মানের ত্রুটি সহ। সব ফলাফল এখনও পর্যালোচনার প্রয়োজন।",
   "The model returned the wrong language. Your original text is unchanged.": "মডেল ভুল ভাষা ফেরত দিয়েছে। আপনার মূল টেক্সট অপরিবর্তিত।",
-  "Coffee support is coming soon.": "কফি সাপোর্ট শীঘ্রই আসছে।"
+  "Coffee support is coming soon.": "কফি সাপোর্ট শীঘ্রই আসছে।",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "আপনার Mac-এর উপযোগী মডেল বেছে নিন। ভাষা ও কাজ অনুযায়ী মান ও গতি পরিবর্তিত হয়।"
 }
