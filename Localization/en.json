@@ -245,5 +245,6 @@
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.",
   "Error reporting is not configured for this build.": "Error reporting is not configured for this build.",
   "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.",
-  "The model returned the wrong language. Your original text is unchanged.": "The model returned the wrong language. Your original text is unchanged."
+  "The model returned the wrong language. Your original text is unchanged.": "The model returned the wrong language. Your original text is unchanged.",
+  "Coffee support is coming soon.": "Coffee support is coming soon."
 }

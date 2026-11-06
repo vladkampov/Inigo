@@ -10,7 +10,7 @@ key=os.environ.get('INIGO_UPDATE_PUBLIC_KEY',config['publicEDKey'])
 if key and os.environ.get('INIGO_ENABLE_UPDATES') == '1':
  if len(base64.b64decode(key,validate=True))!=32:raise ValueError('Invalid Sparkle public key')
  data['SUPublicEDKey']=key;data['SUFeedURL']=config['feedURL']
-if os.environ.get('INIGO_PUBLIC_LINKS')=='1':data['InigoRepositoryURL']=config['repository']
+data['InigoRepositoryURL']=config['repository']
 if config['supportURL']:data['InigoCoffeeURL']=config['supportURL']
 if config['sentryDSN']:data['InigoSentryDSN']=config['sentryDSN']
 file.write_bytes(plistlib.dumps(data))

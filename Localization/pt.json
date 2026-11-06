@@ -245,5 +245,6 @@
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "Desligado por padrão. Os relatórios incluem apenas a categoria de erro, versão do aplicativo e versão principal do macOS. Sem escrita, conteúdo da área de transferência, caminhos de arquivo ou análises de uso. O provedor ainda recebe metadados de conexão.",
   "Error reporting is not configured for this build.": "O relatório de erro não está configurado para esta versão.",
   "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "Em um M5 com 24 GB, o 9B forneceu os resultados em inglês, polonês e ucraniano mais fiéis, em cerca de 4 segundos. O 4B levou cerca de 2 segundos; o 2B cerca de 1 segundo, com mais erros de qualidade. Todos os resultados ainda precisam de revisão.",
-  "The model returned the wrong language. Your original text is unchanged.": "O modelo retornou o idioma incorreto. Seu texto original permanece inalterado."
+  "The model returned the wrong language. Your original text is unchanged.": "O modelo retornou o idioma incorreto. Seu texto original permanece inalterado.",
+  "Coffee support is coming soon.": "O suporte para café está chegando em breve."
 }

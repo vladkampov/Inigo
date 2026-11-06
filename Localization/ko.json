@@ -245,5 +245,6 @@
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "기본값은 끄기. 보고서는 오류 카테고리, 앱 버전, macOS 주요 버전만 포함합니다. 작성, 클립보드 내용, 파일 경로 또는 사용 분석은 포함되지 않습니다. 제공자는 여전히 연결 메타데이터를 수신합니다.",
   "Error reporting is not configured for this build.": "이 빌드에는 오류 보고 설정이 적용되지 않았습니다.",
   "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "M5(24 GB) 에서 9B 가 약 4 초에 가장 정확한 영어, 폴란드어, 우크라이나어 결과를 제공했습니다. 4B 는 약 2 초, 2B 는 약 1 초에 더 많은 품질 오류가 있었지만 모든 결과는 여전히 검토가 필요합니다.",
-  "The model returned the wrong language. Your original text is unchanged.": "모델이 잘못된 언어를 반환했습니다. 원본 텍스트는 변경되지 않았습니다."
+  "The model returned the wrong language. Your original text is unchanged.": "모델이 잘못된 언어를 반환했습니다. 원본 텍스트는 변경되지 않았습니다.",
+  "Coffee support is coming soon.": "커피 지원이 곧 출시됩니다."
 }
