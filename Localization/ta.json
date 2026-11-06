@@ -244,7 +244,7 @@
   "Send optional error reports": "செய்தித் தவறுகள் அறிக்கைகள் அனுப்புதல்",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "இயல்பாக இல்லை. அறிக்கைகளில் தவறு வகை, பயன்பாட்டு பதிப்பெண் மற்றும் macOS முக்கிய பதிப்பெண் மட்டுமே உள்ளது. எழுத்து, கிளீப்‌போர்ட் உள்ளடக்கம், கோப்பு வழிமுறைகள் அல்லது பயன்பாட்டு விவரங்கள் இல்லை. வழங்குநருக்கு இணைப்பு மீட்புத் தரவுகள் மட்டுமே கிடைக்கும்.",
   "Error reporting is not configured for this build.": "இந்தக் கட்டமைப்பிற்கு தவறு அறிக்கை அமைப்பிடப்படவில்லை.",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "M5-ல் 24 GB மெமோரிக்ளோரில், 9B-க்கு சுமார் 4 வினாடிகளில் மிகவும் நம்பகமான ஆங்கிலம், போலிஷ் மற்றும் உக்ரைன் விளைவுகள் கிடைத்தன. 4B-க்கு சுமார் 2 வினாடிகள்; 2B-க்கு சுமார் 1 வினாடி, அதிக தரமான தவறுகள் உள்ளன. அனைத்து விளைவுகளும் மீண்டும் சரிபார்ப்புக்குத் தேவை.",
   "The model returned the wrong language. Your original text is unchanged.": "மாதிரியானது தவறான மொழியைத் திருப்பி அளித்தது. உங்கள் அசல் உரை மாற்றப்படவில்லை.",
-  "Coffee support is coming soon.": "காபி ஆதரவு மிக விரைவில் கிடைக்கும்."
+  "Coffee support is coming soon.": "காபி ஆதரவு மிக விரைவில் கிடைக்கும்.",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "உங்கள் Mac-க்கு ஏற்ற மாதிரியைத் தேர்ந்தெடுக்கவும். மொழி மற்றும் பணியைப் பொறுத்து தரமும் வேகமும் மாறுபடும்."
 }

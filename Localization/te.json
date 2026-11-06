@@ -244,7 +244,7 @@
   "Send optional error reports": "అవసరమైన తప్పుల నివేదణలను పంపండి",
   "Off by default. Reports include only an error category, app version and macOS major version. No writing, clipboard content, file paths or usage analytics. The provider still receives connection metadata.": "ప్రమేయం ప్రకారం. తప్పుల నివేదనలో కేవలం తప్పు రకం, అప్లికేషన్ వెర్షన్ మరియు macOS ప్రధాన వెర్షన్ మాత్రమే ఉంటుంది. రాయడం, క్లిప్‌బోర్డ్ కంటెంట్, ఫైల్ పాత్‌లు లేదా వాడకం విశ్లేషణలు ఉండవు. సరఫరాదారుకు కనెక్షన్ మెటాడేటా మాత్రమే వస్తుంది.",
   "Error reporting is not configured for this build.": "ఈ బిల్డ్‌కు తప్పు నివేదన సెట్‌అప్ చేయబడలేదు.",
-  "On an M5 with 24 GB, 9B gave the most faithful English, Polish and Ukrainian results at about 4 seconds. 4B took about 2 seconds; 2B about 1 second, with more quality errors. All results still need review.": "M5 ప్లాట్‌ఫామ్‌పై 24 GB నిర్మాణంలో, 9B అనేది సుమారు 4 సెకన్లలో అత్యంత నిజమైన ఇంగ్లీష్, పోలిష్ మరియు యుక్రేనియన్ ఫలితాలను ఇచ్చింది. 4B సుమారు 2 సెకన్లకు తీసుకుంది; 2B సుమారు 1 సెకన్కు తీసుకుంది, అధిక గుణాత్మక తప్పులతో. అన్ని ఫలితాలు ఇంకా పరిశీలించబడాలి.",
   "The model returned the wrong language. Your original text is unchanged.": "మోడల్ తప్పు భాషను తిరిగి ఇచ్చింది. మీ మూల పాఠం మారలేదు.",
-  "Coffee support is coming soon.": "కాఫీ సపోర్ట్ త్వరలో వస్తుంది."
+  "Coffee support is coming soon.": "కాఫీ సపోర్ట్ త్వరలో వస్తుంది.",
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "మీ Mac‌కు సరిపోయే మోడల్‌ను ఎంచుకోండి. భాష మరియు పనిని బట్టి నాణ్యత, వేగం మారుతాయి."
 }

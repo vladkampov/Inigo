@@ -66,7 +66,7 @@ Ed25519 validation before extraction; HTTPS and Developer ID are additional laye
 Hosting receives connection metadata, never writing.
 
 ## Remaining release gates
-- Human EN/PL/UK quality review, especially tentative dates and technical names.
+- Human multilingual quality review, especially tentative dates and technical names.
 - Clean-Mac matrix (M5 Air/Pro, memory tiers, supported macOS versions), Slack,
   Chrome, Safari, Docs and Codex; broad editor support is not yet proven.
 - VoiceOver, keyboard-only, reduced-motion and RTL checks.

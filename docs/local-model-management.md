@@ -1,6 +1,6 @@
 # Local models
 
-See benchmarks/report.md for measured EN/PL/UK quality and speed.
+See benchmarks/report.md for measured quality and speed on the tested language sample.
 9B is now recommended at 24 GB+, 4B at 16 GB, and 2B below 16 GB.
 Only M5/24 GB has been measured; smaller tiers are capacity estimates.
 Existing model choices are persisted and never switched automatically.
