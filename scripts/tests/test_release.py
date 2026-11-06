@@ -8,7 +8,7 @@ class ReleaseTests(unittest.TestCase):
    with self.assertRaises(ValueError):version.validate(value)
  def test_bundle_update_security_defaults(self):
   with tempfile.TemporaryDirectory() as tmp:
-   file=pathlib.Path(tmp)/'Info.plist';file.write_bytes(plistlib.dumps({}))
+   file=pathlib.Path(tmp)/'Info.plist';file.write_bytes(plistlib.dumps({'SUPublicEDKey':'old','SUFeedURL':'https://old.example/feed'}))
    env=dict(os.environ);env.pop('INIGO_UPDATE_PUBLIC_KEY',None);env.pop('INIGO_PUBLIC_LINKS',None);env.pop('INIGO_ENABLE_UPDATES',None)
    subprocess.run(['python3',str(root/'scripts/configure-bundle.py'),str(file)],env=env,check=True)
    data=plistlib.loads(file.read_bytes())

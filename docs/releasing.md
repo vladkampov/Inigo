@@ -7,7 +7,7 @@ Developer membership supports Developer ID signing and Apple's notarization.
 - Create `vladkampov/Inigo` privately, review source and licenses, then choose
   public visibility deliberately. Run `python3 scripts/github-setup.py` to
   inspect commands; `--apply --create-private` creates/configures the private repo.
-- Add a ruleset for main: PR review, passing CI, no force pushes/deletions.
+- GitHub currently blocks branch protection on this account’s private-repository plan. Enable it after public visibility or a plan upgrade. Add a ruleset for main: PR review, passing CI, no force pushes/deletions.
   Solo-maintainer exceptions should be explicit. Set Actions to read-only by default.
 - Enable private vulnerability reporting, secret scanning/push protection where
   available, and a protected `github-pages` environment. Establish a private
@@ -24,7 +24,7 @@ Developer membership supports Developer ID signing and Apple's notarization.
 - Configure Sentry only if wanted. Reports are off by default and content-free.
   Before adding its public DSN, configure IP removal, retention and access controls,
   update PRIVACY.md and test synthetic ingestion. No DSN means no reporting.
-- Set INIGO_PUBLIC_LINKS=1 only after the GitHub destinations exist.
+- The repository currently exists privately. Make it public only after release review so distributed Help links are accessible.
 
 ## Versioning
 VERSION is SemVer; BUILD_NUMBER is a strictly increasing public build number.
@@ -79,3 +79,10 @@ Official references:
 - https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution
 - https://sparkle-project.org/documentation/
 - https://sparkle-project.org/documentation/customization/
+
+## CI/CD
+
+See [CI/CD setup](ci-cd.md) for the implemented Release Please workflow, signing
+secrets, branch protection and activation steps. Version PR automation is ready;
+signed CI builds remain gated until the protected environment and secrets exist.
+Public publishing and update-feed deployment remain deliberate review steps.
