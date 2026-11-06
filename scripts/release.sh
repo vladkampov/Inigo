@@ -20,8 +20,8 @@ ditto -c -k --sequesterRsrc --keepParent "$APP" "$OUT/notarization.zip"
 NOTARY_ARGS=(--keychain-profile "$INIGO_NOTARY_PROFILE")
 if [ -n "${INIGO_NOTARY_KEYCHAIN:-}" ]; then NOTARY_ARGS+=(--keychain "$INIGO_NOTARY_KEYCHAIN"); fi
 xcrun notarytool submit "$OUT/notarization.zip" "${NOTARY_ARGS[@]}" --wait
-xcrun stapler staple "$APP"
-xcrun stapler validate "$APP"
+python3 scripts/notary-ticket.py staple "$APP"
+python3 scripts/notary-ticket.py validate "$APP"
 codesign --verify --deep --strict "$APP"
 spctl --assess --type execute --verbose "$APP"
 rm "$OUT/notarization.zip"

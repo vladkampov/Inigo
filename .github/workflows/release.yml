@@ -82,7 +82,7 @@ jobs:
       - name: Build, sign, notarize and verify
         env:
           INIGO_SIGN_IDENTITY: 'Developer ID Application: Vladyslav Kampov (JKAL24VVB9)'
-          INIGO_ENABLE_UPDATES: '0' # Enable after the beta feed is published and tested.
+          INIGO_ENABLE_UPDATES: '1'
           INIGO_NOTARY_PROFILE: inigo-ci
           INIGO_UPDATE_PUBLIC_KEY: 'M0q+asXEhGvjD9kZ0eEKIWa3corPo2j/PGHSCWMKfOs='
           INIGO_SPARKLE_KEY_FILE: ${{ runner.temp }}/inigo-signing/sparkle.key
