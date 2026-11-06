@@ -2,6 +2,12 @@
 
 Versions follow Semantic Versioning. Pre-1.0 releases are experimental.
 
+## [0.2.0-beta.7](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.6...v0.2.0-beta.7) (2026-11-06)
+
+### Release validation
+
+- Version-only beta to verify signed download, installation, and relaunch from beta.6. No application behavior changes.
+
 ## [0.2.0-beta.6](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.5...v0.2.0-beta.6) (2026-11-06)
 
 
