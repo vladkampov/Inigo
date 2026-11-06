@@ -2,7 +2,7 @@
 
 Versions follow Semantic Versioning. Pre-1.0 releases are experimental.
 
-## 0.2.0 — Unreleased
+## 0.2.0-beta.1 — 2026-11-06
 - Local model selection, GGUF import and loopback server connections.
 - English, Polish and Ukrainian comparative model benchmark.
 - Explicit translation targets and wrong-language output checks.

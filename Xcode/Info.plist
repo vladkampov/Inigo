@@ -19,9 +19,9 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>InigoDisplayVersion</key>
-	<string>0.2.0</string>
+	<string>0.2.0-beta.1</string>
 	<key>InigoRepositoryURL</key>
 	<string>https://github.com/vladkampov/Inigo</string>
 	<key>LSMinimumSystemVersion</key>
