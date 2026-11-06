@@ -42,6 +42,10 @@ Set INIGO_SIGN_IDENTITY, INIGO_NOTARY_PROFILE and INIGO_UPDATE_PUBLIC_KEY, then 
 your running app, signs nested code inside-out, notarizes, staples, assesses
 Gatekeeper and generates an Ed25519-signed archive/appcast. It does not publish.
 
+For an initial beta before feed hosting is configured, set `INIGO_ENABLE_UPDATES=0`.
+The archive is still signed for future update verification, but this build does not
+contact an unpublished feed. Testers install subsequent builds manually.
+
 Keep the bundle identifier stable. Verify source build, third-party notices,
 arm64 architecture and framework signing. CloudBridge/Node are excluded.
 Model weights download separately.
