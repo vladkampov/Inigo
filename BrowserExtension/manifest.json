@@ -1,0 +1,11 @@
+{
+  "manifest_version":3,
+  "name":"Inigo — private writing refinement",
+  "version":"0.1.0",
+  "description":"Refine the selected draft on this page through the native Inigo app.",
+  "permissions":["activeTab","scripting","nativeMessaging"],
+  "incognito":"not_allowed",
+  "action":{"default_title":"Refine with Inigo"},
+  "background":{"service_worker":"background.js"},
+  "commands":{"refine":{"suggested_key":{"default":"Ctrl+Shift+Y","mac":"MacCtrl+Shift+Y"},"description":"Refine the focused draft"}}
+}

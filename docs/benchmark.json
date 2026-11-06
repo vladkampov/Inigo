@@ -1,0 +1,74 @@
+[
+  {
+    "draft" : "I think we can deliver by April but we shouldn't execute now. We should finish discovery and wait for the dependencies in Q1. I want to optimize team capacity without doing the same work twice.",
+    "finish_reason" : "stop",
+    "language" : "en",
+    "rewrite" : "I believe we can deliver by April, but we should not execute now. We should complete discovery and wait for dependencies in Q1. My goal is to optimize team capacity without duplicating effort.",
+    "seconds" : 1.4580399990081787,
+    "timings" : {
+      "cache_n" : 186,
+      "predicted_ms" : 1181.9300000000001,
+      "predicted_n" : 40,
+      "predicted_per_second" : 32.996877987698085,
+      "predicted_per_token_ms" : 30.305897435897439,
+      "prompt_ms" : 257.54700000000003,
+      "prompt_n" : 58,
+      "prompt_per_second" : 225.20161368604562,
+      "prompt_per_token_ms" : 4.4404655172413801
+    }
+  },
+  {
+    "draft" : "Dzień dobry, chciałem zapytać czy są już jakieś informacje w sprawie mojego wniosku? Wysłałem dokumenty dwa tygodnie temu i nie wiem czy czegoś brakuje. Proszę o informacje co powinienem dalej zrobić.",
+    "finish_reason" : "stop",
+    "language" : "pl",
+    "rewrite" : "Dzień dobry, chciałbym zapytać, czy już jakieś informacje dotyczą mojego wniosku. Dokumenty przesłałem dwa tygodnie temu, ale nie jestem pewien, czy czegoś brakuje. Proszę o informację, co powinienem dalej zrobić.",
+    "seconds" : 1.9518380165100098,
+    "timings" : {
+      "cache_n" : 186,
+      "predicted_ms" : 1788.5989999999999,
+      "predicted_n" : 60,
+      "predicted_per_second" : 32.986711946053866,
+      "predicted_per_token_ms" : 30.315237288135592,
+      "prompt_ms" : 160.01400000000001,
+      "prompt_n" : 71,
+      "prompt_per_second" : 443.71117527216364,
+      "prompt_per_token_ms" : 2.2537183098591549
+    }
+  },
+  {
+    "draft" : "Привіт командо. Я думаю ми можемо це зробити до квітня але зараз не треба починати бо залежності ще не готові. Давайте закінчимо дослідження і повернемось до реалізації в першому кварталі щоб не робити роботу двічі.",
+    "finish_reason" : "stop",
+    "language" : "uk",
+    "rewrite" : "Вітаю команду. Я вважаю, що ми можемо завершити це до квітня, проте зараз не варто починати, оскільки залежності ще не готові. Давайте закінчимо дослідження і повернемось до реалізації у першому кварталі, щоб уникнути повторної роботи.",
+    "seconds" : 2.3226989507675171,
+    "timings" : {
+      "cache_n" : 186,
+      "predicted_ms" : 2152.3789999999999,
+      "predicted_n" : 72,
+      "predicted_per_second" : 32.986755585331395,
+      "predicted_per_token_ms" : 30.31519718309859,
+      "prompt_ms" : 164.80799999999999,
+      "prompt_n" : 83,
+      "prompt_per_second" : 503.61632930440271,
+      "prompt_per_token_ms" : 1.9856385542168673
+    }
+  },
+  {
+    "draft" : "Hi @alex, please check https://example.com/brief. I think the pilot could be ready by April, but this is not confirmed. 👋",
+    "finish_reason" : "stop",
+    "language" : "en",
+    "rewrite" : "Hi @alex, please check https://example.com/brief. The pilot could potentially be ready by April, though this remains unconfirmed. 👋",
+    "seconds" : 1.7614740133285522,
+    "timings" : {
+      "cache_n" : 186,
+      "predicted_ms" : 1599.9739999999999,
+      "predicted_n" : 53,
+      "predicted_per_second" : 32.500528133582172,
+      "predicted_per_token_ms" : 30.768730769230768,
+      "prompt_ms" : 157.82900000000001,
+      "prompt_n" : 71,
+      "prompt_per_second" : 449.85395586362449,
+      "prompt_per_token_ms" : 2.222943661971831
+    }
+  }
+]

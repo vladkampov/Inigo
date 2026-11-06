@@ -1,0 +1,49 @@
+{
+  "name": "Request a feature",
+  "description": "Suggest a focused improvement.",
+  "labels": [
+    "enhancement",
+    "needs triage"
+  ],
+  "body": [
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "Use synthetic examples only. Do not include workplace text, credentials or personal information. Security issues belong in private vulnerability reports."
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "problem",
+      "attributes": {
+        "label": "What problem would this solve?",
+        "description": "Describe your workflow."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "proposal",
+      "attributes": {
+        "label": "Proposed improvement",
+        "description": "Keep the app small and focused."
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "alternatives",
+      "attributes": {
+        "label": "Alternatives considered",
+        "description": "Optional"
+      },
+      "validations": {
+        "required": false
+      }
+    }
+  ]
+}

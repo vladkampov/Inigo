@@ -1,0 +1,43 @@
+{
+  "changelog": {
+    "exclude": {
+      "labels": [
+        "duplicate",
+        "wontfix"
+      ]
+    },
+    "categories": [
+      {
+        "title": "Fixes",
+        "labels": [
+          "bug",
+          "editor safety"
+        ]
+      },
+      {
+        "title": "Improvements",
+        "labels": [
+          "enhancement",
+          "models",
+          "translation",
+          "accessibility"
+        ]
+      },
+      {
+        "title": "Maintenance",
+        "labels": [
+          "documentation",
+          "dependencies",
+          "testing",
+          "updates"
+        ]
+      },
+      {
+        "title": "Other changes",
+        "labels": [
+          "*"
+        ]
+      }
+    ]
+  }
+}
