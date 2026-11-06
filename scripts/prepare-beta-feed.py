@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Prepare a beta feed from published releases; verify archive with the pinned public key."""
-import base64, hashlib, json, os, pathlib, re, subprocess, tempfile, xml.etree.ElementTree as ET
+import base64, hashlib, json, os, pathlib, re, subprocess, sys, tempfile, xml.etree.ElementTree as ET
 ROOT=pathlib.Path(__file__).resolve().parent.parent
 NS='{http://www.andymatuschak.org/xml-namespaces/sparkle}'
 REPO='vladkampov/Inigo'
@@ -49,5 +49,30 @@ def main():
         run([os.environ.get('INIGO_OPENSSL','openssl'),'pkeyutl','-verify','-pubin','-keyform','DER','-inkey',str(folder/'public.der'),'-rawin','-in',str(archive),'-sigfile',str(folder/'signature')])
         dest=ROOT/'updates/beta';dest.mkdir(parents=True,exist_ok=True)
         (dest/'appcast.xml').write_bytes((folder/'appcast.xml').read_bytes())
+        if '--publish' in sys.argv:
+            publish((folder/'appcast.xml').read_bytes(),build)
         print(f'Prepared published beta {tag}, build {build}; SHA256 and Ed25519 verified.')
+def api(method,path,payload):
+    return subprocess.check_output(['gh','api','--method',method,f'repos/{REPO}/{path}','--input','-'],input=json.dumps(payload).encode())
+def publish(data,build):
+    branch='update-feed'
+    refs=json.loads(output(['gh','api',f'repos/{REPO}/git/matching-refs/heads/{branch}']))
+    if not any(r['ref']==f'refs/heads/{branch}' for r in refs):
+        sha=json.loads(output(['gh','api',f'repos/{REPO}/git/ref/heads/main']))['object']['sha']
+        api('POST','git/refs',{'ref':f'refs/heads/{branch}','sha':sha})
+    # Read the tree to distinguish a missing feed from API/access failures.
+    tree=json.loads(output(['gh','api',f'repos/{REPO}/git/trees/{branch}?recursive=1']))
+    if tree.get('truncated'):raise ValueError('Cannot inspect complete feed tree')
+    entry=next((e for e in tree['tree'] if e['path']=='beta/appcast.xml'),None)
+    body={'message':f'chore: publish verified beta feed build {build}','branch':branch,'content':base64.b64encode(data).decode()}
+    if entry:
+        blob=json.loads(output(['gh','api',f'repos/{REPO}/git/blobs/{entry["sha"]}']))
+        old=base64.b64decode(blob['content'])
+        oldbuild=int(ET.fromstring(old).findtext('./channel/item/'+NS+'version'))
+        if oldbuild>build:raise ValueError('Refusing feed rollback')
+        if oldbuild==build:
+            if old!=data:raise ValueError('Refusing different artifacts for same build')
+            print('Feed already current.');return
+        body['sha']=entry['sha']
+    api('PUT','contents/beta/appcast.xml',body)
 if __name__=='__main__':main()

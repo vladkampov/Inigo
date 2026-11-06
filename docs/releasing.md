@@ -60,7 +60,7 @@ Model weights download separately.
 4. Create a **draft** GitHub Release for the tag, attach ZIP and SHA256SUMS,
    and review release notes. Never distribute the ad-hoc development build.
 5. Publish the release, then copy the generated appcast.xml into updates/ and
-   deploy the Pages workflow. Never publish a feed pointing to a draft/private URL.
+   deploy the feed workflow. Never publish a feed pointing to a draft/private URL.
    Keep the public feed stable-only; test prereleases on a separate feed.
 6. Verify published archive SHA, feed URL, update prompt and clean installation.
 
@@ -97,10 +97,12 @@ Public publishing and update-feed deployment remain deliberate review steps.
 Beta.5 was published with updates disabled. It requires one manual upgrade to the
 first update-enabled beta; it cannot discover a new feed retroactively. New beta
 builds use `/beta/appcast.xml`, with hourly checks, no automatic installation and
-no system profiling. The Pages workflow verifies the highest published beta's
+no system profiling. The feed workflow verifies the highest published beta's
 checksum and Ed25519 signature and deploys after publication. Stable builds use
 the separate `/appcast.xml` endpoint, which is not yet live.
 
 Validate an actual update between two update-enabled, notarized public betas,
 including the prompt, installation, relaunch, retained preferences and current
 version. Archive verification alone is not an end-to-end installation test.
+
+Beta feed endpoint: `https://raw.githubusercontent.com/vladkampov/Inigo/update-feed/beta/appcast.xml`. The dedicated update-feed branch avoids dependency on personal-domain DNS. Publishing rejects lower build numbers or changed artifacts for the same build.
