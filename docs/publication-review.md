@@ -17,8 +17,11 @@ Scope: source publication and controlled beta testing, not general availability.
   retain their keys and placeholders. Human localization review is still needed.
 - Model server requests are restricted to loopback, disable redirects/proxies;
   error reporting is off and has no configured endpoint. No usage analytics.
-- Branch rules and private vulnerability reporting must be verified after the
-  visibility change. A source review/secret scan is not a full security audit.
+- Public visibility, enforced main rules, private vulnerability reporting, secret
+  scanning/push protection and the main-only release environment were verified.
+  All six initial Dependabot updates were reviewed and merged after successful CI;
+  the OpenAI/jose lockfile conflict was resolved and retested. A source review and
+  secret scan are not a full security audit.
 
 ## Before inviting a small beta group
 
