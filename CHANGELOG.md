@@ -2,6 +2,13 @@
 
 Versions follow Semantic Versioning. Pre-1.0 releases are experimental.
 
+## [0.2.0-beta.5](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.4...v0.2.0-beta.5) (2026-11-06)
+
+
+### Bug Fixes
+
+* validate and explicitly select CI signing identity ([#15](https://github.com/vladkampov/Inigo/issues/15)) ([b337e08](https://github.com/vladkampov/Inigo/commit/b337e08896f9297c40d0e4abf44edd45793cb394))
+
 ## [0.2.0-beta.4](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.3...v0.2.0-beta.4) (2026-11-06)
 
 
