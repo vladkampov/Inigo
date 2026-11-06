@@ -4,7 +4,7 @@ cd "$(dirname "$0")/.."
 NODE_BIN="${INIGO_NODE:-$(command -v node || true)}"
 if [ -z "$NODE_BIN" ]; then echo "Install Node 22+ or set INIGO_NODE for optional bridge tests." >&2; exit 1; fi
 export PATH="$(dirname "$NODE_BIN"):$PATH"
-npm ci --prefix CloudBridge
+npm ci --prefix CloudBridge --ignore-scripts
 npm run build --prefix CloudBridge
 mkdir -p .runtime/llama
 if [ ! -x .runtime/llama/llama-b12172/llama-server ]; then
