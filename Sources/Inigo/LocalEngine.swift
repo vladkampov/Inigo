@@ -71,17 +71,19 @@ final class LocalEngine: NSObject, ObservableObject, URLSessionDownloadDelegate 
         do {
             guard let description = downloadTask.taskDescription?.data(using:.utf8), let preset = try? JSONDecoder().decode(ManagedModel.self,from:description) else { throw InigoError.message("Unknown model download.") }
             guard (downloadTask.response as? HTTPURLResponse)?.statusCode == 200 else { throw InigoError.message("Model download failed.") }
-            let handle = try FileHandle(forReadingFrom: location); defer { try? handle.close() }
-            var hash = SHA256()
-            while let bytes = try handle.read(upToCount: 4 * 1024 * 1024), !bytes.isEmpty { hash.update(data: bytes) }
-            guard hash.finalize().map({ String(format: "%02x", $0) }).joined() == preset.sha256 else { throw InigoError.message("Model integrity check failed. Please retry the download.") }
             let folder = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("Inigo/Models")
-            try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-            let target = folder.appendingPathComponent(preset.filename)
-            if !FileManager.default.fileExists(atPath: target.path) { try FileManager.default.moveItem(at: location, to: target) }
+            let verified = try VerifiedModelDownload(source: location, destination: folder.appendingPathComponent(preset.filename), expectedBytes: preset.bytes, sha256: preset.sha256)
             Task { @MainActor in
-                guard self.download?.taskIdentifier == downloadTask.taskIdentifier else { return }
-                self.progress = nil; self.download = nil; self.updateReadiness()
+                let current = self.download?.taskIdentifier == downloadTask.taskIdentifier
+                do {
+                    try verified.install(ifCurrent: current)
+                    guard current else { return }
+                    self.progress = nil; self.download = nil; self.updateReadiness()
+                } catch {
+                    guard current else { return }
+                    self.status = "Could not save the model. Check available disk space and retry."
+                    self.progress = nil; self.download = nil
+                }
             }
         } catch { Task { @MainActor in guard self.download?.taskIdentifier == downloadTask.taskIdentifier else { return }; self.status = error.localizedDescription; self.progress = nil; self.download = nil } }
     }
