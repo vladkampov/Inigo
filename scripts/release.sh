@@ -16,7 +16,9 @@ test -d "$APP"
 OUT="$PWD/release/artifacts/$VERSION"
 mkdir -p "$OUT"
 ditto -c -k --sequesterRsrc --keepParent "$APP" "$OUT/notarization.zip"
-xcrun notarytool submit "$OUT/notarization.zip" --keychain-profile "$INIGO_NOTARY_PROFILE" --wait
+NOTARY_ARGS=(--keychain-profile "$INIGO_NOTARY_PROFILE")
+if [ -n "${INIGO_NOTARY_KEYCHAIN:-}" ]; then NOTARY_ARGS+=(--keychain "$INIGO_NOTARY_KEYCHAIN"); fi
+xcrun notarytool submit "$OUT/notarization.zip" "${NOTARY_ARGS[@]}" --wait
 xcrun stapler staple "$APP"
 xcrun stapler validate "$APP"
 codesign --verify --deep --strict "$APP"
@@ -24,6 +26,8 @@ spctl --assess --type execute --verbose "$APP"
 rm "$OUT/notarization.zip"
 ditto -c -k --sequesterRsrc --keepParent "$APP" "$OUT/Inigo-$VERSION.zip"
 # Uses the Sparkle private key in login Keychain; never writes it into the repo.
-.build/artifacts/sparkle/Sparkle/bin/generate_appcast --account app.inigo.updates --download-url-prefix "https://github.com/vladkampov/Inigo/releases/download/v$VERSION/" "$OUT"
-shasum -a 256 "$OUT/Inigo-$VERSION.zip" > "$OUT/SHA256SUMS"
+SPARKLE_ARGS=(--account app.inigo.updates)
+if [ -n "${INIGO_SPARKLE_KEY_FILE:-}" ]; then SPARKLE_ARGS=(--ed-key-file "$INIGO_SPARKLE_KEY_FILE"); fi
+.build/artifacts/sparkle/Sparkle/bin/generate_appcast "${SPARKLE_ARGS[@]}" --download-url-prefix "https://github.com/vladkampov/Inigo/releases/download/v$VERSION/" "$OUT"
+(cd "$OUT" && shasum -a 256 "Inigo-$VERSION.zip" > SHA256SUMS)
 echo "Prepared signed release at $OUT. Review and smoke-test before publishing."

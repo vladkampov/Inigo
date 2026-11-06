@@ -79,3 +79,10 @@ Official references:
 - https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution
 - https://sparkle-project.org/documentation/
 - https://sparkle-project.org/documentation/customization/
+
+## CI/CD
+
+See [CI/CD setup](ci-cd.md) for the implemented Release Please workflow, signing
+secrets, branch protection and activation steps. Version PR automation is ready;
+signed CI builds remain gated until the protected environment and secrets exist.
+Public publishing and update-feed deployment remain deliberate review steps.
