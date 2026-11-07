@@ -62,10 +62,16 @@ final class DraftFlowTests: XCTestCase {
             XCTAssertEqual(action, .translate(.uk))
             translated.fulfill(); return "Синтетична чернетка"
         }
+        controller.translationTargets = { SupportedLanguage.allCases }
         controller.showTranslationPicker()
         try await Task.sleep(for: .milliseconds(400))
         let navigation = try XCTUnwrap(controller.presentedViewController as? UINavigationController)
         let picker = try XCTUnwrap(navigation.topViewController as? MobileLanguagePicker)
+        picker.loadViewIfNeeded()
+        for _ in 0..<50 {
+            if picker.tableView(picker.tableView, numberOfRowsInSection: 0) > 0 { break }
+            try await Task.sleep(for: .milliseconds(10))
+        }
         let row = try XCTUnwrap(SupportedLanguage.allCases.firstIndex(of: .uk))
         picker.tableView(picker.tableView, didSelectRowAt: IndexPath(row: row, section: 0))
         await fulfillment(of: [translated], timeout: 3)

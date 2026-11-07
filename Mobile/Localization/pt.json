@@ -71,5 +71,10 @@
   "Only style preferences are saved. You can reset them anytime.": "Apenas as preferências de estilo são salvas. Você pode resetá-las a qualquer momento.",
   "Adapts to rewrites you copy. Turn off to pause learning.": "Adapta-se às reescritas que você copia. Desligue para pausar o aprendizado.",
   "Learned preferences": "Preferências aprendidas",
-  "Not learned": "Não aprendidas"
+  "Not learned": "Não aprendidas",
+  "Could not identify the source language. Add a little more text and try again.": "Não foi possível identificar a língua de origem. Adicione um pouco mais de texto e tente novamente.",
+  "This language pair is not supported by on-device translation.": "Este par de línguas não é suportado pela tradução no dispositivo.",
+  "Download the translation languages in Inigo before translating offline.": "Baixe as línguas de tradução no Inigo antes de traduzir offline.",
+  "Preparing offline translation": "Preparando tradução offline",
+  "Allow Apple to download the language packs. Your text stays on this iPhone.": "Permita que o Apple baixe os pacotes de línguas. Seu texto permanece neste iPhone."
 }

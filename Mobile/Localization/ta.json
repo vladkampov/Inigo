@@ -71,5 +71,10 @@
   "Only style preferences are saved. You can reset them anytime.": "நீங்கள் சேமித்தவை மட்டுமே பிடிவாதமானவை. நீங்கள் எப்போதும் அவற்றை மீண்டும் அமைக்கலாம்.",
   "Adapts to rewrites you copy. Turn off to pause learning.": "நீங்கள் நகலெடுக்கும் எழுத்துக்களுக்கு ஏற்ப மாறுகிறது. இதை திருப்பி வைத்தால் கற்றுக்கொள்ளும் செயல்பாடு நிறுத்தப்படும்.",
   "Learned preferences": "கற்றுக்கொள்ளப்பட்ட பிடிவாதங்கள்",
-  "Not learned": "கற்றுக்கொள்ளப்படாதவை"
+  "Not learned": "கற்றுக்கொள்ளப்படாதவை",
+  "Could not identify the source language. Add a little more text and try again.": "சொல்லை அடையாளம் காண முடியவில்லை. சிறிது மேலும் உரையைச் சேர்த்து மீண்டும் முயற்சிக்கவும்.",
+  "This language pair is not supported by on-device translation.": "இந்த மொழி இணை அமைப்பில் உள்ள மொழிபெயர்ப்பை ஆதரிக்காது.",
+  "Download the translation languages in Inigo before translating offline.": "ஆன்லைவில் மொழிபெயர்ப்புக்கு முன் Inigo-ல் மொழிபெயர்ப்பு மொழிகளைப் பதிவிறக்கவும்.",
+  "Preparing offline translation": "ஆன்லைவு மொழிபெயர்ப்பு தயாராகிறது",
+  "Allow Apple to download the language packs. Your text stays on this iPhone.": "Apple-க்கு மொழிப் பக்கங்களைப் பதிவிறக்க அனுமதிக்கவும். உங்கள் உரையானது இந்த iPhone-ல்வேயே இருக்கும்."
 }

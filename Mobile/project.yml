@@ -89,7 +89,26 @@ targets:
       base:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile.coretests
+  InigoTranslationDeviceTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [DeviceTests]
+    dependencies:
+      - target: InigoMobile
+      - target: InigoCore
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile.translationtests
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/InigoMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InigoMobile
+        BUNDLE_LOADER: $(TEST_HOST)
 schemes:
+  InigoTranslationDevice:
+    build:
+      targets:
+        InigoMobile: all
+    test:
+      targets: [InigoTranslationDeviceTests]
   InigoMobile:
     build:
       targets:

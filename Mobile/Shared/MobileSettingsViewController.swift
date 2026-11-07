@@ -74,6 +74,7 @@ final class MobileSettingsViewController: UITableViewController {
         }
         if (!showsStyleDetails && indexPath.section == 0) || (showsStyleDetails && indexPath.row == 0) {
             let picker = MobileLanguagePicker(style: .insetGrouped)
+            picker.translationOnly = !showsStyleDetails && indexPath.row == 1
             picker.includeSystem = !showsStyleDetails && indexPath == IndexPath(row: 0, section: 0)
             picker.choose = { [weak self] value in
                 guard let self else { return }
@@ -90,14 +91,27 @@ final class MobileSettingsViewController: UITableViewController {
     }
 }
 final class MobileLanguagePicker: UITableViewController {
+    var loadTranslationLanguages: () async -> [SupportedLanguage] = { await MobileTranslationService.supportedTargets() }
+    var translationOnly = false
+    private var translationLanguages: [SupportedLanguage] = []
     var selected: String?
     var includeSystem = false
     var choose: ((String) -> Void)?
-    private var values: [String] { (includeSystem ? ["system"] : []) + SupportedLanguage.allCases.map(\.rawValue) }
-    override func viewDidLoad() { super.viewDidLoad(); title = M("Choose language") }
+    private var values: [String] { (includeSystem ? ["system"] : []) + (translationOnly ? translationLanguages : SupportedLanguage.allCases).map(\.rawValue) }
+    override func viewDidLoad() {
+        super.viewDidLoad(); title = M("Choose language")
+        if translationOnly {
+            let progress = UIActivityIndicatorView(style: .medium); progress.startAnimating(); tableView.backgroundView = progress
+            Task { [weak self] in
+                let languages = await self?.loadTranslationLanguages() ?? []
+                guard let self else { return }
+                self.translationLanguages = languages; self.tableView.backgroundView = nil; self.tableView.reloadData()
+            }
+        }
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { values.count }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(); cell.accessoryType = values[indexPath.row] == selected ? .checkmark : .none; cell.textLabel?.text = SupportedLanguage(rawValue: values[indexPath.row])?.nativeName ?? M("Follow system"); return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { choose?(values[indexPath.row]); if (navigationController?.viewControllers.count ?? 0) > 1 { navigationController?.popViewController(animated: true) } }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { guard values.indices.contains(indexPath.row) else { return }; choose?(values[indexPath.row]); if (navigationController?.viewControllers.count ?? 0) > 1 { navigationController?.popViewController(animated: true) } }
 }

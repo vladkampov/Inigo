@@ -71,5 +71,10 @@
   "Only style preferences are saved. You can reset them anytime.": "కేవలం స్టైల్ ప్రీఫరెన్సెస్ మాత్రమే సేవ్ అవుతాయి. మీరు ఎప్పుడూ వాటిని రీసెట్ చేసుకోవచ్చు.",
   "Adapts to rewrites you copy. Turn off to pause learning.": "మీరు కాపీ చేసిన రీవైట్స్‌కు అనుగుణంగా మారుతుంది. దీనిని ఆపడానికి ఆన్ చేయండి.",
   "Learned preferences": "అభ్యసించిన ప్రీఫరెన్సెస్",
-  "Not learned": "అభ్యసించని"
+  "Not learned": "అభ్యసించని",
+  "Could not identify the source language. Add a little more text and try again.": "సంభావ్య భాషను గుర్తించలేకపోయాను. కొంచెం ఎక్కువ పదాలను జోడించి మళ్ళీ ప్రయత్నించండి.",
+  "This language pair is not supported by on-device translation.": "ఈ భాష జతను డివైస్‌పై అనుమతిస్తున్నది.",
+  "Download the translation languages in Inigo before translating offline.": "ఆఫ్‌లైన్ అనువదించడానికి ముందు Inigoలో అనువదించే భాషలను డౌన్‌లోడ్ చేయండి.",
+  "Preparing offline translation": "ఆఫ్‌లైన్ అనువాదాన్ని సిద్ధం చేస్తున్నాను.",
+  "Allow Apple to download the language packs. Your text stays on this iPhone.": "Appleకి భాష ప్యాక్‌లను డౌన్‌లోడ్ చేయడానికి అనుమతించండి. మీ పదాలు ఈ iPhoneలోనే ఉంటాయి."
 }

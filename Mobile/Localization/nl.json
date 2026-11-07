@@ -71,5 +71,10 @@
   "Only style preferences are saved. You can reset them anytime.": "Alleen voorkeursinstellingen worden opgeslagen. Je kunt ze op elk moment resetten.",
   "Adapts to rewrites you copy. Turn off to pause learning.": "Pas aan aan herschrijvingen die je kopieert. Schakel uit om het leren te pauzeren.",
   "Learned preferences": "Opgeleerde voorkeuren",
-  "Not learned": "Niet opgeleerd"
+  "Not learned": "Niet opgeleerd",
+  "Could not identify the source language. Add a little more text and try again.": "De brontaal kon niet worden geïdentificeerd. Voeg wat meer tekst toe en probeer het opnieuw.",
+  "This language pair is not supported by on-device translation.": "Dit taalpaar wordt niet ondersteund door vertaling op het apparaat.",
+  "Download the translation languages in Inigo before translating offline.": "Laad de vertaaltaalen in Inigo op voordat je offline vertaalt.",
+  "Preparing offline translation": "Offline vertaling wordt voorbereid",
+  "Allow Apple to download the language packs. Your text stays on this iPhone.": "Laat Apple de taalpakketten downloaden. Je tekst blijft op deze iPhone."
 }

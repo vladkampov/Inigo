@@ -71,5 +71,10 @@
   "Only style preferences are saved. You can reset them anytime.": "스타일 선호도는 저장됩니다. 언제든지 초기화할 수 있습니다.",
   "Adapts to rewrites you copy. Turn off to pause learning.": "복사한 리라이팅에 적응합니다. 학습을 일시 중지하려면 끄세요.",
   "Learned preferences": "학습된 선호도",
-  "Not learned": "학습되지 않음"
+  "Not learned": "학습되지 않음",
+  "Could not identify the source language. Add a little more text and try again.": "원천 언어를 식별할 수 없습니다. 더 많은 텍스트를 추가하고 다시 시도해 보세요.",
+  "This language pair is not supported by on-device translation.": "이 언어 쌍은 기기 내 번역에서 지원되지 않습니다.",
+  "Download the translation languages in Inigo before translating offline.": "오프라인 번역을 사용하려면 Inigo 에서 번역 언어를 다운로드하세요.",
+  "Preparing offline translation": "오프라인 번역 준비 중입니다.",
+  "Allow Apple to download the language packs. Your text stays on this iPhone.": "Apple 이 언어 팩을 다운로드할 수 있도록 허용하세요. 당신의 텍스트는 이 iPhone 에 남아있습니다."
 }

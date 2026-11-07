@@ -71,5 +71,10 @@
   "Only style preferences are saved. You can reset them anytime.": "仅保存样式偏好。您可以随时重置它们。",
   "Adapts to rewrites you copy. Turn off to pause learning.": "适应您复制的改写内容。关闭以暂停学习。",
   "Learned preferences": "已学习的偏好",
-  "Not learned": "未学习"
+  "Not learned": "未学习",
+  "Could not identify the source language. Add a little more text and try again.": "无法识别源语言。请添加更多文本后重试。",
+  "This language pair is not supported by on-device translation.": "此语言对在设备翻译中不受支持。",
+  "Download the translation languages in Inigo before translating offline.": "在离线翻译前，请先在 Inigo 中下载翻译语言。",
+  "Preparing offline translation": "准备离线翻译",
+  "Allow Apple to download the language packs. Your text stays on this iPhone.": "允许 Apple 下载语言包。您的文本将保留在此 iPhone 上。"
 }

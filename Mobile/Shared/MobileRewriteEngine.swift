@@ -12,6 +12,7 @@ struct MobileRewriteResult {
 @MainActor
 struct MobileRewriteEngine {
     func rewrite(_ source: String, action: RewriteAction) async throws -> String {
+        if case .translate(let target) = action { return try await MobileTranslationService.translate(source, to: target) }
         let model = SystemLanguageModel.default
         guard model.availability == .available else {
             throw InigoError.message(M("On-device writing is unavailable. Check Apple Intelligence in Settings and allow its model to finish downloading. Your text is unchanged."))

@@ -23,7 +23,17 @@ class DraftViewController: UIViewController, UITextViewDelegate {
     private var localizationBindings: [() -> Void] = []
     private var currentStatusKey = "Paste or share a selection to get started."
     private var learningCandidate: (original: String, language: String)?
-    var rewrite: (String, RewriteAction) async throws -> String = { try await MobileRewriteEngine().rewrite($0, action: $1) }
+    var translationTargets: () async -> [SupportedLanguage] = { await MobileTranslationService.supportedTargets() }
+    private let translationDownloads = TranslationDownloadPresenter()
+    lazy var rewrite: (String, RewriteAction) async throws -> String = { [weak self] text, action in
+        if case .translate(let target) = action {
+            guard let self else { throw CancellationError() }
+            return try await MobileTranslationService.translate(text, to: target) { from, to in
+                try await self.translationDownloads.prepare(from: from, to: to, on: self)
+            }
+        }
+        return try await MobileRewriteEngine().rewrite(text, action: action)
+    }
     private let accent = UIColor { traits in
         traits.userInterfaceStyle == .dark ? UIColor(red: 0.76, green: 0.73, blue: 1, alpha: 1) : UIColor(red: 0.36, green: 0.29, blue: 0.66, alpha: 1)
     }
@@ -146,6 +156,8 @@ class DraftViewController: UIViewController, UITextViewDelegate {
     }
     @objc func showTranslationPicker() {
         let picker = MobileLanguagePicker(style: .insetGrouped)
+        picker.translationOnly = true
+        picker.loadTranslationLanguages = translationTargets
         picker.selected = MobilePreferences.shared.state.translationLanguage
         picker.choose = { [weak self] value in
             guard let self, let target = SupportedLanguage(rawValue: value) else { return }
@@ -196,7 +208,7 @@ class DraftViewController: UIViewController, UITextViewDelegate {
             }
         }
         timeout = Task { [weak self] in
-            try? await Task.sleep(for: .seconds(45))
+            try? await Task.sleep(for: .seconds(action == .refine ? 45 : 180))
             guard !Task.isCancelled, let self, self.revision == current else { return }
             self.stopOperation(); self.showStatus("This is taking too long. Your text is unchanged. Tap Refine or Translate to retry.")
         }

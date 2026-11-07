@@ -1,7 +1,7 @@
 # Inigo for iPhone
 
 Native companion app and Share extension, developed separately from macOS 1.0.
-Current development build: 0.1.0-alpha.1 (5). Not yet a public/TestFlight release.
+Current development build: 0.1.0-alpha.1 (6). Not yet a public/TestFlight release.
 
 ## Current behavior
 
@@ -10,9 +10,9 @@ Copy & Close → manually paste in the host app. The app also offers explicit Pa
 which starts refinement. Inigo never sends messages or replaces host drafts itself.
 
 Translate opens a language menu and remembers the chosen target in the current
-shared preferences. Apple Foundation Models availability and source/target
-language support are checked; unsupported languages show an error and preserve
-text. No cloud fallback exists. The app and extension share settings through an App Group. Changes are read fresh
+shared preferences. Refinement checks Apple Foundation Models availability. Translation uses Apple’s
+separate Translation framework with downloaded low-latency language packs; unsupported
+language pairs show an error and preserve text. No cloud fallback exists. The app and extension share settings through an App Group. Changes are read fresh
 under a cross-process lock; device round-trip verification remains pending.
 
 Original comparison, guarded Undo, cancellation and editing during generation are
@@ -24,7 +24,7 @@ Plain-text sharing cannot reconstruct functional mentions or rich objects.
 ## Reusable foundation
 
 The same InigoCore sources provide rewrite prompts, language identifiers, protected
-markers and text-safety checks. The mobile adapter uses Apple's on-device model;
+markers and text-safety checks. The mobile adapters use Apple’s on-device writing model and dedicated translation packs;
 macOS Accessibility, process launching and Sparkle remain outside iOS. The shared
 TranslationQuality implementation rejects confident wrong-language output.
 No drafts, results or conversations are persisted. Only compact style counters and preferences are saved in the App Group; drafts
@@ -117,3 +117,22 @@ selects Ukrainian and confirms the draft and target reach the translation handle
 45 iOS tests pass; actual device output quality and Ukrainian model availability
 still require verification. Settings now keeps learned counters and reset on a
 secondary page, with shorter copy in all 24 interface languages.
+
+## Build 6: dedicated offline translation
+
+Translation no longer depends on Apple Intelligence's writing-model language list.
+The phone capability probe confirms 18 offered languages, including Ukrainian and
+Polish. Interface localization remains available in 24 languages. The six translation
+gaps and candidate/licensing evaluation are recorded in
+[the translation evaluation](Benchmarks/translation-evaluation.md).
+
+Missing packs prompt for Apple's download authorization; downloaded packs are
+shared by the system and work offline. The action and settings pickers query native
+translation support rather than promising every interface language. The first phone
+probe found no installed English/Polish/Ukrainian pairs: capability alone is not a
+translation benchmark. Further device timing/quality tests are pending downloads
+and an unlocked phone. The normal simulator suite has 47 passing safety/UI tests.
+
+For physical synthetic benchmarks, run the `InigoTranslationDevice` scheme. It
+attaches JSON and measures installed pairs only; it never reads personal text.
+This scheme is separate from the normal simulator suite and Mac release workflow.
