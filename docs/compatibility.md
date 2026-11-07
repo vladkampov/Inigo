@@ -8,7 +8,7 @@ remain unverified. Public release requires a clean-Mac test matrix.
 |---|---|
 | Native settings/onboarding | Visually inspected; keyboard shortcuts configurable |
 | Local models | Pinned 2B/4B/9B loaded and benchmarked; see benchmarks/report.md |
-| Multilingual quality | 126 synthetic outputs across a limited language sample; see benchmark scope and known errors |
+| Multilingual quality | 126 historical outputs from a retired corpus; text payloads removed. Replacement fictional fixtures need a new measured run |
 | Translation Services | A tested cross-language selection produced the requested target-language popup |
 | Protected tokens | Missing/reordered mention/link markers rejected by tests |
 | Clipboard transaction | Isolated tests preserve all items and avoid overwriting new copies |

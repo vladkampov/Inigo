@@ -1,8 +1,12 @@
-# English, Polish and Ukrainian model comparison
+# Historical model comparison
+
+The input corpus has been replaced with fictional everyday scenarios. Saved text
+payloads were removed; the measurements below belong to the retired corpus.
+This report does not establish quality or speed on the current fixtures.
 
 Run: 2026-11-06, Apple M5, **24 GiB unified memory**, macOS 26.6.2,
 llama.cpp b12172, Q4_K_M, 8,192-token context, temperature 0.1,
-thinking disabled, serial inference, two repetitions of 21 synthetic cases.
+thinking disabled, serial inference, two repetitions of 21 retired cases.
 
 | Model | Refinement median / p95 | Translation median / p95 | Peak process RSS |
 |---|---:|---:|---:|
@@ -22,22 +26,12 @@ tense and uncertainty; (2) target/source language; (3) grammar and naturalness;
 This is an assistant editorial review, **not an independent native-speaker rating**.
 No opaque composite score is used to hide severe failures.
 
-- **2B:** quick English cleanup, but weak for this multilingual workload.
-  Ukrainian→English changed future possibility into “could have delivered.”
-  Ukrainian→Polish similarly changed future possibility into past tense.
-  Several Ukrainian translations were nonsensical, and Polish bureaucracy
-  examples contained grammatical errors. The Polish hostile-context case changed
-  to mixed Polish/Russian in both runs.
-- **4B:** useful speed, better basic translation, but serious meaning errors.
-  Polish refinement moved the pilot to Q1 and omitted the tentative April date;
-  one run invented “this week.” English→Ukrainian turned waiting until Q1 into
-  finishing by Q1. Ukrainian→Polish used past tense. Both English hostile-context
-  runs followed the quoted instruction to switch language.
-- **9B:** best observed preservation of tentative delivery timing and substantially
-  better Polish/Ukrainian wording. All six hostile-context outputs retained their
-  source language. Still imperfect: English→Ukrainian translated the product name
-  “Search,” English→Polish used an unnatural translation of “discovery,” and the
-  Ukrainian follow-up added unnecessary specificity about timelines.
+- **2B:** historical review found tense, language and grammar errors.
+- **4B:** historical review found meaning changes, invented timing and failures
+  to ignore language-changing instructions in quoted context.
+- **9B:** historical review found fewer such errors, but terminology and wording
+  were still imperfect. These judgments cannot be independently reconstructed
+  from the redacted measurement files and require a new run for current evidence.
 
 Protected-token checks: 2B passed 39/42 outputs, 4B 41/42, 9B 42/42. Only six
 outputs per model actually contained protected objects; failures were 3/6, 1/6,

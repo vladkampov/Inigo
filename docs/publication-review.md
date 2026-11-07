@@ -11,7 +11,9 @@ Status updated 2026-11-07; original source-review evidence is dated 2026-11-06.
   build artifacts and local credential exports are not tracked.
 - MIT license and dependency notices present. Separately downloaded models retain
   their upstream licenses. No model weights are redistributed in the repository.
-- Benchmark cases use synthetic text and example.com links. Benchmark language
+- Current benchmark cases use fictional everyday scenarios and example.com links.
+  Older result text was removed; retained metrics are historical, not a run of the
+  replacement corpus. Benchmark language
   identifiers remain to make the measured scope explicit; they are not a claim
   that other languages are unsupported or equally validated.
 - Product/model guidance now welcomes all supported languages. All 24 catalogs
