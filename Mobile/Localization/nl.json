@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "Vertaald. Beoordeel voordat u kopieert.",
   "Translating on your iPhone…": "Vertalen op je iPhone…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "Schrijven blijft op je iPhone. Kopiëren is lokaal. Geen accounts, analytics of cloud-fallback.",
-  "Your text": "Je tekst"
+  "Your text": "Je tekst",
+  "Only style preferences are saved. You can reset them anytime.": "Alleen voorkeursinstellingen worden opgeslagen. Je kunt ze op elk moment resetten.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "Pas aan aan herschrijvingen die je kopieert. Schakel uit om het leren te pauzeren.",
+  "Learned preferences": "Opgeleerde voorkeuren",
+  "Not learned": "Niet opgeleerd"
 }

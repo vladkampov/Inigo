@@ -3,6 +3,12 @@ import FoundationModels
 import NaturalLanguage
 import InigoCore
 
+@Generable
+struct MobileRewriteResult {
+    @Guide(description: "Only the edited or translated prose. No JSON wrapper, commentary or surrounding quotation marks.")
+    var text: String
+}
+
 @MainActor
 struct MobileRewriteEngine {
     func rewrite(_ source: String, action: RewriteAction) async throws -> String {
@@ -25,11 +31,11 @@ struct MobileRewriteEngine {
         else { styleLanguage = recognizer.dominantLanguage?.rawValue ?? "und" }
         let style = MobilePreferences.shared.state.profile.preferences(for: styleLanguage)
         let request = RewriteRequest(draft: protected.masked, style: style, action: action)
-        let session = LanguageModelSession(model: model, instructions: request.instructions)
+        let session = LanguageModelSession(model: model, instructions: request.instructions + "\nPut the revised prose in the text field of the requested response structure.")
         try Task.checkCancellation()
-        let response = try await session.respond(to: request.input)
+        let response = try await session.respond(to: request.input, generating: MobileRewriteResult.self)
         try Task.checkCancellation()
-        let output = try protected.restore(response.content)
+        let output = try protected.restore(response.content.text)
         let target: SupportedLanguage?
         if case .translate(let language) = action { target = language }
         else { target = TranslationQuality.detectedLanguage(source) }

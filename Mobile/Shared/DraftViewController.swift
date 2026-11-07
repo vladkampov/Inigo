@@ -138,15 +138,24 @@ class DraftViewController: UIViewController, UITextViewDelegate {
         let saved = MobilePreferences.shared.state.translationLanguage
         let target = SupportedLanguage(rawValue: saved) ?? .en
         translateButton.setTitle(M("Translate") + " ▾", for: .normal)
-        let recent = UIAction(title: MF("Translate to %@", target.nativeName)) { [weak self] _ in self?.begin(.translate(target)) }
-        let languages = SupportedLanguage.allCases.map { language in
-            UIAction(title: language.nativeName, state: language == target ? .on : .off) { [weak self] _ in
-                try? MobilePreferences.shared.update { $0.translationLanguage = language.rawValue }
-                self?.updateTranslationMenu(); self?.begin(.translate(language))
-            }
+        translateButton.menu = nil
+        translateButton.showsMenuAsPrimaryAction = false
+        translateButton.removeTarget(self, action: #selector(showTranslationPicker), for: .touchUpInside)
+        translateButton.addTarget(self, action: #selector(showTranslationPicker), for: .touchUpInside)
+        translateButton.accessibilityLabel = MF("Translate to %@", target.nativeName)
+    }
+    @objc func showTranslationPicker() {
+        let picker = MobileLanguagePicker(style: .insetGrouped)
+        picker.selected = MobilePreferences.shared.state.translationLanguage
+        picker.choose = { [weak self] value in
+            guard let self, let target = SupportedLanguage(rawValue: value) else { return }
+            try? MobilePreferences.shared.update { $0.translationLanguage = value }
+            self.dismiss(animated: false)
+            self.begin(.translate(target))
         }
-        translateButton.menu = UIMenu(children: [recent, UIMenu(title: M("Choose language"), children: languages)])
-        translateButton.showsMenuAsPrimaryAction = true
+        let navigation = UINavigationController(rootViewController: picker)
+        picker.navigationItem.rightBarButtonItem = UIBarButtonItem(title: M("Cancel"), primaryAction: UIAction { [weak self] _ in self?.dismiss(animated: true) })
+        present(navigation, animated: true)
     }
     @objc private func refine() { begin(.refine) }
     private func begin(_ action: RewriteAction) {
@@ -179,6 +188,11 @@ class DraftViewController: UIViewController, UITextViewDelegate {
                 guard let self, !Task.isCancelled, self.revision == current else { return }
                 self.showStatus(error.localizedDescription)
                 self.finishOperation()
+                if case .translate = action {
+                    let alert = UIAlertController(title: M("Translate"), message: error.localizedDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: M("OK"), style: .default))
+                    self.present(alert, animated: true)
+                }
             }
         }
         timeout = Task { [weak self] in

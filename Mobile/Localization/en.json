@@ -67,5 +67,9 @@
   "Undo": "Undo",
   "Writing Style": "Writing Style",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.",
-  "Your text": "Your text"
+  "Your text": "Your text",
+  "Only style preferences are saved. You can reset them anytime.": "Only style preferences are saved. You can reset them anytime.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "Adapts to rewrites you copy. Turn off to pause learning.",
+  "Learned preferences": "Learned preferences",
+  "Not learned": "Not learned"
 }

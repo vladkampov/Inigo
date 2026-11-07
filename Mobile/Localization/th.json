@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "แปลแล้ว ตรวจสอบก่อนคัดลอก",
   "Translating on your iPhone…": "กำลังแปลบน iPhone ของคุณ…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "การเขียนจะอยู่บน iPhone ของคุณเท่านั้น การคัดลอกเป็นเฉพาะท้องถิ่น ไม่มีบัญชี การวิเคราะห์ข้อมูล หรือการสำรองข้อมูลบนคลาวด์",
-  "Your text": "ข้อความของคุณ"
+  "Your text": "ข้อความของคุณ",
+  "Only style preferences are saved. You can reset them anytime.": "เฉพาะการตั้งค่าสไตล์เท่านั้นที่ถูกบันทึก คุณสามารถรีเซ็ตได้ตลอดเวลา",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "ปรับให้เข้ากับข้อความที่คุณคัดลอก ปิดเพื่อหยุดการเรียนรู้",
+  "Learned preferences": "การตั้งค่าที่เรียนรู้แล้ว",
+  "Not learned": "ไม่ได้เรียนรู้"
 }

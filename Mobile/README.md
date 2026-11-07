@@ -1,7 +1,7 @@
 # Inigo for iPhone
 
 Native companion app and Share extension, developed separately from macOS 1.0.
-Current development build: 0.1.0-alpha.1 (4). Not yet a public/TestFlight release.
+Current development build: 0.1.0-alpha.1 (5). Not yet a public/TestFlight release.
 
 ## Current behavior
 
@@ -106,3 +106,14 @@ Run `python3 scripts/mobile-localizations.py` before generating the Xcode projec
 TestFlight can start with a clearly scoped iPhone beta; desktop global shortcuts,
 Accessibility replacement, custom local model servers and Sparkle are not iOS
 features. Sharing returns a copyable result and never replaces another app's draft.
+
+## Build 5 follow-up
+
+Owner reported trailing output-wrapper punctuation after refinement and no visible
+translation action for Ukrainian. Refinement now uses a typed Foundation Models
+response. Translation uses a flat language picker, starts without waiting on a
+modal dismissal callback, and presents failures in a dialog. A controller regression
+selects Ukrainian and confirms the draft and target reach the translation handler.
+45 iOS tests pass; actual device output quality and Ukrainian model availability
+still require verification. Settings now keeps learned counters and reset on a
+secondary page, with shorter copy in all 24 interface languages.

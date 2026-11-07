@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "अनुवादित झाले. कॉपी करण्यापूर्च तपासा.",
   "Translating on your iPhone…": "तुमच्या iPhone वर अनुवाद करत आहोत…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "लेखन तुमच्या iPhone वरच राहते. कॉपी करणे फक्त स्थानिक आहे. कोणतेही खाते, विश्लेषण किंवा क्लाउड फॉलबॅक नाही.",
-  "Your text": "तुमचा पाठ"
+  "Your text": "तुमचा पाठ",
+  "Only style preferences are saved. You can reset them anytime.": "फक्त स्टाईल पसंतीच साठवली जाते. तुम्ही कधीही त्यांना पुन्हा सेट करू शकता.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "तुम्ही कॉपी केलेल्या रीव्हाइट्सला अनुसरते. ते बंद केल्यास शिकणे थांबवता येते.",
+  "Learned preferences": "शिकलेली पसंती",
+  "Not learned": "शिकलेली नाही"
 }

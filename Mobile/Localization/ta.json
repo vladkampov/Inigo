@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "மொழிபெயர்க்கப்பட்டது. நகலெடுப்பதற்கு முன் பரிசோதிக்கவும்.",
   "Translating on your iPhone…": "iPhone-ல் மொழிபெயர்க்கப்படுகிறது…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "எழுத்துக்கள் iPhone-ல்வேல் இருக்கும். நகலெடுப்பு மட்டுமே உள்ளது. கணக்குகள், பகுப்பாய்வு அல்லது கிளவுட் பதிலளிப்பு இல்லை.",
-  "Your text": "உங்கள் உரை"
+  "Your text": "உங்கள் உரை",
+  "Only style preferences are saved. You can reset them anytime.": "நீங்கள் சேமித்தவை மட்டுமே பிடிவாதமானவை. நீங்கள் எப்போதும் அவற்றை மீண்டும் அமைக்கலாம்.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "நீங்கள் நகலெடுக்கும் எழுத்துக்களுக்கு ஏற்ப மாறுகிறது. இதை திருப்பி வைத்தால் கற்றுக்கொள்ளும் செயல்பாடு நிறுத்தப்படும்.",
+  "Learned preferences": "கற்றுக்கொள்ளப்பட்ட பிடிவாதங்கள்",
+  "Not learned": "கற்றுக்கொள்ளப்படாதவை"
 }

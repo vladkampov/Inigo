@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "మార్పిడి చేయబడింది. కాపీ చేయడానికి ముందు పరిశీలించండి.",
   "Translating on your iPhone…": "మీ iPhone'లోకి అనువాదం చేస్తున్నాం…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "రాయడం మీ iPhone'లోనే ఉంటుంది. కాపీ చేయడం ప్రాంతీయంగా మాత్రమే. అకౌంట్స్, అనాలిటిక్స్ లేదా క్లావుడ్ ఫెల్‌బ్యాక్ లేదు.",
-  "Your text": "మీ పేరు"
+  "Your text": "మీ పేరు",
+  "Only style preferences are saved. You can reset them anytime.": "కేవలం స్టైల్ ప్రీఫరెన్సెస్ మాత్రమే సేవ్ అవుతాయి. మీరు ఎప్పుడూ వాటిని రీసెట్ చేసుకోవచ్చు.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "మీరు కాపీ చేసిన రీవైట్స్‌కు అనుగుణంగా మారుతుంది. దీనిని ఆపడానికి ఆన్ చేయండి.",
+  "Learned preferences": "అభ్యసించిన ప్రీఫరెన్సెస్",
+  "Not learned": "అభ్యసించని"
 }

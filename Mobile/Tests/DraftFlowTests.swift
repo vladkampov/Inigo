@@ -50,4 +50,27 @@ final class DraftFlowTests: XCTestCase {
         controller.undoRewrite()
         XCTAssertEqual(controller.draft.text, "refined plus my edit")
     }
+    func testTranslationPickerStartsChosenLanguageAfterDismissal() async throws {
+        let controller = DraftViewController()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        defer { window.isHidden = true }
+        controller.loadViewIfNeeded(); controller.draft.text = "A synthetic draft"
+        let translated = expectation(description: "chosen target starts translation")
+        controller.rewrite = { text, action in
+            XCTAssertEqual(text, "A synthetic draft")
+            XCTAssertEqual(action, .translate(.uk))
+            translated.fulfill(); return "Синтетична чернетка"
+        }
+        controller.showTranslationPicker()
+        try await Task.sleep(for: .milliseconds(400))
+        let navigation = try XCTUnwrap(controller.presentedViewController as? UINavigationController)
+        let picker = try XCTUnwrap(navigation.topViewController as? MobileLanguagePicker)
+        let row = try XCTUnwrap(SupportedLanguage.allCases.firstIndex(of: .uk))
+        picker.tableView(picker.tableView, didSelectRowAt: IndexPath(row: row, section: 0))
+        await fulfillment(of: [translated], timeout: 3)
+        await Task.yield()
+        XCTAssertEqual(controller.draft.text, "Синтетична чернетка")
+    }
+
 }

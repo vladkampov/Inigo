@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "Đã dịch. Kiểm tra trước khi sao chép.",
   "Translating on your iPhone…": "Đang dịch trên iPhone của bạn…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "Viết giữ trên iPhone của bạn. Sao chép chỉ ở địa phương. Không có tài khoản, phân tích hoặc thay thế đám mây.",
-  "Your text": "Văn bản của bạn"
+  "Your text": "Văn bản của bạn",
+  "Only style preferences are saved. You can reset them anytime.": "Chỉ các tùy chọn phong cách được lưu. Bạn có thể đặt lại bất cứ lúc nào.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "Điều chỉnh theo các bản viết lại bạn sao chép. Tắt để tạm dừng việc học.",
+  "Learned preferences": "Các tùy chọn đã học",
+  "Not learned": "Chưa học"
 }

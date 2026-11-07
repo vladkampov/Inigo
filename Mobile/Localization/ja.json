@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "翻訳完了。コピーする前に確認してください。",
   "Translating on your iPhone…": "iPhone で翻訳中…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "書き出しは iPhone に残ります。コピーはローカルのみです。アカウント、分析、クラウドのフォールバックはありません。",
-  "Your text": "あなたのテキスト"
+  "Your text": "あなたのテキスト",
+  "Only style preferences are saved. You can reset them anytime.": "スタイルの好みがのみ保存されます。いつでもリセットできます。",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "コピーした書き換えに適応します。オフにすると学習を一時停止します。",
+  "Learned preferences": "学習された好み",
+  "Not learned": "学習されなかった"
 }

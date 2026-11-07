@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "已翻译。复制前请检查。",
   "Translating on your iPhone…": "正在您的 iPhone 上翻译…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "写作保留在您的 iPhone 上。复制仅限本地。无需账户、分析或云端回退。",
-  "Your text": "您的文本"
+  "Your text": "您的文本",
+  "Only style preferences are saved. You can reset them anytime.": "仅保存样式偏好。您可以随时重置它们。",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "适应您复制的改写内容。关闭以暂停学习。",
+  "Learned preferences": "已学习的偏好",
+  "Not learned": "未学习"
 }

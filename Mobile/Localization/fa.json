@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "ترجمه شد. قبل از کپی کردن بررسی کنید.",
   "Translating on your iPhone…": "در حال ترجمه روی آیفون شما…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "نوشتن در آیفون شما باقی می‌ماند. کپی‌برداری فقط محلی است. هیچ حساب کاربری، تحلیل داده‌ای یا جایگزینی ابری وجود ندارد.",
-  "Your text": "متن شما"
+  "Your text": "متن شما",
+  "Only style preferences are saved. You can reset them anytime.": "فقط ترجیحات سبک ذخیره می‌شوند. می‌توانید هر زمان آن‌ها را بازنشانی کنید.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "به متن‌های کپی شده شما سازگار می‌شود. برای توقف یادگیری آن را خاموش کنید.",
+  "Learned preferences": "ترجیحات یاد گرفته شده",
+  "Not learned": "یاد گرفته نشده"
 }

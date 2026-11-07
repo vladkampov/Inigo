@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "Çevrildi. Kopyalamadan önce gözden geçir.",
   "Translating on your iPhone…": "iPhone'da çeviriliyor…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "Yazma iPhone'da kalır. Kopyalama sadece yereldir. Hesap, analiz veya bulut yedekleme yoktur.",
-  "Your text": "Metniniz"
+  "Your text": "Metniniz",
+  "Only style preferences are saved. You can reset them anytime.": "Sadece stil tercihleri kaydedilir. İstediğiniz zaman sıfırlayabilirsiniz.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "Kopyaladığınız yeniden yazılara uyum sağlar. Öğrenmeyi durdurmak için kapatabilirsiniz.",
+  "Learned preferences": "Öğrenilen tercihler",
+  "Not learned": "Öğrenilmedi"
 }

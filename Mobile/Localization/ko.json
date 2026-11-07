@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "번역 완료. 복사하기 전에 검토하세요.",
   "Translating on your iPhone…": "iPhone 에서 번역 중…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "작성은 iPhone 에서 유지됩니다. 복사 기능은 기기 내에서만 작동합니다. 계정, 분석 또는 클라우드 백업이 없습니다.",
-  "Your text": "귀하의 텍스트"
+  "Your text": "귀하의 텍스트",
+  "Only style preferences are saved. You can reset them anytime.": "스타일 선호도는 저장됩니다. 언제든지 초기화할 수 있습니다.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "복사한 리라이팅에 적응합니다. 학습을 일시 중지하려면 끄세요.",
+  "Learned preferences": "학습된 선호도",
+  "Not learned": "학습되지 않음"
 }

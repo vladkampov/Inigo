@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "Tradotto. Rivista prima di copiare.",
   "Translating on your iPhone…": "Traduzione su iPhone…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "La scrittura rimane sul tuo iPhone. Il copia è limitato al locale. Nessun account, analisi o fallback cloud.",
-  "Your text": "Il tuo testo"
+  "Your text": "Il tuo testo",
+  "Only style preferences are saved. You can reset them anytime.": "Vengono salvati solo i preferenze di stile. Puoi resettarli in qualsiasi momento.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "Si adatta alle riscritture che copi. Disattivalo per sospendere l'apprendimento.",
+  "Learned preferences": "Preferenze apprese",
+  "Not learned": "Non apprese"
 }

@@ -67,5 +67,9 @@
   "Translated. Review before copying.": "تم الترجمة. راجعها قبل النسخ.",
   "Translating on your iPhone…": "ترجمة على هاتفك الآيفون…",
   "Writing stays on your iPhone. Copying is local-only. No accounts, analytics or cloud fallback.": "الكتابة تظل على هاتفك الآيفون. النسخ محلي فقط. لا حسابات ولا تحليلات ولا استرجاع سحابي.",
-  "Your text": "نصك"
+  "Your text": "نصك",
+  "Only style preferences are saved. You can reset them anytime.": "يتم حفظ تفضيلات التنسيق فقط. يمكنك إعادة تعيينها في أي وقت.",
+  "Adapts to rewrites you copy. Turn off to pause learning.": "يتكيف مع التعديلات التي تنسخها. قم بإيقافه لتوقف التعلم.",
+  "Learned preferences": "التفضيلات المحفوظة",
+  "Not learned": "غير محفوظة"
 }
