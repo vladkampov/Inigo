@@ -27,7 +27,7 @@ targets:
   InigoMobile:
     type: application
     platform: iOS
-    sources: [App, Shared, Assets.xcassets]
+    sources: [App, Shared, Assets.xcassets, ../Sources/Inigo/TranslationQuality.swift]
     dependencies:
       - target: InigoCore
         embed: false
@@ -52,7 +52,7 @@ targets:
   InigoShare:
     type: app-extension
     platform: iOS
-    sources: [Share, Shared, Assets.xcassets]
+    sources: [Share, Shared, Assets.xcassets, ../Sources/Inigo/TranslationQuality.swift]
     dependencies:
       - target: InigoCore
         embed: false
@@ -76,7 +76,7 @@ targets:
   InigoCoreMobileTests:
     type: bundle.unit-test
     platform: iOS
-    sources: [../Tests/InigoCoreTests, Tests, Shared/ShareTextLoader.swift]
+    sources: [../Tests/InigoCoreTests, Tests, Shared/ShareTextLoader.swift, Shared/DraftViewController.swift, Shared/MobileRewriteEngine.swift, ../Sources/Inigo/TranslationQuality.swift]
     dependencies:
       - target: InigoCore
     settings:

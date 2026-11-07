@@ -10,32 +10,36 @@
 		0384663739595EFE421F55C3 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A5B10322C27527A79305C /* SupportedLanguage.swift */; };
 		063DBD0DE2CFD0BE5A3181B3 /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */; };
 		07A14C04832C19286C72AF8B /* DiagnosticEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E047E6BBD51819A7DE4009 /* DiagnosticEvent.swift */; };
-		14AFCFE205EACF15A6BFE29B /* ModelProbeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D8EA3137FA743AC54AF35 /* ModelProbeViewController.swift */; };
 		1E8AEF1DF08993D97330CFF8 /* ShareTextLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A9B3A96E847237261CC427 /* ShareTextLoaderTests.swift */; };
 		235E63C10ED5ED8E4DAC3EDC /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
 		25C92ED26C5F433DD38205CF /* WriteVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5571F1CD1D5C1D2E7E5869 /* WriteVerificationTests.swift */; };
 		2A112B0F4FC71DF7F1AD2CD2 /* ModelSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE5CCCB8DA9D7DAF987227 /* ModelSelectionTests.swift */; };
 		2B01C55E975C61215EC3A1A9 /* ClipboardPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759E3E2A526D39DCD32A1FAF /* ClipboardPolicy.swift */; };
+		433DEE83B59C0C182A6851B1 /* MobileRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D5B77EBED41A05B236DE33 /* MobileRewriteEngine.swift */; };
 		45D17230DFE672FF30C2DF4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46DB064EA5E4DB1A3F5B6BAC /* Assets.xcassets */; };
 		4914D749559FBC5C29B37B50 /* SafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F44E21E85E8DF8EECEA60 /* SafetyTests.swift */; };
-		4ECEF5B09CD5C5818CDAA5FD /* ModelProbeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D8EA3137FA743AC54AF35 /* ModelProbeViewController.swift */; };
 		619DF55673AEAF02C412ECAC /* Rewrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C3207A2899F8AF1966349 /* Rewrite.swift */; };
 		69FAD5C5E4F17A22AF3FFBF0 /* DiagnosticEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB8C544A40F8CB70A7AA49 /* DiagnosticEventTests.swift */; };
 		6B08F065C265C4BB1DC01547 /* ShareTextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3B205B60A06B25818889A /* ShareTextLoader.swift */; };
+		6BD4F4A05FBDEDE4D2AFC0D9 /* TranslationQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6AF028FDBA79CBD67A0BF7 /* TranslationQuality.swift */; };
 		74F9B4E5A312F84AA669C028 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952780DE35E3438B45D745E4 /* ShareViewController.swift */; };
+		916C956B6F7588B064732BB4 /* MobileRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D5B77EBED41A05B236DE33 /* MobileRewriteEngine.swift */; };
 		93E28BA5F59A17A330E654D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46DB064EA5E4DB1A3F5B6BAC /* Assets.xcassets */; };
+		965D34DFB1C6F158435B36A8 /* MobileRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D5B77EBED41A05B236DE33 /* MobileRewriteEngine.swift */; };
 		A90FEFB85209F145D7FC11D8 /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
+		A9842B20DBC6599A86107B39 /* TranslationQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6AF028FDBA79CBD67A0BF7 /* TranslationQuality.swift */; };
 		AC37DBAC1D3320FD086299B4 /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
 		B1822E787FD77DE2DFE5574E /* LocalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0027630E7059D7C3D79DC803 /* LocalModels.swift */; };
-		BD1E14C040227F55789DDD20 /* ModelProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3857E184383ABCB658F53 /* ModelProbe.swift */; };
+		B9544F08E192D6DC293EBBCF /* DraftFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6293EBED866FB190F8F8C88 /* DraftFlowTests.swift */; };
 		C3CDE821E6C5450C14968FA6 /* LanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C440BD2E6586727DD4FE2A9 /* LanguageTests.swift */; };
 		C7882B036DD754ED3EA40B7F /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */; };
 		CE23E71046F66B75CA92D3ED /* WriteVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C83E79B5A1C98E7843596 /* WriteVerification.swift */; };
+		D2F3D6AA2EF06E41C957314F /* TranslationQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6AF028FDBA79CBD67A0BF7 /* TranslationQuality.swift */; };
 		D9642B051C3E04D1472C2BE6 /* ClipboardPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C1C97B7E9931B97D5B996 /* ClipboardPolicyTests.swift */; };
 		E04BFCD3B899C5B67A22D6A9 /* InigoShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2086D93F4CC12C8DD82BC83F /* InigoShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E2CE327C9D2D7025618724E2 /* ModelProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3857E184383ABCB658F53 /* ModelProbe.swift */; };
 		E5BCA814BCADA55E7776BEA0 /* InigoCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E8DDADBE57878D24F9441714 /* ShareTextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3B205B60A06B25818889A /* ShareTextLoader.swift */; };
+		E9ED9C693F8CE60913FEDADE /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */; };
 		F911DB25B316D2E587889EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4616A8719133B094EB28506C /* AppDelegate.swift */; };
 		FA58DAC11AA128575A181BDA /* ShareTextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3B205B60A06B25818889A /* ShareTextLoader.swift */; };
 /* End PBXBuildFile section */
@@ -104,7 +108,6 @@
 		134C1C97B7E9931B97D5B996 /* ClipboardPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPolicyTests.swift; sourceTree = "<group>"; };
 		16B8AAC889B08378B42276CF /* InigoCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InigoCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A9B3A96E847237261CC427 /* ShareTextLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTextLoaderTests.swift; sourceTree = "<group>"; };
-		1F7D8EA3137FA743AC54AF35 /* ModelProbeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProbeViewController.swift; sourceTree = "<group>"; };
 		2086D93F4CC12C8DD82BC83F /* InigoShare.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = InigoShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C440BD2E6586727DD4FE2A9 /* LanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTests.swift; sourceTree = "<group>"; };
 		4616A8719133B094EB28506C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,14 +119,16 @@
 		94E047E6BBD51819A7DE4009 /* DiagnosticEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticEvent.swift; sourceTree = "<group>"; };
 		952780DE35E3438B45D745E4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		97CE5CCCB8DA9D7DAF987227 /* ModelSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionTests.swift; sourceTree = "<group>"; };
-		A0B3857E184383ABCB658F53 /* ModelProbe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProbe.swift; sourceTree = "<group>"; };
+		A8D5B77EBED41A05B236DE33 /* MobileRewriteEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileRewriteEngine.swift; sourceTree = "<group>"; };
 		ABE3B205B60A06B25818889A /* ShareTextLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTextLoader.swift; sourceTree = "<group>"; };
 		BF7DF2BC646402547B7FA725 /* InigoCoreMobileTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = InigoCoreMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDB8C544A40F8CB70A7AA49 /* DiagnosticEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticEventTests.swift; sourceTree = "<group>"; };
 		EA4A5B10322C27527A79305C /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
 		EC0D4E14A20797CF544C04E2 /* InigoMobile.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = InigoMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6293EBED866FB190F8F8C88 /* DraftFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftFlowTests.swift; sourceTree = "<group>"; };
 		FA4C3207A2899F8AF1966349 /* Rewrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewrite.swift; sourceTree = "<group>"; };
 		FA5571F1CD1D5C1D2E7E5869 /* WriteVerificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVerificationTests.swift; sourceTree = "<group>"; };
+		FD6AF028FDBA79CBD67A0BF7 /* TranslationQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationQuality.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +187,7 @@
 			children = (
 				46DB064EA5E4DB1A3F5B6BAC /* Assets.xcassets */,
 				777EAF052B9FB77037661149 /* App */,
+				E4B5A6A86ED849D7C7240CB9 /* Inigo */,
 				04BAA8423F1B236F356695A9 /* InigoCore */,
 				FB6DF2C8336AF60AF902D93D /* InigoCoreTests */,
 				2779C486773EE867A06808C1 /* Mobile */,
@@ -224,9 +230,19 @@
 		E096CCE8231A9BEE8677AFC6 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				F6293EBED866FB190F8F8C88 /* DraftFlowTests.swift */,
 				17A9B3A96E847237261CC427 /* ShareTextLoaderTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		E4B5A6A86ED849D7C7240CB9 /* Inigo */ = {
+			isa = PBXGroup;
+			children = (
+				FD6AF028FDBA79CBD67A0BF7 /* TranslationQuality.swift */,
+			);
+			name = Inigo;
+			path = ../Sources/Inigo;
 			sourceTree = "<group>";
 		};
 		FB6DF2C8336AF60AF902D93D /* InigoCoreTests */ = {
@@ -247,8 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */,
-				A0B3857E184383ABCB658F53 /* ModelProbe.swift */,
-				1F7D8EA3137FA743AC54AF35 /* ModelProbeViewController.swift */,
+				A8D5B77EBED41A05B236DE33 /* MobileRewriteEngine.swift */,
 				ABE3B205B60A06B25818889A /* ShareTextLoader.swift */,
 			);
 			path = Shared;
@@ -410,10 +425,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7882B036DD754ED3EA40B7F /* DraftViewController.swift in Sources */,
-				E2CE327C9D2D7025618724E2 /* ModelProbe.swift in Sources */,
-				4ECEF5B09CD5C5818CDAA5FD /* ModelProbeViewController.swift in Sources */,
+				916C956B6F7588B064732BB4 /* MobileRewriteEngine.swift in Sources */,
 				E8DDADBE57878D24F9441714 /* ShareTextLoader.swift in Sources */,
 				74F9B4E5A312F84AA669C028 /* ShareViewController.swift in Sources */,
+				A9842B20DBC6599A86107B39 /* TranslationQuality.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,11 +438,15 @@
 			files = (
 				D9642B051C3E04D1472C2BE6 /* ClipboardPolicyTests.swift in Sources */,
 				69FAD5C5E4F17A22AF3FFBF0 /* DiagnosticEventTests.swift in Sources */,
+				B9544F08E192D6DC293EBBCF /* DraftFlowTests.swift in Sources */,
+				E9ED9C693F8CE60913FEDADE /* DraftViewController.swift in Sources */,
 				C3CDE821E6C5450C14968FA6 /* LanguageTests.swift in Sources */,
+				433DEE83B59C0C182A6851B1 /* MobileRewriteEngine.swift in Sources */,
 				2A112B0F4FC71DF7F1AD2CD2 /* ModelSelectionTests.swift in Sources */,
 				4914D749559FBC5C29B37B50 /* SafetyTests.swift in Sources */,
 				6B08F065C265C4BB1DC01547 /* ShareTextLoader.swift in Sources */,
 				1E8AEF1DF08993D97330CFF8 /* ShareTextLoaderTests.swift in Sources */,
+				6BD4F4A05FBDEDE4D2AFC0D9 /* TranslationQuality.swift in Sources */,
 				25C92ED26C5F433DD38205CF /* WriteVerificationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,9 +470,9 @@
 			files = (
 				F911DB25B316D2E587889EB9 /* AppDelegate.swift in Sources */,
 				063DBD0DE2CFD0BE5A3181B3 /* DraftViewController.swift in Sources */,
-				BD1E14C040227F55789DDD20 /* ModelProbe.swift in Sources */,
-				14AFCFE205EACF15A6BFE29B /* ModelProbeViewController.swift in Sources */,
+				965D34DFB1C6F158435B36A8 /* MobileRewriteEngine.swift in Sources */,
 				FA58DAC11AA128575A181BDA /* ShareTextLoader.swift in Sources */,
+				D2F3D6AA2EF06E41C957314F /* TranslationQuality.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

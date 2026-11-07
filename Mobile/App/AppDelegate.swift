@@ -29,6 +29,6 @@ final class PasteViewController: DraftViewController {
         guard let text = UIPasteboard.general.string, text.utf16.count <= 20_000 else {
             status.text = "Copy a text selection of up to 20,000 characters, then tap Paste."; return
         }
-        draft.text = text
+        receive(text)
     }
 }

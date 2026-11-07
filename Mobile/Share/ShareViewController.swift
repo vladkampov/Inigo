@@ -31,8 +31,7 @@ final class ShareViewController: DraftViewController {
                 self.timeout?.cancel()
                 switch result {
                 case .success(let text):
-                    self.draft.text = text; self.copyButton.isEnabled = true
-                    self.status.text = "Your selection is ready. Edit it here, then copy it back."
+                    self.receive(text)
                 case .failure(let error): self.status.text = error.localizedDescription
                 }
             }
