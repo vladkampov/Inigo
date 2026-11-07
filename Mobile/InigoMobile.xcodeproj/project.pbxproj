@@ -11,15 +11,19 @@
 		063DBD0DE2CFD0BE5A3181B3 /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */; };
 		07A14C04832C19286C72AF8B /* DiagnosticEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E047E6BBD51819A7DE4009 /* DiagnosticEvent.swift */; };
 		14AFCFE205EACF15A6BFE29B /* ModelProbeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D8EA3137FA743AC54AF35 /* ModelProbeViewController.swift */; };
+		1E8AEF1DF08993D97330CFF8 /* ShareTextLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A9B3A96E847237261CC427 /* ShareTextLoaderTests.swift */; };
 		235E63C10ED5ED8E4DAC3EDC /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
 		25C92ED26C5F433DD38205CF /* WriteVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5571F1CD1D5C1D2E7E5869 /* WriteVerificationTests.swift */; };
 		2A112B0F4FC71DF7F1AD2CD2 /* ModelSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE5CCCB8DA9D7DAF987227 /* ModelSelectionTests.swift */; };
 		2B01C55E975C61215EC3A1A9 /* ClipboardPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759E3E2A526D39DCD32A1FAF /* ClipboardPolicy.swift */; };
+		45D17230DFE672FF30C2DF4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46DB064EA5E4DB1A3F5B6BAC /* Assets.xcassets */; };
 		4914D749559FBC5C29B37B50 /* SafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F44E21E85E8DF8EECEA60 /* SafetyTests.swift */; };
 		4ECEF5B09CD5C5818CDAA5FD /* ModelProbeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7D8EA3137FA743AC54AF35 /* ModelProbeViewController.swift */; };
 		619DF55673AEAF02C412ECAC /* Rewrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C3207A2899F8AF1966349 /* Rewrite.swift */; };
 		69FAD5C5E4F17A22AF3FFBF0 /* DiagnosticEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB8C544A40F8CB70A7AA49 /* DiagnosticEventTests.swift */; };
+		6B08F065C265C4BB1DC01547 /* ShareTextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3B205B60A06B25818889A /* ShareTextLoader.swift */; };
 		74F9B4E5A312F84AA669C028 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952780DE35E3438B45D745E4 /* ShareViewController.swift */; };
+		93E28BA5F59A17A330E654D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46DB064EA5E4DB1A3F5B6BAC /* Assets.xcassets */; };
 		A90FEFB85209F145D7FC11D8 /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
 		AC37DBAC1D3320FD086299B4 /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
 		B1822E787FD77DE2DFE5574E /* LocalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0027630E7059D7C3D79DC803 /* LocalModels.swift */; };
@@ -31,7 +35,9 @@
 		E04BFCD3B899C5B67A22D6A9 /* InigoShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2086D93F4CC12C8DD82BC83F /* InigoShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E2CE327C9D2D7025618724E2 /* ModelProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3857E184383ABCB658F53 /* ModelProbe.swift */; };
 		E5BCA814BCADA55E7776BEA0 /* InigoCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E8DDADBE57878D24F9441714 /* ShareTextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3B205B60A06B25818889A /* ShareTextLoader.swift */; };
 		F911DB25B316D2E587889EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4616A8719133B094EB28506C /* AppDelegate.swift */; };
+		FA58DAC11AA128575A181BDA /* ShareTextLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE3B205B60A06B25818889A /* ShareTextLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,10 +103,12 @@
 		115C0077F3005D5A474ED18B /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		134C1C97B7E9931B97D5B996 /* ClipboardPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPolicyTests.swift; sourceTree = "<group>"; };
 		16B8AAC889B08378B42276CF /* InigoCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InigoCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17A9B3A96E847237261CC427 /* ShareTextLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTextLoaderTests.swift; sourceTree = "<group>"; };
 		1F7D8EA3137FA743AC54AF35 /* ModelProbeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProbeViewController.swift; sourceTree = "<group>"; };
 		2086D93F4CC12C8DD82BC83F /* InigoShare.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = InigoShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C440BD2E6586727DD4FE2A9 /* LanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTests.swift; sourceTree = "<group>"; };
 		4616A8719133B094EB28506C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		46DB064EA5E4DB1A3F5B6BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		475F44E21E85E8DF8EECEA60 /* SafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyTests.swift; sourceTree = "<group>"; };
 		5D316C37D49B3DA88A8FD816 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		759E3E2A526D39DCD32A1FAF /* ClipboardPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPolicy.swift; sourceTree = "<group>"; };
@@ -109,6 +117,7 @@
 		952780DE35E3438B45D745E4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		97CE5CCCB8DA9D7DAF987227 /* ModelSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionTests.swift; sourceTree = "<group>"; };
 		A0B3857E184383ABCB658F53 /* ModelProbe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProbe.swift; sourceTree = "<group>"; };
+		ABE3B205B60A06B25818889A /* ShareTextLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTextLoader.swift; sourceTree = "<group>"; };
 		BF7DF2BC646402547B7FA725 /* InigoCoreMobileTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = InigoCoreMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDB8C544A40F8CB70A7AA49 /* DiagnosticEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticEventTests.swift; sourceTree = "<group>"; };
 		EA4A5B10322C27527A79305C /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
@@ -171,12 +180,14 @@
 		43A619CAF97FC9BF67345487 = {
 			isa = PBXGroup;
 			children = (
+				46DB064EA5E4DB1A3F5B6BAC /* Assets.xcassets */,
 				777EAF052B9FB77037661149 /* App */,
 				04BAA8423F1B236F356695A9 /* InigoCore */,
 				FB6DF2C8336AF60AF902D93D /* InigoCoreTests */,
 				2779C486773EE867A06808C1 /* Mobile */,
 				83C0F2C911C62120C94388D9 /* Share */,
 				FE6654E4C61B109CFDAD18F7 /* Shared */,
+				E096CCE8231A9BEE8677AFC6 /* Tests */,
 				48EEE5088DB87A917581A0C6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -210,6 +221,14 @@
 			path = Share;
 			sourceTree = "<group>";
 		};
+		E096CCE8231A9BEE8677AFC6 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				17A9B3A96E847237261CC427 /* ShareTextLoaderTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		FB6DF2C8336AF60AF902D93D /* InigoCoreTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +249,7 @@
 				0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */,
 				A0B3857E184383ABCB658F53 /* ModelProbe.swift */,
 				1F7D8EA3137FA743AC54AF35 /* ModelProbeViewController.swift */,
+				ABE3B205B60A06B25818889A /* ShareTextLoader.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -242,6 +262,7 @@
 			buildConfigurationList = 04864014B2F28E814FD14848 /* Build configuration list for PBXNativeTarget "InigoShare" */;
 			buildPhases = (
 				4CCEEF565FFB6757357E0731 /* Sources */,
+				DD56DAAA53836CBBC09F2943 /* Resources */,
 				DD83C604AF4C7D194827017B /* Frameworks */,
 			);
 			buildRules = (
@@ -281,6 +302,7 @@
 			buildConfigurationList = 822D32B9E75B176F02318A2C /* Build configuration list for PBXNativeTarget "InigoMobile" */;
 			buildPhases = (
 				EBF36EA7EF81CF7AA35A6209 /* Sources */,
+				D9D8CDE53708ED287D393294 /* Resources */,
 				1AD9D219217C7368E8233C96 /* Frameworks */,
 				E5B438E53C5D6F807F656A94 /* Embed Foundation Extensions */,
 			);
@@ -363,6 +385,25 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		D9D8CDE53708ED287D393294 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93E28BA5F59A17A330E654D1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD56DAAA53836CBBC09F2943 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45D17230DFE672FF30C2DF4D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4CCEEF565FFB6757357E0731 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -371,6 +412,7 @@
 				C7882B036DD754ED3EA40B7F /* DraftViewController.swift in Sources */,
 				E2CE327C9D2D7025618724E2 /* ModelProbe.swift in Sources */,
 				4ECEF5B09CD5C5818CDAA5FD /* ModelProbeViewController.swift in Sources */,
+				E8DDADBE57878D24F9441714 /* ShareTextLoader.swift in Sources */,
 				74F9B4E5A312F84AA669C028 /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +426,8 @@
 				C3CDE821E6C5450C14968FA6 /* LanguageTests.swift in Sources */,
 				2A112B0F4FC71DF7F1AD2CD2 /* ModelSelectionTests.swift in Sources */,
 				4914D749559FBC5C29B37B50 /* SafetyTests.swift in Sources */,
+				6B08F065C265C4BB1DC01547 /* ShareTextLoader.swift in Sources */,
+				1E8AEF1DF08993D97330CFF8 /* ShareTextLoaderTests.swift in Sources */,
 				25C92ED26C5F433DD38205CF /* WriteVerificationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +453,7 @@
 				063DBD0DE2CFD0BE5A3181B3 /* DraftViewController.swift in Sources */,
 				BD1E14C040227F55789DDD20 /* ModelProbe.swift in Sources */,
 				14AFCFE205EACF15A6BFE29B /* ModelProbeViewController.swift in Sources */,
+				FA58DAC11AA128575A181BDA /* ShareTextLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -94,3 +94,20 @@ No automatic rewrite is promised in this transport prototype. Keep all test
 content synthetic; do not send messages. Phone confirmation on 2026-11-07:
 paired iPhone 17 Pro Max, iOS 27.0.1, Developer Mode enabled. Apple Intelligence
 was reported enabled by the owner; model readiness is checked by the probe.
+
+### Build 2 — share loading and visual identity
+
+Supports direct attributed share-item text and provider-backed plain text; loading
+starts after the sheet appears. Explicit loading, empty/unsupported, oversize and
+12-second timeout states replace silent failure. Late callbacks after Cancel or
+timeout cannot populate the editor. Regression tests cover both input routes,
+Unicode, multiple/empty selections and size limits. The user's Notes case still
+requires device retry; the tests are synthetic, not a Notes compatibility claim.
+
+The sheet uses the existing lavender brand, Dynamic Type, semantic light/dark
+colors, a rounded editor and prominent explicit Copy & Close action. The existing
+vector mark is packaged as an opaque 1024px iOS icon and an in-sheet image. Render
+with `swift scripts/make-icon.swift Mobile/Assets.xcassets/AppIcon.appiconset --ios`.
+35 core/share tests pass on iOS Simulator; the development device build passes.
+Simulator UI inspection was unavailable through the computer-use surface, so
+visual/device review remains pending. No auto-refinement claim is added.

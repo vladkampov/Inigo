@@ -1,34 +1,42 @@
 import UIKit
-import UniformTypeIdentifiers
 
 final class ShareViewController: DraftViewController {
-    private var loading: Progress?
     private var generation = UUID()
+    private var started = false
+    private var timeout: DispatchWorkItem?
     override func viewDidLoad() {
         isShare = true
         super.viewDidLoad()
         onClose = { [weak self] in
             guard let self else { return }
-            self.generation = UUID(); self.loading?.cancel()
+            self.generation = UUID(); self.timeout?.cancel()
             self.extensionContext?.completeRequest(returningItems: nil)
         }
         copyButton.isEnabled = false
-        let items = extensionContext?.inputItems as? [NSExtensionItem] ?? []
-        let providers = items.flatMap { $0.attachments ?? [] }.filter { $0.hasItemConformingToTypeIdentifier(UTType.plainText.identifier) }
-        guard providers.count == 1 else {
-            status.text = "Share one text selection. If this app cannot share text, open Inigo and use Paste."; return
-        }
+        status.text = "Loading your selection…"
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard !started else { return }; started = true
         let invocation = generation
-        loading = providers[0].loadObject(ofClass: NSString.self) { [weak self] item, error in
-            let text = item as? String
+        let expiry = DispatchWorkItem { [weak self] in
+            guard let self, self.generation == invocation else { return }
+            self.generation = UUID()
+            self.status.text = "The host app did not finish sharing. Cancel and retry, or copy the text and use Paste in Inigo."
+        }
+        timeout = expiry; DispatchQueue.main.asyncAfter(deadline: .now() + 12, execute: expiry)
+        ShareTextLoader.load(extensionContext?.inputItems as? [NSExtensionItem] ?? []) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self, self.generation == invocation else { return }
-                guard error == nil, let text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, text.utf16.count <= 20_000 else {
-                    self.status.text = "This selection could not be read as text, or exceeds 20,000 characters. Nothing was copied."; return
+                self.timeout?.cancel()
+                switch result {
+                case .success(let text):
+                    self.draft.text = text; self.copyButton.isEnabled = true
+                    self.status.text = "Your selection is ready. Edit it here, then copy it back."
+                case .failure(let error): self.status.text = error.localizedDescription
                 }
-                self.draft.text = text; self.copyButton.isEnabled = true
             }
         }
     }
-    deinit { loading?.cancel() }
+    deinit { timeout?.cancel() }
 }
