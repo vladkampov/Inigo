@@ -24,6 +24,29 @@ class ReleaseTests(unittest.TestCase):
    data=plistlib.loads(file.read_bytes());config=json.loads((root/'release/config.json').read_text())
    self.assertEqual(data['SUFeedURL'],config['betaFeedURL'])
    self.assertEqual(data['SUPublicEDKey'],config['publicEDKey'])
+ def test_stable_and_prerelease_bundle_channels(self):
+  import shutil
+  with tempfile.TemporaryDirectory() as tmp:
+   checkout=pathlib.Path(tmp)
+   (checkout/'scripts').mkdir();(checkout/'release').mkdir()
+   for name in ['configure-bundle.py','version.py']:
+    shutil.copyfile(root/'scripts'/name,checkout/'scripts'/name)
+   shutil.copyfile(root/'release/config.json',checkout/'release/config.json')
+   (checkout/'BUILD_NUMBER').write_text('2000')
+   config=json.loads((checkout/'release/config.json').read_text())
+   self.assertNotEqual(config['feedURL'],config['betaFeedURL'])
+   env=dict(os.environ,INIGO_ENABLE_UPDATES='1');env.pop('INIGO_UPDATE_PUBLIC_KEY',None)
+   for version,channel in [('1.0.0','feedURL'),('1.0.0+build.1','feedURL'),('1.0.0-beta.8','betaFeedURL')]:
+    with self.subTest(version=version):
+     (checkout/'VERSION').write_text(version)
+     file=checkout/'Info.plist';file.write_bytes(plistlib.dumps({}))
+     subprocess.run(['python3',str(checkout/'scripts/configure-bundle.py'),str(file)],env=env,check=True)
+     data=plistlib.loads(file.read_bytes())
+     self.assertEqual(data['SUFeedURL'],config[channel])
+     self.assertEqual(data['InigoDisplayVersion'],version)
+     self.assertEqual(data['CFBundleShortVersionString'],'1.0.0')
+     self.assertFalse(data['SUAutomaticallyUpdate'])
+     self.assertTrue(data['SUVerifyUpdateBeforeExtraction'])
  def test_issue_forms_match_labels(self):
   labels={x['name'] for x in json.loads((root/'.github/labels.json').read_text())}
   for file in (root/'.github/ISSUE_TEMPLATE').glob('*.yml'):

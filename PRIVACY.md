@@ -17,7 +17,7 @@ be read locally to validate replacement. Secure fields and excluded apps are ski
 
 ## Network activity
 Model downloads contact Hugging Face and its file hosts. Signed app-update checks
-contact the configured GitHub Pages feed approximately hourly while Inigo runs,
+contact the configured feed on raw.githubusercontent.com approximately hourly while Inigo runs,
 unless disabled. Update downloads contact GitHub Releases. These services receive
 ordinary connection metadata such as IP address. Writing is never included.
 Sparkle system profiling and automatic installation are disabled.

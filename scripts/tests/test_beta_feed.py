@@ -56,3 +56,25 @@ class ChannelIsolationTests(unittest.TestCase):
   with patch.object(feed.sys,'argv',['feed','--channel','stable','--publish']),patch.object(feed,'output',return_value=json.dumps(releases)),patch.object(feed,'publish') as publish:
    with self.assertRaisesRegex(ValueError,'No published signed stable'):feed.main()
    publish.assert_not_called()
+
+class PublicationFailureTests(unittest.TestCase):
+ def test_failed_verification_never_publishes(self):
+  import tempfile,json,hashlib,base64,subprocess
+  from unittest.mock import patch
+  for failure in ['checksum','size','key','signature']:
+   with self.subTest(failure=failure),tempfile.TemporaryDirectory() as tmp:
+    root=pathlib.Path(tmp);(root/'release').mkdir()
+    (root/'release/config.json').write_text(json.dumps({'publicEDKey':base64.b64encode(bytes(31 if failure=='key' else 32)).decode()}))
+    tag='v1.0.0';name='Inigo-1.0.0.zip';archive=b'synthetic archive'
+    xml=BetaFeedTests().data(url=f'https://github.com/vladkampov/Inigo/releases/download/{tag}/{name}',build='2000').replace('length="100"',f'length="{len(archive)+(1 if failure=="size" else 0)}"')
+    releases=[[{'tag_name':tag,'draft':False,'prerelease':False,'assets':[{'name':n} for n in ['appcast.xml','SHA256SUMS',name]]}]]
+    def run(args,**kw):
+     if args[0]=='gh':
+      folder=pathlib.Path(args[args.index('--dir')+1]);pattern=args[args.index('--pattern')+1]
+      contents={'appcast.xml':xml.encode(),name:archive,'SHA256SUMS':f'{"0"*64 if failure=="checksum" else hashlib.sha256(archive).hexdigest()}  {name}\n'.encode()}
+      (folder/pattern).write_bytes(contents[pattern])
+     else: raise subprocess.CalledProcessError(1,args)
+    with patch.object(feed,'ROOT',root),patch.object(feed.sys,'argv',['feed','--channel','stable','--publish']),patch.object(feed,'output',return_value=json.dumps(releases)),patch.object(feed,'run',side_effect=run),patch.object(feed,'publish') as publish:
+     with self.assertRaises((ValueError,subprocess.CalledProcessError)):feed.main()
+     publish.assert_not_called()
+     self.assertFalse((root/'updates/stable/appcast.xml').exists())
