@@ -11,8 +11,9 @@ Developer membership supports Developer ID signing and Apple's notarization.
 - Private vulnerability reporting, secret scanning/push protection and Dependabot
   security updates are enabled. The release environment allows only main.
 - Signing and notarization credentials are configured and signed CI beta releases
-  have passed. Establish a dedicated confidential conduct contact before a
-  broader launch. See docs/publication-review.md for remaining gates.
+  have passed. Community reports use the GitHub routes described in
+  CODE_OF_CONDUCT.md; a dedicated email is not a 1.0 requirement.
+  See docs/publication-review.md for remaining gates.
 - Set up a **Developer ID Application** certificate in Keychain. Apple Development
   is insufficient for direct distribution. Do not commit certificates/private keys.
 - Store notarization credentials using `xcrun notarytool store-credentials`;

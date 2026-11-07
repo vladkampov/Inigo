@@ -44,4 +44,26 @@ final class VerifiedModelDownloadTests: XCTestCase {
             }
         }
     }
+    @MainActor func testFailedInstallPreservesDestinationAndCleansStage() throws {
+        try fixture { folder, source, target, bytes, digest in
+            try FileManager.default.createDirectory(at: target, withIntermediateDirectories: true)
+            let sentinel = target.appendingPathComponent("keep")
+            try Data("original".utf8).write(to: sentinel)
+            var download: VerifiedModelDownload? = try VerifiedModelDownload(source: source, destination: target, expectedBytes: Int64(bytes.count), sha256: digest)
+            XCTAssertThrowsError(try download?.install(ifCurrent: true))
+            download = nil
+            XCTAssertEqual(try Data(contentsOf: sentinel), Data("original".utf8))
+            XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath: folder.path), ["model"])
+        }
+    }
+    func testAbandonedVerifiedDownloadLeavesNoStagedFile() throws {
+        try fixture { folder, source, target, bytes, digest in
+            var download: VerifiedModelDownload? = try VerifiedModelDownload(source: source, destination: target, expectedBytes: Int64(bytes.count), sha256: digest)
+            XCTAssertNotNil(download)
+            download = nil
+            XCTAssertFalse(FileManager.default.fileExists(atPath: target.path))
+            XCTAssertTrue(try FileManager.default.contentsOfDirectory(atPath: folder.path).isEmpty)
+        }
+    }
+
 }
