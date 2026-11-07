@@ -17,9 +17,10 @@ explicit; there is no background clipboard collection. No drafts are persisted.
 This version is deliberately a transport prototype: it does not auto-refine.
 The app's Model probe runs a synthetic request with Apple's on-device Foundation
 Models, guarded by availability and language support. It reports elapsed time and
-uses the same RewriteRequest and ProtectedDraft validators as macOS. The probe
-source also compiles into the extension, but extension inference is not yet
-exercised. No cloud model or fallback is used. No main-app background server.
+uses the same RewriteRequest and ProtectedDraft validators as macOS. The synthetic probe is available from both the app and Share extension via
+“Test on-device model”. Its output identifies the host and run number. Run again
+for a warmed timing, or Cancel to discard an in-flight result. Extension inference
+on a real device is not yet exercised. No cloud model or fallback is used. No main-app background server.
 
 ## Reused foundation and boundaries
 
@@ -66,3 +67,30 @@ not evidence of either user's physical phone model or OS. Built-bundle validatio
 confirms both targets report 0.1.0-alpha.1, build 1, and no Sparkle feed/key.
 Run `python3 scripts/check-mobile-bundle.py <built-app-path>` after building.
 Real host share/copy/dismiss and on-device inference benchmarks remain unverified.
+
+## First physical-phone test
+
+Open InigoMobile.xcodeproj, scheme InigoMobile, select the paired phone and Run.
+Both app and extension use automatic development signing; provisioning requires
+Apple account authorization. Developer ID (used for Mac distribution) is not the
+iPhone development signing identity. Never send passwords, private keys or profiles.
+
+1. In Notes create `We might finish by Friday, but the date is not confirmed. 🙂`.
+   Select the text, Share, then Inigo (look under More if needed).
+2. The exact text should appear. Edit a word, tap Copy & Close, return and paste
+   yourself. The host draft must not change until you paste.
+3. Copy `CLIPBOARD SENTINEL` in Notes, share the sample again, then Cancel.
+   Paste into a scratch note: the sentinel should remain.
+4. In the Share extension, tap Test on-device model, then Run. This uses a built-in
+   synthetic English draft, not your shared text. Record output, host label and
+   elapsed time; run twice, then try Cancel. Done returns to your shared draft.
+5. Run the same probe in the standalone app. Report unavailable/error text exactly;
+   availability in the main app does not prove it works in the extension.
+6. Repeat sharing in other apps only where they offer text sharing. Record when
+   Inigo is missing or the host shares a URL instead of selected text. Use the
+   standalone explicit Paste fallback for unsupported hosts.
+
+No automatic rewrite is promised in this transport prototype. Keep all test
+content synthetic; do not send messages. Phone confirmation on 2026-11-07:
+paired iPhone 17 Pro Max, iOS 27.0.1, Developer Mode enabled. Apple Intelligence
+was reported enabled by the owner; model readiness is checked by the probe.

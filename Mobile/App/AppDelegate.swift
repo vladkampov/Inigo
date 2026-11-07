@@ -2,12 +2,20 @@ import UIKit
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        let config = UISceneConfiguration(name: "Inigo", sessionRole: connectingSceneSession.role)
+        config.delegateClass = SceneDelegate.self
+        return config
+    }
+}
+
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let window = UIWindow(frame: UIScreen.main.bounds)
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let scene = scene as? UIWindowScene else { return }
+        let window = UIWindow(windowScene: scene)
         window.rootViewController = UINavigationController(rootViewController: PasteViewController())
         window.makeKeyAndVisible(); self.window = window
-        return true
     }
 }
 
@@ -15,7 +23,6 @@ final class PasteViewController: DraftViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Paste", style: .plain, target: self, action: #selector(pasteDraft))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Model probe", style: .plain, target: self, action: #selector(probe))
     }
     @objc private func pasteDraft() {
         // Explicit user action only. No clipboard polling or automatic reads.
@@ -23,9 +30,5 @@ final class PasteViewController: DraftViewController {
             status.text = "Copy a text selection of up to 20,000 characters, then tap Paste."; return
         }
         draft.text = text
-    }
-    @objc private func probe() {
-        let probe = ModelProbeViewController()
-        navigationController?.pushViewController(probe, animated: true)
     }
 }

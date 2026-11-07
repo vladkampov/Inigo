@@ -41,6 +41,9 @@ targets:
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         InigoDisplayVersion: $(INIGO_DISPLAY_VERSION)
         UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
     settings:
       base:
