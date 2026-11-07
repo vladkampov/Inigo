@@ -1,6 +1,7 @@
 import UIKit
 import UniformTypeIdentifiers
 import InigoCore
+import NaturalLanguage
 
 class DraftViewController: UIViewController, UITextViewDelegate {
     let draft = UITextView()
@@ -19,6 +20,9 @@ class DraftViewController: UIViewController, UITextViewDelegate {
     private var originalText = ""
     private var undoPair: (before: String, after: String)?
     private var busy = false
+    private var localizationBindings: [() -> Void] = []
+    private var currentStatusKey = "Paste or share a selection to get started."
+    private var learningCandidate: (original: String, language: String)?
     var rewrite: (String, RewriteAction) async throws -> String = { try await MobileRewriteEngine().rewrite($0, action: $1) }
     private let accent = UIColor { traits in
         traits.userInterfaceStyle == .dark ? UIColor(red: 0.76, green: 0.73, blue: 1, alpha: 1) : UIColor(red: 0.36, green: 0.29, blue: 0.66, alpha: 1)
@@ -44,8 +48,13 @@ class DraftViewController: UIViewController, UITextViewDelegate {
         close.widthAnchor.constraint(equalToConstant: 44).isActive = true
         close.heightAnchor.constraint(equalToConstant: 44).isActive = true
         close.addTarget(self, action: #selector(cancelDraft), for: .touchUpInside)
-        let header = UIStackView(arrangedSubviews: [mark, names, close]); header.alignment = .center; header.spacing = 12
-        status.text = "Paste or share a selection to get started."
+        let settings = UIButton(type: .system)
+        settings.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        settings.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        settings.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        settings.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
+        let header = UIStackView(arrangedSubviews: [mark, names, settings, close]); header.alignment = .center; header.spacing = 12
+        showStatus("Paste or share a selection to get started.")
         status.numberOfLines = 0; status.font = .preferredFont(forTextStyle: .subheadline)
         status.textColor = .secondaryLabel; status.adjustsFontForContentSizeCategory = true
         draft.font = .preferredFont(forTextStyle: .body); draft.adjustsFontForContentSizeCategory = true
@@ -88,36 +97,69 @@ class DraftViewController: UIViewController, UITextViewDelegate {
             stack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             stack.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -12), height
         ])
+        localizationBindings = [{ [weak self] in
+            guard let self else { return }
+            subtitle.text = M("A little clarity, wherever you write.")
+            close.accessibilityLabel = M(self.isShare ? "Cancel" : "Clear draft")
+            settings.accessibilityLabel = M("Settings")
+            self.draft.accessibilityLabel = M("Your text")
+            var config = self.copyButton.configuration
+            config?.title = M(self.isShare ? "Copy & Close" : "Copy text")
+            self.copyButton.configuration = config
+            note.text = M("Copied only when you choose. Nothing is sent.")
+            self.refineButton.setTitle(M("Refine"), for: .normal)
+            compare.setTitle(M("Original"), for: .normal)
+            self.undoButton.setTitle(M("Undo"), for: .normal)
+            self.cancelOperation.setTitle(M("Cancel"), for: .normal)
+        }]
+        refreshLocalization()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated); refreshLocalization()
+    }
+    func showStatus(_ key: String) { currentStatusKey = key; status.text = M(key) }
+    private func refreshLocalization() {
+        localizationBindings.forEach { $0() }
+        view.semanticContentAttribute = MobilePreferences.shared.language.isRTL ? .forceRightToLeft : .forceLeftToRight
+        draft.semanticContentAttribute = .unspecified
+        draft.textAlignment = .natural
+        status.text = M(currentStatusKey); updateTranslationMenu()
+    }
+    @objc private func showSettings() {
+        let settings = MobileSettingsViewController()
+        settings.onChange = { [weak self] in self?.refreshLocalization() }
+        present(UINavigationController(rootViewController: settings), animated: true)
     }
     func receive(_ text: String) {
         stopOperation(); originalText = text; draft.text = text; undoPair = nil
         begin(.refine)
     }
     private func updateTranslationMenu() {
-        let saved = UserDefaults.standard.string(forKey: "translationTarget") ?? SupportedLanguage.resolve(override: "", preferred: Locale.preferredLanguages).rawValue
+        let saved = MobilePreferences.shared.state.translationLanguage
         let target = SupportedLanguage(rawValue: saved) ?? .en
-        translateButton.setTitle("Translate ▾", for: .normal)
-        let recent = UIAction(title: "Translate to " + target.nativeName) { [weak self] _ in self?.begin(.translate(target)) }
+        translateButton.setTitle(M("Translate") + " ▾", for: .normal)
+        let recent = UIAction(title: MF("Translate to %@", target.nativeName)) { [weak self] _ in self?.begin(.translate(target)) }
         let languages = SupportedLanguage.allCases.map { language in
             UIAction(title: language.nativeName, state: language == target ? .on : .off) { [weak self] _ in
-                UserDefaults.standard.set(language.rawValue, forKey: "translationTarget")
+                try? MobilePreferences.shared.update { $0.translationLanguage = language.rawValue }
                 self?.updateTranslationMenu(); self?.begin(.translate(language))
             }
         }
-        translateButton.menu = UIMenu(children: [recent, UIMenu(title: "Choose language", children: languages)])
+        translateButton.menu = UIMenu(children: [recent, UIMenu(title: M("Choose language"), children: languages)])
         translateButton.showsMenuAsPrimaryAction = true
     }
     @objc private func refine() { begin(.refine) }
     private func begin(_ action: RewriteAction) {
         guard let source = draft.text, !source.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, source.utf16.count <= 20_000 else {
-            status.text = "Choose between 1 and 20,000 characters."; return
+            showStatus("Choose between 1 and 20,000 characters."); return
         }
         if originalText.isEmpty { originalText = source }
+        learningCandidate = nil
         let previous = operation
         stopOperation()
         let current = revision
         setBusy(true)
-        status.text = action == .refine ? "Refining on your iPhone…" : "Translating on your iPhone…"
+        showStatus(action == .refine ? "Refining on your iPhone…" : "Translating on your iPhone…")
         let handler = rewrite
         operation = Task { [weak self] in
             // Do not overlap model sessions if cancellation is still draining.
@@ -128,18 +170,21 @@ class DraftViewController: UIViewController, UITextViewDelegate {
                 guard let self, !Task.isCancelled, self.revision == current, self.draft.text == source else { return }
                 self.undoPair = output == source ? nil : (source, output)
                 self.draft.text = output
-                self.status.text = output == source ? "Already clear. No changes needed." : action == .refine ? "Refined. Make it yours before copying." : "Translated. Review before copying."
+                if action == .refine, output != source {
+                    self.learningCandidate = (source, NLLanguageRecognizer.dominantLanguage(for: source)?.rawValue ?? "und")
+                }
+                self.showStatus(output == source ? "Already clear. No changes needed." : action == .refine ? "Refined. Make it yours before copying." : "Translated. Review before copying.")
                 self.finishOperation()
             } catch {
                 guard let self, !Task.isCancelled, self.revision == current else { return }
-                self.status.text = error.localizedDescription
+                self.showStatus(error.localizedDescription)
                 self.finishOperation()
             }
         }
         timeout = Task { [weak self] in
             try? await Task.sleep(for: .seconds(45))
             guard !Task.isCancelled, let self, self.revision == current else { return }
-            self.stopOperation(); self.status.text = "This is taking too long. Your text is unchanged. Tap Refine or Translate to retry."
+            self.stopOperation(); self.showStatus("This is taking too long. Your text is unchanged. Tap Refine or Translate to retry.")
         }
     }
     private func setBusy(_ value: Bool) {
@@ -152,17 +197,17 @@ class DraftViewController: UIViewController, UITextViewDelegate {
     }
     private func finishOperation() { timeout?.cancel(); timeout = nil; operation = nil; setBusy(false) }
     private func stopOperation() { revision = UUID(); operation?.cancel(); timeout?.cancel(); timeout = nil; setBusy(false) }
-    @objc private func cancelRewrite() { stopOperation(); status.text = "Cancelled. Your text is unchanged." }
+    @objc private func cancelRewrite() { stopOperation(); showStatus("Cancelled. Your text is unchanged.") }
     func textViewDidChange(_ textView: UITextView) {
         let wasBusy = busy; stopOperation()
-        if wasBusy { status.text = "Paused while you edit. Tap Refine when ready." }
+        if wasBusy { showStatus("Paused while you edit. Tap Refine when ready.") }
     }
     @objc func undoRewrite() {
         guard let pair = undoPair, draft.text == pair.after else { return }
-        stopOperation(); draft.text = pair.before; undoPair = nil; setBusy(false); status.text = "Original wording restored."
+        stopOperation(); draft.text = pair.before; undoPair = nil; learningCandidate = nil; setBusy(false); showStatus("Original wording restored.")
     }
     @objc private func showOriginal() {
-        let controller = UIViewController(); controller.title = "Original"
+        let controller = UIViewController(); controller.title = M("Original")
         let text = UITextView(); text.text = originalText; text.isEditable = false
         text.font = .preferredFont(forTextStyle: .body); text.adjustsFontForContentSizeCategory = true
         text.backgroundColor = .systemBackground; controller.view = text
@@ -177,13 +222,17 @@ class DraftViewController: UIViewController, UITextViewDelegate {
     @objc func copyDraft() {
         guard !busy else { return }
         guard let text = draft.text, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, text.utf16.count <= 20_000 else {
-            status.text = "Choose between 1 and 20,000 characters. Nothing was copied."; return
+            showStatus("Choose between 1 and 20,000 characters. Nothing was copied."); return
+        }
+        if let candidate = learningCandidate {
+            try? MobilePreferences.shared.observeCopy(original: candidate.original, result: text, language: candidate.language)
+            learningCandidate = nil
         }
         UIPasteboard.general.setItems([[UTType.utf8PlainText.identifier: text]], options: [.localOnly: true])
         if isShare { draft.text = ""; onClose?() }
-        else { status.text = "Copied on this device. Return to your app and paste." }
+        else { showStatus("Copied on this device. Return to your app and paste.") }
     }
-    @objc func cancelDraft() { stopOperation(); draft.text = ""; originalText = ""; undoPair = nil; setBusy(false); onClose?() }
+    @objc func cancelDraft() { stopOperation(); draft.text = ""; originalText = ""; undoPair = nil; learningCandidate = nil; setBusy(false); onClose?() }
 }
 private extension UIFont {
     func withTraits(_ traits: UIFontDescriptor.SymbolicTraits) -> UIFont {

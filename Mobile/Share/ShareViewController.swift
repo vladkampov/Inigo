@@ -13,7 +13,7 @@ final class ShareViewController: DraftViewController {
             self.extensionContext?.completeRequest(returningItems: nil)
         }
         copyButton.isEnabled = false
-        status.text = "Loading your selection…"
+        showStatus("Loading your selection…")
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -22,7 +22,7 @@ final class ShareViewController: DraftViewController {
         let expiry = DispatchWorkItem { [weak self] in
             guard let self, self.generation == invocation else { return }
             self.generation = UUID()
-            self.status.text = "The host app did not finish sharing. Cancel and retry, or copy the text and use Paste in Inigo."
+            self.showStatus("The host app did not finish sharing. Cancel and retry, or copy the text and use Paste in Inigo.")
         }
         timeout = expiry; DispatchQueue.main.asyncAfter(deadline: .now() + 12, execute: expiry)
         ShareTextLoader.load(extensionContext?.inputItems as? [NSExtensionItem] ?? []) { [weak self] result in
@@ -32,7 +32,7 @@ final class ShareViewController: DraftViewController {
                 switch result {
                 case .success(let text):
                     self.receive(text)
-                case .failure(let error): self.status.text = error.localizedDescription
+                case .failure(let error): self.showStatus(error.localizedDescription)
                 }
             }
         }

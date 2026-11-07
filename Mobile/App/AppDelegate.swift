@@ -22,12 +22,15 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 final class PasteViewController: DraftViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Paste", style: .plain, target: self, action: #selector(pasteDraft))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: M("Paste"), style: .plain, target: self, action: #selector(pasteDraft))
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated); navigationItem.rightBarButtonItem?.title = M("Paste")
     }
     @objc private func pasteDraft() {
         // Explicit user action only. No clipboard polling or automatic reads.
         guard let text = UIPasteboard.general.string, text.utf16.count <= 20_000 else {
-            status.text = "Copy a text selection of up to 20,000 characters, then tap Paste."; return
+            showStatus("Copy a text selection of up to 20,000 characters, then tap Paste."); return
         }
         receive(text)
     }

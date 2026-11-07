@@ -27,7 +27,7 @@ targets:
   InigoMobile:
     type: application
     platform: iOS
-    sources: [App, Shared, Assets.xcassets, ../Sources/Inigo/TranslationQuality.swift]
+    sources: [App, Shared, Assets.xcassets, Resources, ../Sources/Inigo/TranslationQuality.swift]
     dependencies:
       - target: InigoCore
         embed: false
@@ -37,6 +37,8 @@ targets:
       path: App/Info.plist
       properties:
         CFBundleDisplayName: Inigo
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [ar, bn, de, en, es, fa, fr, hi, id, it, ja, ko, mr, nl, pl, pt, ta, te, th, tr, uk, ur, vi, zh]
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         InigoDisplayVersion: $(INIGO_DISPLAY_VERSION)
@@ -48,11 +50,12 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile
+        CODE_SIGN_ENTITLEMENTS: Shared.entitlements
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
   InigoShare:
     type: app-extension
     platform: iOS
-    sources: [Share, Shared, Assets.xcassets, ../Sources/Inigo/TranslationQuality.swift]
+    sources: [Share, Shared, Assets.xcassets, Resources, ../Sources/Inigo/TranslationQuality.swift]
     dependencies:
       - target: InigoCore
         embed: false
@@ -60,6 +63,8 @@ targets:
       path: Share/Info.plist
       properties:
         CFBundleDisplayName: Inigo
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [ar, bn, de, en, es, fa, fr, hi, id, it, ja, ko, mr, nl, pl, pt, ta, te, th, tr, uk, ur, vi, zh]
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         InigoDisplayVersion: $(INIGO_DISPLAY_VERSION)
@@ -72,11 +77,12 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile.share
+        CODE_SIGN_ENTITLEMENTS: Shared.entitlements
         APPLICATION_EXTENSION_API_ONLY: YES
   InigoCoreMobileTests:
     type: bundle.unit-test
     platform: iOS
-    sources: [../Tests/InigoCoreTests, Tests, Shared/ShareTextLoader.swift, Shared/DraftViewController.swift, Shared/MobileRewriteEngine.swift, ../Sources/Inigo/TranslationQuality.swift]
+    sources: [../Tests/InigoCoreTests, Tests, Shared, ../Sources/Inigo/TranslationQuality.swift]
     dependencies:
       - target: InigoCore
     settings:
