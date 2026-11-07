@@ -1,0 +1,763 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0384663739595EFE421F55C3 /* SupportedLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A5B10322C27527A79305C /* SupportedLanguage.swift */; };
+		063DBD0DE2CFD0BE5A3181B3 /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */; };
+		07A14C04832C19286C72AF8B /* DiagnosticEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E047E6BBD51819A7DE4009 /* DiagnosticEvent.swift */; };
+		235E63C10ED5ED8E4DAC3EDC /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
+		25C92ED26C5F433DD38205CF /* WriteVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5571F1CD1D5C1D2E7E5869 /* WriteVerificationTests.swift */; };
+		266FCF87ECB2A5C319BD4DB5 /* ModelProbeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83D918AE471012A6BE527F1 /* ModelProbeViewController.swift */; };
+		2A112B0F4FC71DF7F1AD2CD2 /* ModelSelectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CE5CCCB8DA9D7DAF987227 /* ModelSelectionTests.swift */; };
+		2B01C55E975C61215EC3A1A9 /* ClipboardPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759E3E2A526D39DCD32A1FAF /* ClipboardPolicy.swift */; };
+		4914D749559FBC5C29B37B50 /* SafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475F44E21E85E8DF8EECEA60 /* SafetyTests.swift */; };
+		619DF55673AEAF02C412ECAC /* Rewrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C3207A2899F8AF1966349 /* Rewrite.swift */; };
+		69FAD5C5E4F17A22AF3FFBF0 /* DiagnosticEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB8C544A40F8CB70A7AA49 /* DiagnosticEventTests.swift */; };
+		74F9B4E5A312F84AA669C028 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952780DE35E3438B45D745E4 /* ShareViewController.swift */; };
+		A90FEFB85209F145D7FC11D8 /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
+		AC37DBAC1D3320FD086299B4 /* InigoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; };
+		B1822E787FD77DE2DFE5574E /* LocalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0027630E7059D7C3D79DC803 /* LocalModels.swift */; };
+		BD1E14C040227F55789DDD20 /* ModelProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3857E184383ABCB658F53 /* ModelProbe.swift */; };
+		C3CDE821E6C5450C14968FA6 /* LanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C440BD2E6586727DD4FE2A9 /* LanguageTests.swift */; };
+		C7882B036DD754ED3EA40B7F /* DraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */; };
+		CE23E71046F66B75CA92D3ED /* WriteVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925C83E79B5A1C98E7843596 /* WriteVerification.swift */; };
+		D9642B051C3E04D1472C2BE6 /* ClipboardPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C1C97B7E9931B97D5B996 /* ClipboardPolicyTests.swift */; };
+		E04BFCD3B899C5B67A22D6A9 /* InigoShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2086D93F4CC12C8DD82BC83F /* InigoShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E2CE327C9D2D7025618724E2 /* ModelProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3857E184383ABCB658F53 /* ModelProbe.swift */; };
+		E5BCA814BCADA55E7776BEA0 /* InigoCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 16B8AAC889B08378B42276CF /* InigoCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F911DB25B316D2E587889EB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4616A8719133B094EB28506C /* AppDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0DD6D6C654FA8F1216315489 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7035B528B337BAB930AC7F5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 040D31FC406410926D8BCFC4;
+			remoteInfo = InigoShare;
+		};
+		1F64803D154C918DA634ACCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7035B528B337BAB930AC7F5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D08F9DE0FD27ED1F330A99FE;
+			remoteInfo = InigoCore;
+		};
+		28E67F05ED4091D980DE2B0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7035B528B337BAB930AC7F5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D08F9DE0FD27ED1F330A99FE;
+			remoteInfo = InigoCore;
+		};
+		89219FC3BFDE16937FD0B460 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7035B528B337BAB930AC7F5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D08F9DE0FD27ED1F330A99FE;
+			remoteInfo = InigoCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CAC84F12F56A92167AB7F6C6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E5BCA814BCADA55E7776BEA0 /* InigoCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5B438E53C5D6F807F656A94 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E04BFCD3B899C5B67A22D6A9 /* InigoShare.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0027630E7059D7C3D79DC803 /* LocalModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalModels.swift; sourceTree = "<group>"; };
+		043007FB62CC723CFC504A10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftViewController.swift; sourceTree = "<group>"; };
+		115C0077F3005D5A474ED18B /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
+		134C1C97B7E9931B97D5B996 /* ClipboardPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPolicyTests.swift; sourceTree = "<group>"; };
+		16B8AAC889B08378B42276CF /* InigoCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InigoCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2086D93F4CC12C8DD82BC83F /* InigoShare.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = InigoShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C440BD2E6586727DD4FE2A9 /* LanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTests.swift; sourceTree = "<group>"; };
+		4616A8719133B094EB28506C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		475F44E21E85E8DF8EECEA60 /* SafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyTests.swift; sourceTree = "<group>"; };
+		5D316C37D49B3DA88A8FD816 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		759E3E2A526D39DCD32A1FAF /* ClipboardPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardPolicy.swift; sourceTree = "<group>"; };
+		925C83E79B5A1C98E7843596 /* WriteVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVerification.swift; sourceTree = "<group>"; };
+		94E047E6BBD51819A7DE4009 /* DiagnosticEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticEvent.swift; sourceTree = "<group>"; };
+		952780DE35E3438B45D745E4 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		97CE5CCCB8DA9D7DAF987227 /* ModelSelectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionTests.swift; sourceTree = "<group>"; };
+		A0B3857E184383ABCB658F53 /* ModelProbe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProbe.swift; sourceTree = "<group>"; };
+		A83D918AE471012A6BE527F1 /* ModelProbeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProbeViewController.swift; sourceTree = "<group>"; };
+		BF7DF2BC646402547B7FA725 /* InigoCoreMobileTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = InigoCoreMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCDB8C544A40F8CB70A7AA49 /* DiagnosticEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticEventTests.swift; sourceTree = "<group>"; };
+		EA4A5B10322C27527A79305C /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
+		EC0D4E14A20797CF544C04E2 /* InigoMobile.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = InigoMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4C3207A2899F8AF1966349 /* Rewrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewrite.swift; sourceTree = "<group>"; };
+		FA5571F1CD1D5C1D2E7E5869 /* WriteVerificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVerificationTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1AD9D219217C7368E8233C96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				235E63C10ED5ED8E4DAC3EDC /* InigoCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD83C604AF4C7D194827017B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A90FEFB85209F145D7FC11D8 /* InigoCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0995E1946196A6FD61E40BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC37DBAC1D3320FD086299B4 /* InigoCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04BAA8423F1B236F356695A9 /* InigoCore */ = {
+			isa = PBXGroup;
+			children = (
+				759E3E2A526D39DCD32A1FAF /* ClipboardPolicy.swift */,
+				94E047E6BBD51819A7DE4009 /* DiagnosticEvent.swift */,
+				0027630E7059D7C3D79DC803 /* LocalModels.swift */,
+				FA4C3207A2899F8AF1966349 /* Rewrite.swift */,
+				EA4A5B10322C27527A79305C /* SupportedLanguage.swift */,
+				925C83E79B5A1C98E7843596 /* WriteVerification.swift */,
+			);
+			name = InigoCore;
+			path = ../Sources/InigoCore;
+			sourceTree = "<group>";
+		};
+		2779C486773EE867A06808C1 /* Mobile */ = {
+			isa = PBXGroup;
+			children = (
+				115C0077F3005D5A474ED18B /* Version.xcconfig */,
+			);
+			name = Mobile;
+			path = .;
+			sourceTree = "<group>";
+		};
+		43A619CAF97FC9BF67345487 = {
+			isa = PBXGroup;
+			children = (
+				777EAF052B9FB77037661149 /* App */,
+				04BAA8423F1B236F356695A9 /* InigoCore */,
+				FB6DF2C8336AF60AF902D93D /* InigoCoreTests */,
+				2779C486773EE867A06808C1 /* Mobile */,
+				83C0F2C911C62120C94388D9 /* Share */,
+				FE6654E4C61B109CFDAD18F7 /* Shared */,
+				48EEE5088DB87A917581A0C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48EEE5088DB87A917581A0C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16B8AAC889B08378B42276CF /* InigoCore.framework */,
+				BF7DF2BC646402547B7FA725 /* InigoCoreMobileTests.xctest */,
+				EC0D4E14A20797CF544C04E2 /* InigoMobile.app */,
+				2086D93F4CC12C8DD82BC83F /* InigoShare.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		777EAF052B9FB77037661149 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4616A8719133B094EB28506C /* AppDelegate.swift */,
+				043007FB62CC723CFC504A10 /* Info.plist */,
+				A83D918AE471012A6BE527F1 /* ModelProbeViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		83C0F2C911C62120C94388D9 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				5D316C37D49B3DA88A8FD816 /* Info.plist */,
+				952780DE35E3438B45D745E4 /* ShareViewController.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		FB6DF2C8336AF60AF902D93D /* InigoCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				134C1C97B7E9931B97D5B996 /* ClipboardPolicyTests.swift */,
+				CCDB8C544A40F8CB70A7AA49 /* DiagnosticEventTests.swift */,
+				2C440BD2E6586727DD4FE2A9 /* LanguageTests.swift */,
+				97CE5CCCB8DA9D7DAF987227 /* ModelSelectionTests.swift */,
+				475F44E21E85E8DF8EECEA60 /* SafetyTests.swift */,
+				FA5571F1CD1D5C1D2E7E5869 /* WriteVerificationTests.swift */,
+			);
+			name = InigoCoreTests;
+			path = ../Tests/InigoCoreTests;
+			sourceTree = "<group>";
+		};
+		FE6654E4C61B109CFDAD18F7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				0BDD934C90B23DC0D79FB9B9 /* DraftViewController.swift */,
+				A0B3857E184383ABCB658F53 /* ModelProbe.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		040D31FC406410926D8BCFC4 /* InigoShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04864014B2F28E814FD14848 /* Build configuration list for PBXNativeTarget "InigoShare" */;
+			buildPhases = (
+				4CCEEF565FFB6757357E0731 /* Sources */,
+				DD83C604AF4C7D194827017B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3020229D7BF2FF8696C72330 /* PBXTargetDependency */,
+			);
+			name = InigoShare;
+			packageProductDependencies = (
+			);
+			productName = InigoShare;
+			productReference = 2086D93F4CC12C8DD82BC83F /* InigoShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		355531237F30029541121768 /* InigoCoreMobileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B507ACA0807262B08E065831 /* Build configuration list for PBXNativeTarget "InigoCoreMobileTests" */;
+			buildPhases = (
+				8B7D8F0F46932A9064D8B271 /* Sources */,
+				E0995E1946196A6FD61E40BA /* Frameworks */,
+				CAC84F12F56A92167AB7F6C6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60A3DC98EFB08270C0100E6C /* PBXTargetDependency */,
+			);
+			name = InigoCoreMobileTests;
+			packageProductDependencies = (
+			);
+			productName = InigoCoreMobileTests;
+			productReference = BF7DF2BC646402547B7FA725 /* InigoCoreMobileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9F4D4C8CC73194DD272A2385 /* InigoMobile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 822D32B9E75B176F02318A2C /* Build configuration list for PBXNativeTarget "InigoMobile" */;
+			buildPhases = (
+				EBF36EA7EF81CF7AA35A6209 /* Sources */,
+				1AD9D219217C7368E8233C96 /* Frameworks */,
+				E5B438E53C5D6F807F656A94 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9923EFC80495F3A0B7A1C5BC /* PBXTargetDependency */,
+				3C6ABC2DD71FD3C90A249802 /* PBXTargetDependency */,
+			);
+			name = InigoMobile;
+			packageProductDependencies = (
+			);
+			productName = InigoMobile;
+			productReference = EC0D4E14A20797CF544C04E2 /* InigoMobile.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D08F9DE0FD27ED1F330A99FE /* InigoCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1395C12861E256F2DB5E02C /* Build configuration list for PBXNativeTarget "InigoCore" */;
+			buildPhases = (
+				DEF3743662E186F788CEDE24 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InigoCore;
+			packageProductDependencies = (
+			);
+			productName = InigoCore;
+			productReference = 16B8AAC889B08378B42276CF /* InigoCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7035B528B337BAB930AC7F5B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					040D31FC406410926D8BCFC4 = {
+						DevelopmentTeam = JKAL24VVB9;
+						ProvisioningStyle = Automatic;
+					};
+					355531237F30029541121768 = {
+						DevelopmentTeam = JKAL24VVB9;
+						ProvisioningStyle = Automatic;
+					};
+					9F4D4C8CC73194DD272A2385 = {
+						DevelopmentTeam = JKAL24VVB9;
+						ProvisioningStyle = Automatic;
+					};
+					D08F9DE0FD27ED1F330A99FE = {
+						DevelopmentTeam = JKAL24VVB9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 16B65156423CDD76D112E630 /* Build configuration list for PBXProject "InigoMobile" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 43A619CAF97FC9BF67345487;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 48EEE5088DB87A917581A0C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D08F9DE0FD27ED1F330A99FE /* InigoCore */,
+				9F4D4C8CC73194DD272A2385 /* InigoMobile */,
+				040D31FC406410926D8BCFC4 /* InigoShare */,
+				355531237F30029541121768 /* InigoCoreMobileTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CCEEF565FFB6757357E0731 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7882B036DD754ED3EA40B7F /* DraftViewController.swift in Sources */,
+				E2CE327C9D2D7025618724E2 /* ModelProbe.swift in Sources */,
+				74F9B4E5A312F84AA669C028 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B7D8F0F46932A9064D8B271 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9642B051C3E04D1472C2BE6 /* ClipboardPolicyTests.swift in Sources */,
+				69FAD5C5E4F17A22AF3FFBF0 /* DiagnosticEventTests.swift in Sources */,
+				C3CDE821E6C5450C14968FA6 /* LanguageTests.swift in Sources */,
+				2A112B0F4FC71DF7F1AD2CD2 /* ModelSelectionTests.swift in Sources */,
+				4914D749559FBC5C29B37B50 /* SafetyTests.swift in Sources */,
+				25C92ED26C5F433DD38205CF /* WriteVerificationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEF3743662E186F788CEDE24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B01C55E975C61215EC3A1A9 /* ClipboardPolicy.swift in Sources */,
+				07A14C04832C19286C72AF8B /* DiagnosticEvent.swift in Sources */,
+				B1822E787FD77DE2DFE5574E /* LocalModels.swift in Sources */,
+				619DF55673AEAF02C412ECAC /* Rewrite.swift in Sources */,
+				0384663739595EFE421F55C3 /* SupportedLanguage.swift in Sources */,
+				CE23E71046F66B75CA92D3ED /* WriteVerification.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBF36EA7EF81CF7AA35A6209 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F911DB25B316D2E587889EB9 /* AppDelegate.swift in Sources */,
+				063DBD0DE2CFD0BE5A3181B3 /* DraftViewController.swift in Sources */,
+				BD1E14C040227F55789DDD20 /* ModelProbe.swift in Sources */,
+				266FCF87ECB2A5C319BD4DB5 /* ModelProbeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3020229D7BF2FF8696C72330 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D08F9DE0FD27ED1F330A99FE /* InigoCore */;
+			targetProxy = 28E67F05ED4091D980DE2B0C /* PBXContainerItemProxy */;
+		};
+		3C6ABC2DD71FD3C90A249802 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 040D31FC406410926D8BCFC4 /* InigoShare */;
+			targetProxy = 0DD6D6C654FA8F1216315489 /* PBXContainerItemProxy */;
+		};
+		60A3DC98EFB08270C0100E6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D08F9DE0FD27ED1F330A99FE /* InigoCore */;
+			targetProxy = 89219FC3BFDE16937FD0B460 /* PBXContainerItemProxy */;
+		};
+		9923EFC80495F3A0B7A1C5BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D08F9DE0FD27ED1F330A99FE /* InigoCore */;
+			targetProxy = 1F64803D154C918DA634ACCE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		51785AC183D0A58B9D80D073 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.inigo.mobile;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		752FF6DCEAD06308E54820F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.inigo.mobile;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C13C671E24A5DC61AC1941A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.inigo.mobile.coretests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8CC25F424A5A8D455A543C7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.inigo.mobile.coretests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C33B6F7764E7266483517419 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = app.inigo.mobile.core;
+				PRODUCT_MODULE_NAME = InigoCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		C64C30A9CBFCAB6B7B552147 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 115C0077F3005D5A474ED18B /* Version.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = JKAL24VVB9;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C6520776B6928D9619169D5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				INFOPLIST_FILE = Share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.inigo.mobile.share;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D3DC33AC9DB41D3077F63C9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				PRODUCT_BUNDLE_IDENTIFIER = app.inigo.mobile.core;
+				PRODUCT_MODULE_NAME = InigoCore;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		E848D6912E8155F368829C66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				INFOPLIST_FILE = Share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.inigo.mobile.share;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E95C51BF9A58E40D1F1B19A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 115C0077F3005D5A474ED18B /* Version.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = JKAL24VVB9;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04864014B2F28E814FD14848 /* Build configuration list for PBXNativeTarget "InigoShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E848D6912E8155F368829C66 /* Debug */,
+				C6520776B6928D9619169D5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		16B65156423CDD76D112E630 /* Build configuration list for PBXProject "InigoMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C64C30A9CBFCAB6B7B552147 /* Debug */,
+				E95C51BF9A58E40D1F1B19A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		822D32B9E75B176F02318A2C /* Build configuration list for PBXNativeTarget "InigoMobile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				752FF6DCEAD06308E54820F9 /* Debug */,
+				51785AC183D0A58B9D80D073 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B1395C12861E256F2DB5E02C /* Build configuration list for PBXNativeTarget "InigoCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C33B6F7764E7266483517419 /* Debug */,
+				D3DC33AC9DB41D3077F63C9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B507ACA0807262B08E065831 /* Build configuration list for PBXNativeTarget "InigoCoreMobileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CC25F424A5A8D455A543C7A /* Debug */,
+				8C13C671E24A5DC61AC1941A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7035B528B337BAB930AC7F5B /* Project object */;
+}
