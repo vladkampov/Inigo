@@ -1,0 +1,117 @@
+name: InigoMobile
+options:
+  deploymentTarget:
+    iOS: '26.0'
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+    DEVELOPMENT_TEAM: JKAL24VVB9
+    CODE_SIGN_STYLE: Automatic
+    TARGETED_DEVICE_FAMILY: '1'
+configFiles:
+  Debug: Version.xcconfig
+  Release: Version.xcconfig
+targets:
+  InigoCore:
+    type: framework
+    platform: iOS
+    sources: [../Sources/InigoCore]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile.core
+        PRODUCT_MODULE_NAME: InigoCore
+        GENERATE_INFOPLIST_FILE: YES
+        MACH_O_TYPE: staticlib
+        SKIP_INSTALL: YES
+        APPLICATION_EXTENSION_API_ONLY: YES
+  InigoMobile:
+    type: application
+    platform: iOS
+    sources: [App, Shared, Assets.xcassets, Resources, ../Sources/Inigo/TranslationQuality.swift]
+    dependencies:
+      - target: InigoCore
+        embed: false
+      - target: InigoShare
+        embed: true
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Inigo
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [ar, bn, de, en, es, fa, fr, hi, id, it, ja, ko, mr, nl, pl, pt, ta, te, th, tr, uk, ur, vi, zh]
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        InigoDisplayVersion: $(INIGO_DISPLAY_VERSION)
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile
+        CODE_SIGN_ENTITLEMENTS: Shared.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+  InigoShare:
+    type: app-extension
+    platform: iOS
+    sources: [Share, Shared, Assets.xcassets, Resources, ../Sources/Inigo/TranslationQuality.swift]
+    dependencies:
+      - target: InigoCore
+        embed: false
+    info:
+      path: Share/Info.plist
+      properties:
+        CFBundleDisplayName: Inigo
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [ar, bn, de, en, es, fa, fr, hi, id, it, ja, ko, mr, nl, pl, pt, ta, te, th, tr, uk, ur, vi, zh]
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        InigoDisplayVersion: $(INIGO_DISPLAY_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.share-services
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShareViewController
+          NSExtensionAttributes:
+            NSExtensionActivationRule:
+              NSExtensionActivationSupportsText: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile.share
+        CODE_SIGN_ENTITLEMENTS: Shared.entitlements
+        APPLICATION_EXTENSION_API_ONLY: YES
+  InigoCoreMobileTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [../Tests/InigoCoreTests, Tests, Shared, ../Sources/Inigo/TranslationQuality.swift]
+    dependencies:
+      - target: InigoCore
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile.coretests
+  InigoTranslationDeviceTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [DeviceTests]
+    dependencies:
+      - target: InigoMobile
+      - target: InigoCore
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: app.inigo.mobile.translationtests
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/InigoMobile.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InigoMobile
+        BUNDLE_LOADER: $(TEST_HOST)
+schemes:
+  InigoTranslationDevice:
+    build:
+      targets:
+        InigoMobile: all
+    test:
+      targets: [InigoTranslationDeviceTests]
+  InigoMobile:
+    build:
+      targets:
+        InigoMobile: all
+    test:
+      targets: [InigoCoreMobileTests]
