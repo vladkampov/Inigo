@@ -2,6 +2,19 @@
 
 Versions follow Semantic Versioning. Pre-1.0 releases are experimental.
 
+## [0.2.0-beta.8](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.7...v0.2.0-beta.8) (2026-11-11)
+
+
+### Features
+
+* **macos:** add opt-in launch at login ([#36](https://github.com/vladkampov/Inigo/issues/36)) ([87be6e6](https://github.com/vladkampov/Inigo/commit/87be6e6a01e8a098e3a353485d7c1d2c0218136a))
+
+
+### Bug Fixes
+
+* isolate stable update publishing and document release gates ([#29](https://github.com/vladkampov/Inigo/issues/29)) ([089bc93](https://github.com/vladkampov/Inigo/commit/089bc9373cc98d93975cbb158b71a5112ae8d1c7))
+* prevent stale model downloads and recover damaged files ([#30](https://github.com/vladkampov/Inigo/issues/30)) ([9e21219](https://github.com/vladkampov/Inigo/commit/9e212199969202dde6a81907f42b822635762f4f))
+
 ## [0.2.0-beta.7](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.6...v0.2.0-beta.7) (2026-11-06)
 
 ### Release validation
