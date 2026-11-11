@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "இந்தக் கட்டமைப்பிற்கு தவறு அறிக்கை அமைப்பிடப்படவில்லை.",
   "The model returned the wrong language. Your original text is unchanged.": "மாதிரியானது தவறான மொழியைத் திருப்பி அளித்தது. உங்கள் அசல் உரை மாற்றப்படவில்லை.",
   "Coffee support is coming soon.": "காபி ஆதரவு மிக விரைவில் கிடைக்கும்.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "உங்கள் Mac-க்கு ஏற்ற மாதிரியைத் தேர்ந்தெடுக்கவும். மொழி மற்றும் பணியைப் பொறுத்து தரமும் வேகமும் மாறுபடும்."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "உங்கள் Mac-க்கு ஏற்ற மாதிரியைத் தேர்ந்தெடுக்கவும். மொழி மற்றும் பணியைப் பொறுத்து தரமும் வேகமும் மாறுபடும்.",
+  "Launch at login": "உள்நுழையும்போது தொடங்கு",
+  "Start Inigo in the menu bar when you log in to your Mac.": "உங்கள் Mac-இல் உள்நுழையும்போது மெனு பட்டியில் Inigo-வைத் தொடங்கவும்.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "உள்நுழையும்போது Inigo தொடங்க, கணினி அமைப்புகளில் அனுமதி தேவை.",
+  "Open Login Items settings": "உள்நுழைவு உருப்படிகளின் அமைப்புகளைத் திற",
+  "Launch at login is unavailable for this copy of Inigo.": "Inigo-வின் இந்தப் பிரதியில் உள்நுழையும்போது தொடங்கும் வசதி கிடைக்கவில்லை.",
+  "Couldn’t change launch at login. Try again.": "உள்நுழையும்போது தொடங்கும் அமைப்பை மாற்ற முடியவில்லை. மீண்டும் முயலவும்."
 }

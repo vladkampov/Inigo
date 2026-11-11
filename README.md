@@ -13,6 +13,8 @@ Download the [public beta](https://github.com/vladkampov/Inigo/releases/tag/v0.2
 ## What it does
 - **⌥I** refines a selection or current paragraph; **⌥⇧I** translates.
   Both shortcuts are editable.
+- Optionally launch at macOS login. Turn on **Launch at login** during guided
+  setup or in **Settings → General**; Inigo starts in the menu bar.
 - Offers 24 translation targets and interface languages.
   The interface follows macOS or your override, with RTL layouts.
 - Replaces text only when the editor can be checked safely. Read-only selections

@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "ఈ బిల్డ్‌కు తప్పు నివేదన సెట్‌అప్ చేయబడలేదు.",
   "The model returned the wrong language. Your original text is unchanged.": "మోడల్ తప్పు భాషను తిరిగి ఇచ్చింది. మీ మూల పాఠం మారలేదు.",
   "Coffee support is coming soon.": "కాఫీ సపోర్ట్ త్వరలో వస్తుంది.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "మీ Mac‌కు సరిపోయే మోడల్‌ను ఎంచుకోండి. భాష మరియు పనిని బట్టి నాణ్యత, వేగం మారుతాయి."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "మీ Mac‌కు సరిపోయే మోడల్‌ను ఎంచుకోండి. భాష మరియు పనిని బట్టి నాణ్యత, వేగం మారుతాయి.",
+  "Launch at login": "లాగిన్ చేసినప్పుడు ప్రారంభించు",
+  "Start Inigo in the menu bar when you log in to your Mac.": "మీ Macలో లాగిన్ చేసినప్పుడు మెను బార్‌లో Inigoను ప్రారంభించండి.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "లాగిన్ చేసినప్పుడు Inigo ప్రారంభం కావడానికి సిస్టమ్ సెట్టింగ్‌లలో అనుమతి అవసరం.",
+  "Open Login Items settings": "లాగిన్ ఐటెమ్‌ల సెట్టింగ్‌లను తెరువు",
+  "Launch at login is unavailable for this copy of Inigo.": "Inigo యొక్క ఈ కాపీలో లాగిన్ చేసినప్పుడు ప్రారంభించే సదుపాయం అందుబాటులో లేదు.",
+  "Couldn’t change launch at login. Try again.": "లాగిన్ చేసినప్పుడు ప్రారంభించే సెట్టింగ్‌ను మార్చలేకపోయాం. మళ్లీ ప్రయత్నించండి."
 }

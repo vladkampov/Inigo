@@ -63,6 +63,8 @@ struct OnboardingView: View {
                 }
                 Text(L(feedback.isEmpty ? "You can also use your configured shortcut while this window is active." : feedback)).font(.callout).foregroundStyle(.secondary)
                 Text(L("In other apps, select text and press your shortcut. A brief notification confirms the change. Unsupported editors offer a copyable rewrite.")).font(.caption).foregroundStyle(.secondary)
+                Divider()
+                LoginItemSettings(loginItem: model.loginItem)
             }
             Spacer(minLength:0)
             HStack {

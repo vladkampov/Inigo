@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "Foutmelding is voor deze build niet geconfigureerd.",
   "The model returned the wrong language. Your original text is unchanged.": "Het model gaf de verkeerde taal terug. Uw originele tekst is ongewijzigd.",
   "Coffee support is coming soon.": "Coffee-ondersteuning komt binnenkort.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Kies een model dat bij je Mac past. Kwaliteit en snelheid verschillen per taal en taak."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Kies een model dat bij je Mac past. Kwaliteit en snelheid verschillen per taal en taak.",
+  "Launch at login": "Starten bij inloggen",
+  "Start Inigo in the menu bar when you log in to your Mac.": "Start Inigo in de menubalk wanneer je inlogt op je Mac.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "Toestemming in Systeeminstellingen is nodig voordat Inigo bij het inloggen kan starten.",
+  "Open Login Items settings": "Open instellingen voor inlogonderdelen",
+  "Launch at login is unavailable for this copy of Inigo.": "Starten bij inloggen is niet beschikbaar voor deze kopie van Inigo.",
+  "Couldn’t change launch at login. Try again.": "Starten bij inloggen kon niet worden gewijzigd. Probeer het opnieuw."
 }

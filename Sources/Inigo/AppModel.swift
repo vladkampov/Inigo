@@ -6,6 +6,7 @@ import InigoCore
 final class AppModel: ObservableObject {
     let reports = ErrorReports()
     let updates = UpdateManager()
+    let loginItem = LoginItemManager()
     let preferences = Preferences()
     let local = LocalEngine()
     let cloud = CloudEngine()

@@ -61,6 +61,7 @@ struct SettingsView: View {
                 ForEach(SupportedLanguage.allCases) { language in Text(language.nativeName).tag(language.rawValue) }
             }
             Text(L("Changes menus and settings only. Your writing keeps its original language.")).font(.caption).foregroundStyle(.secondary)
+            LoginItemSettings(loginItem: model.loginItem)
             ShortcutControl(model:model, preferences:preferences)
             Text(L("Inigo improves clarity and tone while keeping your language and meaning. It never sends the message for you.")).foregroundStyle(.secondary)
             Divider()
