@@ -4,12 +4,12 @@
         <title>Inigo</title>
         <item>
             <title>0.2.0</title>
-            <pubDate>Fri, 06 Nov 2026 22:16:05 +0000</pubDate>
-            <sparkle:version>1020</sparkle:version>
+            <pubDate>Wed, 11 Nov 2026 16:36:36 +0000</pubDate>
+            <sparkle:version>1029</sparkle:version>
             <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/vladkampov/Inigo/releases/download/v0.2.0-beta.7/Inigo-0.2.0-beta.7.zip" length="29654782" type="application/octet-stream" sparkle:edSignature="JLdQL/vQ8PA8fqyJY0jdsXDEUcfjqN9PxekcQRWAfLa4E4wm9ttIiQI4hS2quSmgcIuJ5JtKme8krvb2YQcICg==" />
+            <enclosure url="https://github.com/vladkampov/Inigo/releases/download/v0.2.0-beta.8/Inigo-0.2.0-beta.8.zip" length="29677004" type="application/octet-stream" sparkle:edSignature="u3mlnu0Yjwb5JyQP39KKCqynPfN8SwGqbNd0EFMxLQN6hi4HWrVDFunn3Ozw5LRKkooUMkKLyH1fK2l1us8nAw==" />
         </item>
     </channel>
 </rss>
