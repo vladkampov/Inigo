@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "Pelaporan kesalahan tidak dikonfigurasi untuk build ini.",
   "The model returned the wrong language. Your original text is unchanged.": "Model mengembalikan bahasa yang salah. Teks asli Anda tidak berubah.",
   "Coffee support is coming soon.": "Dukungan kopi akan segera hadir.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Pilih model yang sesuai dengan Mac Anda. Kualitas dan kecepatan berbeda menurut bahasa dan tugas."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Pilih model yang sesuai dengan Mac Anda. Kualitas dan kecepatan berbeda menurut bahasa dan tugas.",
+  "Launch at login": "Jalankan saat masuk",
+  "Start Inigo in the menu bar when you log in to your Mac.": "Jalankan Inigo di bar menu saat Anda masuk ke Mac.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "Persetujuan di Pengaturan Sistem diperlukan agar Inigo dapat dijalankan saat masuk.",
+  "Open Login Items settings": "Buka pengaturan Item Masuk",
+  "Launch at login is unavailable for this copy of Inigo.": "Jalankan saat masuk tidak tersedia untuk salinan Inigo ini.",
+  "Couldn’t change launch at login. Try again.": "Tidak dapat mengubah pengaturan jalankan saat masuk. Coba lagi."
 }

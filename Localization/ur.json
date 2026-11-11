@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "اس بیلڈ کے لیے غلطی رپورٹنگ ترتیب نہیں دی گئی۔",
   "The model returned the wrong language. Your original text is unchanged.": "ماڈل غلط زبان واپس کر دیا۔ آپ کا اصل متن تبدیل نہیں ہوا۔",
   "Coffee support is coming soon.": "کافی کی سپورٹ جلد ہی آئے گی۔",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "اپنے Mac کے لیے موزوں ماڈل منتخب کریں۔ معیار اور رفتار زبان اور کام کے لحاظ سے مختلف ہوتے ہیں۔"
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "اپنے Mac کے لیے موزوں ماڈل منتخب کریں۔ معیار اور رفتار زبان اور کام کے لحاظ سے مختلف ہوتے ہیں۔",
+  "Launch at login": "لاگ اِن پر چلائیں",
+  "Start Inigo in the menu bar when you log in to your Mac.": "اپنے Mac میں لاگ اِن کرتے وقت Inigo کو مینو بار میں چلائیں۔",
+  "Approval is needed in System Settings before Inigo can launch at login.": "Inigo کو لاگ اِن پر چلانے کے لیے سسٹم سیٹنگز میں منظوری درکار ہے۔",
+  "Open Login Items settings": "لاگ اِن آئٹمز کی سیٹنگز کھولیں",
+  "Launch at login is unavailable for this copy of Inigo.": "Inigo کی اس کاپی کے لیے لاگ اِن پر چلانا دستیاب نہیں ہے۔",
+  "Couldn’t change launch at login. Try again.": "لاگ اِن پر چلانے کی ترتیب تبدیل نہیں ہو سکی۔ دوبارہ کوشش کریں۔"
 }

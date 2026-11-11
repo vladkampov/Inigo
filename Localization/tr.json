@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "Bu derleme için hata raporlaması yapılandırılmamıştır.",
   "The model returned the wrong language. Your original text is unchanged.": "Model yanlış dili döndürdü. Orijinal metininiz değişmedi.",
   "Coffee support is coming soon.": "Kahve desteği yakında geliyor.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Mac’inize uygun bir model seçin. Kalite ve hız, dile ve göreve göre değişir."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Mac’inize uygun bir model seçin. Kalite ve hız, dile ve göreve göre değişir.",
+  "Launch at login": "Girişte başlat",
+  "Start Inigo in the menu bar when you log in to your Mac.": "Mac’inizde oturum açtığınızda Inigo’yu menü çubuğunda başlatın.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "Inigo’nun girişte başlatılabilmesi için Sistem Ayarları’nda onay verilmesi gerekiyor.",
+  "Open Login Items settings": "Giriş Öğeleri ayarlarını aç",
+  "Launch at login is unavailable for this copy of Inigo.": "Inigo’nun bu kopyası için girişte başlatma kullanılamıyor.",
+  "Couldn’t change launch at login. Try again.": "Girişte başlatma değiştirilemedi. Tekrar deneyin."
 }

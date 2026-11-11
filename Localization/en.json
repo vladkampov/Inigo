@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "Error reporting is not configured for this build.",
   "The model returned the wrong language. Your original text is unchanged.": "The model returned the wrong language. Your original text is unchanged.",
   "Coffee support is coming soon.": "Coffee support is coming soon.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Choose a model that fits your Mac. Quality and speed vary by language and task."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Choose a model that fits your Mac. Quality and speed vary by language and task.",
+  "Launch at login": "Launch at login",
+  "Start Inigo in the menu bar when you log in to your Mac.": "Start Inigo in the menu bar when you log in to your Mac.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "Approval is needed in System Settings before Inigo can launch at login.",
+  "Open Login Items settings": "Open Login Items settings",
+  "Launch at login is unavailable for this copy of Inigo.": "Launch at login is unavailable for this copy of Inigo.",
+  "Couldn’t change launch at login. Try again.": "Couldn’t change launch at login. Try again."
 }

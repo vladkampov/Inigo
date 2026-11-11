@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "Звіт про помилки не налаштовано для цієї версії.",
   "The model returned the wrong language. Your original text is unchanged.": "Модель повернула неправильну мову. Ваш оригінальний текст залишився незмінним.",
   "Coffee support is coming soon.": "Підтримка кави наближається.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Виберіть модель, що підходить вашому Mac. Якість і швидкість залежать від мови та завдання."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Виберіть модель, що підходить вашому Mac. Якість і швидкість залежать від мови та завдання.",
+  "Launch at login": "Запускати під час входу",
+  "Start Inigo in the menu bar when you log in to your Mac.": "Запускати Inigo в рядку меню під час входу на Mac.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "Щоб Inigo запускалася під час входу, потрібен дозвіл у Системних параметрах.",
+  "Open Login Items settings": "Відкрити параметри об’єктів входу",
+  "Launch at login is unavailable for this copy of Inigo.": "Запуск під час входу недоступний для цієї копії Inigo.",
+  "Couldn’t change launch at login. Try again.": "Не вдалося змінити запуск під час входу. Спробуйте ще раз."
 }

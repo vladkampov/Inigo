@@ -50,6 +50,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         model.hudSucceeded = { [weak self] in self?.scheduleHUDDismissal() }
         if !model.preferences.onboarding || CommandLine.arguments.contains("--settings") { openSettings() }
     }
+    func applicationDidBecomeActive(_ notification: Notification) {
+        model.loginItem.refresh()
+    }
     private func rebuildMenu() {
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title:"Inigo",action:nil,keyEquivalent:""))

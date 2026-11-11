@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "La segnalazione degli errori non è configurata per questa build.",
   "The model returned the wrong language. Your original text is unchanged.": "Il modello ha restituito la lingua sbagliata. Il tuo testo originale è rimasto invariato.",
   "Coffee support is coming soon.": "Il supporto per il caffè arriverà presto.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Scegli un modello adatto al tuo Mac. Qualità e velocità variano in base alla lingua e all’attività."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Scegli un modello adatto al tuo Mac. Qualità e velocità variano in base alla lingua e all’attività.",
+  "Launch at login": "Apri al login",
+  "Start Inigo in the menu bar when you log in to your Mac.": "Avvia Inigo nella barra dei menu quando accedi al Mac.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "È necessaria l’autorizzazione in Impostazioni di Sistema perché Inigo possa aprirsi al login.",
+  "Open Login Items settings": "Apri le impostazioni degli elementi login",
+  "Launch at login is unavailable for this copy of Inigo.": "L’apertura al login non è disponibile per questa copia di Inigo.",
+  "Couldn’t change launch at login. Try again.": "Impossibile modificare l’apertura al login. Riprova."
 }

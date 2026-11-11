@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "या बािल्डसाठी त्रुटी अहवारणी कॉन्फिगर केलेली नाही.",
   "The model returned the wrong language. Your original text is unchanged.": "मॉडेल चुकीच्या भाषेत परत आले आहे. तुमची मूळ पाठ बदलली नाही.",
   "Coffee support is coming soon.": "कॉफी सपोर्ट जलद आता येणार आहे.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "तुमच्या Mac साठी योग्य मॉडेल निवडा. भाषा आणि कामानुसार गुणवत्ता आणि वेग बदलतात."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "तुमच्या Mac साठी योग्य मॉडेल निवडा. भाषा आणि कामानुसार गुणवत्ता आणि वेग बदलतात.",
+  "Launch at login": "लॉगिन करताना सुरू करा",
+  "Start Inigo in the menu bar when you log in to your Mac.": "तुमच्या Mac वर लॉगिन करताना मेनू बारमध्ये Inigo सुरू करा.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "लॉगिन करताना Inigo सुरू होण्यासाठी सिस्टम सेटिंग्जमध्ये मंजुरी आवश्यक आहे.",
+  "Open Login Items settings": "लॉगिन आयटमच्या सेटिंग्ज उघडा",
+  "Launch at login is unavailable for this copy of Inigo.": "Inigo च्या या प्रतीसाठी लॉगिन करताना सुरू करण्याची सुविधा उपलब्ध नाही.",
+  "Couldn’t change launch at login. Try again.": "लॉगिन करताना सुरू करण्याची सेटिंग बदलता आली नाही. पुन्हा प्रयत्न करा."
 }

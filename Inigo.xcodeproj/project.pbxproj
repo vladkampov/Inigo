@@ -48,6 +48,8 @@
 		F897495D2FB8E8F57519D7BE /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E4384A275578639777427D /* Views.swift */; };
 		FACBB4079E1A9427EA69AE95 /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9050DAF09BD42210039CFD39 /* Editor.swift */; };
 		FEF7CE468FE85A67BD83990D /* Inigo.icns in Resources */ = {isa = PBXBuildFile; fileRef = 816B09168AE85FC411DB85DA /* Inigo.icns */; };
+		A2CCBA6340C70F3DA9F93506 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD38CCDD4F4449CF9BF2186 /* LoginItemManager.swift */; };
+		229B88B8DD5B7E8FE8A76D18 /* LoginItemSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368D76BA547FC2F2E0FA4C68 /* LoginItemSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		EFE1D430A78AF81AAB00F3E6 /* SupportedLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedLanguage.swift; sourceTree = "<group>"; };
 		F6BF03C3D916E4EFAD2CC7DB /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		FA082ABFFEAE0E96A7D43B71 /* ShortcutControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutControl.swift; sourceTree = "<group>"; };
+		8DD38CCDD4F4449CF9BF2186 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
+		368D76BA547FC2F2E0FA4C68 /* LoginItemSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +236,8 @@
 				C15CA5CC1C3043A89E043102 /* VerifiedModelDownload.swift */,
 				365D2CDE3C53441FDA615163 /* Localization.swift */,
 				82EB1E1BD4EB6D00283480D8 /* LocalServer.swift */,
+				368D76BA547FC2F2E0FA4C68 /* LoginItemSettings.swift */,
+				8DD38CCDD4F4449CF9BF2186 /* LoginItemManager.swift */,
 				D04596586670AC3752B89835 /* ModelSettings.swift */,
 				47DE3AA5B7DDEE14AD91149E /* OnboardingCelebration.swift */,
 				DAAFF4C20DD7EA581BF6F029 /* OnboardingView.swift */,
@@ -437,6 +443,8 @@
 				C15CA5CC1C3043A89E043101 /* VerifiedModelDownload.swift in Sources */,
 				533A73E8BEDEDD9B845AD672 /* LocalServer.swift in Sources */,
 				6EB3A0E5119845802B4E00E0 /* Localization.swift in Sources */,
+				229B88B8DD5B7E8FE8A76D18 /* LoginItemSettings.swift in Sources */,
+				A2CCBA6340C70F3DA9F93506 /* LoginItemManager.swift in Sources */,
 				F541CC6403D9A0F7770E00F7 /* ModelSettings.swift in Sources */,
 				9C47A59C40C904E324889E79 /* OnboardingCelebration.swift in Sources */,
 				7FED70E3D3E34966DE66E303 /* OnboardingView.swift in Sources */,

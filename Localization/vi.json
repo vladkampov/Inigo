@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "Báo cáo lỗi không được cấu hình cho bản xây dựng này.",
   "The model returned the wrong language. Your original text is unchanged.": "Mô hình trả về ngôn ngữ sai. Văn bản gốc của bạn không thay đổi.",
   "Coffee support is coming soon.": "Hỗ trợ cà phê sẽ sớm được cập nhật.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Chọn mô hình phù hợp với máy Mac của bạn. Chất lượng và tốc độ thay đổi theo ngôn ngữ và tác vụ."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "Chọn mô hình phù hợp với máy Mac của bạn. Chất lượng và tốc độ thay đổi theo ngôn ngữ và tác vụ.",
+  "Launch at login": "Khởi chạy khi đăng nhập",
+  "Start Inigo in the menu bar when you log in to your Mac.": "Khởi chạy Inigo trên thanh menu khi bạn đăng nhập vào máy Mac.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "Cần phê duyệt trong Cài đặt hệ thống để Inigo có thể khởi chạy khi đăng nhập.",
+  "Open Login Items settings": "Mở cài đặt Mục đăng nhập",
+  "Launch at login is unavailable for this copy of Inigo.": "Khởi chạy khi đăng nhập không khả dụng cho bản sao Inigo này.",
+  "Couldn’t change launch at login. Try again.": "Không thể thay đổi cài đặt khởi chạy khi đăng nhập. Hãy thử lại."
 }

@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "এই বিল্ডের জন্য ত্রুটি রিপোর্টিং কনফিগার করা নেই।",
   "The model returned the wrong language. Your original text is unchanged.": "মডেল ভুল ভাষা ফেরত দিয়েছে। আপনার মূল টেক্সট অপরিবর্তিত।",
   "Coffee support is coming soon.": "কফি সাপোর্ট শীঘ্রই আসছে।",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "আপনার Mac-এর উপযোগী মডেল বেছে নিন। ভাষা ও কাজ অনুযায়ী মান ও গতি পরিবর্তিত হয়।"
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "আপনার Mac-এর উপযোগী মডেল বেছে নিন। ভাষা ও কাজ অনুযায়ী মান ও গতি পরিবর্তিত হয়।",
+  "Launch at login": "লগইন করার সময় চালু করুন",
+  "Start Inigo in the menu bar when you log in to your Mac.": "আপনার Mac-এ লগইন করলে মেনু বারে Inigo চালু করুন।",
+  "Approval is needed in System Settings before Inigo can launch at login.": "লগইন করার সময় Inigo চালু করতে সিস্টেম সেটিংসে অনুমোদন দিতে হবে।",
+  "Open Login Items settings": "লগইন আইটেমের সেটিংস খুলুন",
+  "Launch at login is unavailable for this copy of Inigo.": "Inigo-এর এই কপিতে লগইন করার সময় চালু করার সুবিধা উপলভ্য নয়।",
+  "Couldn’t change launch at login. Try again.": "লগইন করার সময় চালু করার সেটিং পরিবর্তন করা যায়নি। আবার চেষ্টা করুন।"
 }

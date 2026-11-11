@@ -245,5 +245,11 @@
   "Error reporting is not configured for this build.": "گزارش خطا برای این نسخه تنظیم نشده است.",
   "The model returned the wrong language. Your original text is unchanged.": "مدل زبان اشتباهی را برگرداند. متن اصلی شما تغییر نکرده است.",
   "Coffee support is coming soon.": "پشتیبانی قهوه به زودی در دسترس خواهد بود.",
-  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "مدلی متناسب با مک خود انتخاب کنید. کیفیت و سرعت بسته به زبان و کار متفاوت است."
+  "Choose a model that fits your Mac. Quality and speed vary by language and task.": "مدلی متناسب با مک خود انتخاب کنید. کیفیت و سرعت بسته به زبان و کار متفاوت است.",
+  "Launch at login": "اجرا هنگام ورود",
+  "Start Inigo in the menu bar when you log in to your Mac.": "هنگام ورود به Mac، برنامهٔ Inigo را در نوار منو اجرا کنید.",
+  "Approval is needed in System Settings before Inigo can launch at login.": "برای اجرای Inigo هنگام ورود، تأیید در تنظیمات سیستم لازم است.",
+  "Open Login Items settings": "باز کردن تنظیمات موارد ورود",
+  "Launch at login is unavailable for this copy of Inigo.": "اجرا هنگام ورود برای این نسخه از Inigo در دسترس نیست.",
+  "Couldn’t change launch at login. Try again.": "تغییر اجرا هنگام ورود ممکن نشد. دوباره تلاش کنید."
 }
