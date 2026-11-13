@@ -1,1 +1,1 @@
-{"name":"inigo-cloud-bridge","private":true,"type":"module","scripts":{"build":"node --check oauth.mjs && node --check bridge.mjs","test":"node --test tests/*.mjs"},"dependencies":{"jose":"6.2.15","openai":"7.47.0"}}
+{"name":"inigo-cloud-bridge","private":true,"type":"module","scripts":{"build":"node --check oauth.mjs && node --check bridge.mjs","test":"node --test tests/*.mjs"},"dependencies":{"jose":"6.2.15","openai":"7.54.0"}}
