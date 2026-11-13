@@ -63,6 +63,7 @@ struct OnboardingView: View {
                 }
                 Text(L(feedback.isEmpty ? "You can also use your configured shortcut while this window is active." : feedback)).font(.callout).foregroundStyle(.secondary)
                 Text(L("In other apps, select text and press your shortcut. A brief notification confirms the change. Unsupported editors offer a copyable rewrite.")).font(.caption).foregroundStyle(.secondary)
+                CompatibilityGuide()
                 Divider()
                 LoginItemSettings(loginItem: model.loginItem)
             }
@@ -111,7 +112,14 @@ struct OnboardingView: View {
             do {
                 let protected = try ProtectedDraft(input)
                 let request = RewriteRequest(draft:protected.masked,context:"",style:[],action:.refine)
-                let result = try protected.restore(try await local.rewrite(request))
+                let result = try protected.restore(try await local.rewrite(request) { stage in
+                    switch stage {
+                    case .load: feedback = "Loading model…"
+                    case .generate: feedback = "Refining on your Mac…"
+                    case .validate: feedback = "Checking the result…"
+                    default: break
+                    }
+                })
                 try Task.checkCancellation()
                 guard draft == input else { feedback = "The sample changed. Try again."; return }
                 previous = input; draft = result

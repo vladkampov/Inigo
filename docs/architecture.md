@@ -16,7 +16,38 @@ Accessibility reads only a focused non-secure text role. A selected range wins; 
 
 In-place writes require a settable selected-text attribute and uniform attributed text with no links, attachments, lists or headings. Unknown formatting is copy-only. Rich mention identity cannot be inferred from plain strings. The adapter therefore does not claim rich Slack mention round-trips are verified. It rechecks focus, text, selection and formatting before writing. Undo similarly requires the replacement to remain unchanged.
 
-Browser and unrecognized editor access requires explicitly selected text and supplies no surrounding context, including in private windows. The experimental Chrome and Safari extensions and their native bridge have been removed. Unsupported editors offer a copyable result; arbitrary Google Docs canvas editing is not guaranteed.
+Manual browser and unrecognized editor access requires explicitly selected text and supplies no surrounding context, including in private windows. The experimental Chrome and Safari extensions and their native bridge have been removed. Unsupported editors offer a copyable result; arbitrary Google Docs canvas editing is not guaranteed.
+
+## Automatic keyboard-layout repair
+
+This optional mode starts disabled. Enabling it includes explicit consent for whole
+focused-input access in native apps and browsers, including private windows.
+InputSourceCatalog discovers enabled/selectable macOS layouts and observes source
+changes. A passive session event tap retains timing/key metadata only; after an
+800 ms pause the controller captures the entire verifiable plain input, up to
+20,000 UTF-16 units, without surrounding context. Secure input and excluded apps
+are skipped before reading values.
+
+Conversion uses reversible Unicode key maps, preserving protected objects. macOS
+spelling evidence must recognize at least 90% of candidate letters and at most 20%
+of original letters, with six letters minimum and a 25-point lead over alternatives.
+Missing dictionaries, unavailable evidence and ambiguous maps produce no repair.
+A same-alphabet synthetic nonword checks spelling-service health before accepting
+recognition scores. Individual checks time out after two seconds and a detection
+pass has a ten-second budget.
+No inference server is called. Recognition is asynchronous and bounded; generation
+tokens cancel obsolete decisions after typing, focus, selection or source changes.
+
+Automatic replacement requires a directly settable Accessibility value. It never
+selects an entire draft or uses the clipboard to perform automatic repair; editors
+requiring Paste remain manual-only. Readback, caret restoration, guarded Undo,
+source-switch checks and field suspension after ambiguous writes apply. Manual
+operations and pickers take precedence. Undo suppresses immediate recorrection;
+input-source restoration never overrides a later manual source choice.
+
+Operation stage timings use a monotonic clock and fixed model/outcome categories.
+Support details stay in memory and are copied only by user action. They are separate
+from optional error uploads and contain no writing, raw error, app ID or custom path.
 
 ## Privacy and retention
 

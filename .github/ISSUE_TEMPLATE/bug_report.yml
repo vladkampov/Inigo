@@ -66,6 +66,17 @@
       "validations": {
         "required": true
       }
+    },
+    {
+      "type": "textarea",
+      "id": "operation",
+      "attributes": {
+        "label": "Last operation details (optional)",
+        "description": "Settings \u2192 Support \u2192 Copy last operation details. Review before sharing; never attach private text or screenshots."
+      },
+      "validations": {
+        "required": false
+      }
     }
   ]
 }

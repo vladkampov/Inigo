@@ -5,6 +5,8 @@ import InigoCore
 
 @MainActor
 final class Preferences: ObservableObject {
+    @Published var automaticLayoutRepair: Bool { didSet { defaults.set(automaticLayoutRepair, forKey: "automaticLayoutRepair") } }
+    @Published var automaticLayoutRepairPaused: Bool { didSet { defaults.set(automaticLayoutRepairPaused, forKey: "automaticLayoutRepairPaused") } }
     @Published var interfaceLanguage: String { didSet { defaults.set(interfaceLanguage,forKey:"interfaceLanguage"); NotificationCenter.default.post(name:.inigoLanguageChanged,object:nil) } }
     @Published var translationLanguage: String { didSet { defaults.set(translationLanguage,forKey:"translationLanguage") } }
     var resolvedLanguage: SupportedLanguage { SupportedLanguage.resolve(override:interfaceLanguage, preferred:Locale.preferredLanguages) }
@@ -21,9 +23,12 @@ final class Preferences: ObservableObject {
     @Published var shortcutModifiers: UInt32 { didSet { defaults.set(Int(shortcutModifiers), forKey: "shortcutModifiers") } }
     @Published var onboarding: Bool { didSet { defaults.set(onboarding, forKey: "onboarding") } }
     @Published var profile: StyleProfile { didSet { if let data = try? JSONEncoder().encode(profile) { defaults.set(data, forKey: "styleProfile") } } }
-    private let defaults = UserDefaults.standard
-    init() {
-        let d = UserDefaults.standard
+    private let defaults: UserDefaults
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+        let d = defaults
+        automaticLayoutRepair = d.bool(forKey: "automaticLayoutRepair")
+        automaticLayoutRepairPaused = d.bool(forKey: "automaticLayoutRepairPaused")
         let savedInterface = d.string(forKey:"interfaceLanguage") ?? "system"
         interfaceLanguage = SupportedLanguage(rawValue:savedInterface) == nil ? "system" : savedInterface
         translationLanguage = SupportedLanguage(rawValue:d.string(forKey:"translationLanguage") ?? "en")?.rawValue ?? "en"

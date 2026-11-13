@@ -16,7 +16,7 @@ struct SettingsView: View {
     @ObservedObject var local: LocalEngine
     @ObservedObject var cloud: CloudEngine
     @State private var section = "General"
-    let sections = [("General","gearshape"),("Translation","character.bubble"),("Processing","square.3.layers.3d"),("Privacy","hand.raised"),("Writing Style","pencil"),("Support","heart")]
+    let sections = [("General","gearshape"),("Translation","character.bubble"),("Keyboard Layout","keyboard"),("Processing","square.3.layers.3d"),("Privacy","hand.raised"),("Writing Style","pencil"),("Support","heart")]
     var body: some View {
         HStack(spacing:0) {
             VStack(alignment:.leading,spacing:24) {
@@ -42,6 +42,7 @@ struct SettingsView: View {
                     case "Writing Style": style
                     case "Support": support
                     case "Translation": translation
+                    case "Keyboard Layout": LayoutRepairSettings(preferences: preferences, controller: model.automaticLayout, catalog: model.automaticLayout.catalog)
                     default: processing
                     }
                     Spacer(minLength:20)
@@ -64,6 +65,7 @@ struct SettingsView: View {
             LoginItemSettings(loginItem: model.loginItem)
             ShortcutControl(model:model, preferences:preferences)
             Text(L("Inigo improves clarity and tone while keeping your language and meaning. It never sends the message for you.")).foregroundStyle(.secondary)
+            CompatibilityGuide()
             Divider()
             UpdateSettings(updates:model.updates)
             Divider()
@@ -106,13 +108,20 @@ struct SettingsView: View {
                     if let url = title == "Contribute on GitHub" ? SupportLinks.repository : SupportLinks.issue(title) { NSWorkspace.shared.open(url) }
                 }.disabled(SupportLinks.repository == nil)
             }
+            if !model.lastOperationDetails.isEmpty {
+                Divider()
+                Text(L("Last operation details")).font(.headline)
+                Text(L("Review these content-free details before sharing them with a bug report.")).font(.caption).foregroundStyle(.secondary)
+                Text(model.lastOperationDetails).font(.system(.caption, design: .monospaced)).textSelection(.enabled)
+                Button(L("Copy last operation details")) { model.copyOperationDetails() }
+            }
             if SupportLinks.coffee == nil { Text(L("Coffee support is coming soon.")).font(.caption).foregroundStyle(.secondary) }
         }
     }
     var privacy: some View {
         VStack(alignment:.leading,spacing:18) {
             Text(L("Your writing belongs to you.")).font(.title3.bold())
-            ForEach(["Context is read only when you invoke Inigo.","No screenshots, OCR, or clipboard monitoring.","Drafts and undo data expire from memory after two minutes.","No conversation history, analytics, or profile sync."],id:\.self) { Label(L($0),systemImage:"checkmark.shield").foregroundStyle(.secondary) }
+            ForEach(["Manual rewriting reads text when invoked. Optional automatic repair checks the focused draft after typing pauses.","No screenshots, OCR, or clipboard monitoring.","Drafts and undo data expire from memory after two minutes.","No conversation history, analytics, or profile sync."],id:\.self) { Label(L($0),systemImage:"checkmark.shield").foregroundStyle(.secondary) }
             Divider()
             ErrorReportSettings(reports:model.reports)
             Divider()

@@ -40,7 +40,7 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
 <key>CFBundleDevelopmentRegion</key><string>en</string>
 <key>LSUIElement</key><true/>
 <key>NSHighResolutionCapable</key><true/>
-<key>NSAccessibilityUsageDescription</key><string>Inigo reads and refines the text field you invoke it in. It never records your screen.</string>
+<key>NSAccessibilityUsageDescription</key><string>Inigo reads and updates text when invoked. If you enable automatic keyboard-layout repair, it also checks the whole focused draft after typing pauses, including browser inputs. It never records your screen.</string>
 </dict></plist>
 PLIST
 python3 scripts/configure-bundle.py "$APP/Contents/Info.plist"
