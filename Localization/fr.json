@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "Déverrouillez votre Keychain pour utiliser ChatGPT.",
   "Where it works": "Où cela fonctionne",
   "Your enabled macOS layouts": "Vos mises en page macOS activées",
-  "Keyboard Layout": "Disposition du clavier"
+  "Keyboard Layout": "Disposition du clavier",
+  "Translating with ChatGPT…": "Traduction avec ChatGPT…",
+  "Refining with your local server…": "Affinage avec votre serveur local…",
+  "Translating with your local server…": "Traduction avec votre serveur local…"
 }

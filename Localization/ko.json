@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "ChatGPT 를 사용하려면 키체인을 잠금 해제하세요.",
   "Where it works": "작동하는 곳",
   "Your enabled macOS layouts": "활성화된 macOS 레이아웃",
-  "Keyboard Layout": "키보드 레이아웃"
+  "Keyboard Layout": "키보드 레이아웃",
+  "Translating with ChatGPT…": "ChatGPT 로 번역 중…",
+  "Refining with your local server…": "로컬 서버로 다듬고 있습니다…",
+  "Translating with your local server…": "로컬 서버로 번역 중…"
 }

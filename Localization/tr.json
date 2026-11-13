@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "ChatGPT'yi kullanmak için Anahtar Zincir'i kilidi açın.",
   "Where it works": "Nerede çalışır",
   "Your enabled macOS layouts": "Etkinleştirilmiş macOS düzenleriniz",
-  "Keyboard Layout": "Klavye Düzeni"
+  "Keyboard Layout": "Klavye Düzeni",
+  "Translating with ChatGPT…": "ChatGPT ile çeviriliyor…",
+  "Refining with your local server…": "Yerel sunucunuzla iyileştiriliyor…",
+  "Translating with your local server…": "Yerel sunucunuzla çeviriliyor…"
 }

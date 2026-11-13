@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "ChatGPT वापरण्यासाठी तुमचा Keychain उघडवा.",
   "Where it works": "येथे कसे काम करते",
   "Your enabled macOS layouts": "तुमचे सक्रिय macOS रचना",
-  "Keyboard Layout": "कीबोर्ड रचना"
+  "Keyboard Layout": "कीबोर्ड रचना",
+  "Translating with ChatGPT…": "ChatGPT ने अनुवाद करत आहे…",
+  "Refining with your local server…": "तुमचा स्थानिक सर्व्हर तुमच्याशी सुधारत आहे…",
+  "Translating with your local server…": "तुमचा स्थानिक सर्व्हर तुमच्याशी अनुवाद करत आहे…"
 }

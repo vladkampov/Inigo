@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "قفل‌بند خود را باز کنید تا از ChatGPT استفاده کنید.",
   "Where it works": "جایی که کار می‌کند",
   "Your enabled macOS layouts": "چیدمان‌های فعال macOS شما",
-  "Keyboard Layout": "چیدمان کیبورد"
+  "Keyboard Layout": "چیدمان کیبورد",
+  "Translating with ChatGPT…": "ترجمه با ChatGPT…",
+  "Refining with your local server…": "بازبینی با سرور محلی شما…",
+  "Translating with your local server…": "ترجمه با سرور محلی شما…"
 }

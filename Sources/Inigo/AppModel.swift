@@ -47,20 +47,13 @@ final class AppModel: ObservableObject {
         timing = OperationTiming()
         if let category { processing = category }
         else if preferences.mode != "Local" { processing = .cloud }
-        else {
-            switch local.configuration.kind {
-            case .server: processing = .externalLocal
-            case .file: processing = .customLocal
-            case .managed:
-                processing = ["2B": .managed2B, "4B": .managed4B, "9B": .managed9B][local.configuration.modelID] ?? .customLocal
-            }
-        }
+        else { processing = .local(local.configuration) }
     }
     private func stage(_ stage: OperationStage, action: RewriteAction) {
         timing?.transition(stage)
         switch stage {
         case .load: message = "Loading model…"
-        case .generate: message = action == .refine ? "Refining on your Mac…" : "Translating on your Mac…"
+        case .generate: message = processing.generationMessage(for: action)
         case .validate: message = "Checking the result…"
         case .insert: message = "Applying the result…"
         case .capture: break
@@ -97,7 +90,7 @@ final class AppModel: ObservableObject {
             let request = RewriteRequest(draft:protected.masked,context:snapshot.context,style:action == .refine ? preferences.profile.preferences(for:language) : [],action:action)
             let mode = preferences.mode
             let runID = generation
-            working = true; message = action != .refine ? "Working on your selection…" : (mode == "Local" ? "Refining on your Mac…" : "Refining with ChatGPT…"); showHUD?()
+            working = true; message = processing.generationMessage(for: action); showHUD?()
             monitor = Task { [weak self] in
                 while !Task.isCancelled {
                     try? await Task.sleep(for:.milliseconds(150))
@@ -152,7 +145,8 @@ final class AppModel: ObservableObject {
     }
     func rewriteReference(_ text: String, action: RewriteAction, source: InvocationSource) {
         cancel(); clearResult(); hudAnchor = editor.focusedFrame()
-        beginTiming()
+        // This fallback runs the local engine regardless of the manual mode preference.
+        beginTiming(.local(local.configuration))
         guard source.allowed(exclusions: preferences.excludedApps) else {
             finishTiming(.failed)
             message = preferences.excludedApps.contains(source.appID) ? "This app is excluded. Change Apps Inigo should ignore in Privacy settings." : "Focus an editable text field in another app."

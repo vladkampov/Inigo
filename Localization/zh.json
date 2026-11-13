@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "解锁钥匙串以使用 ChatGPT。",
   "Where it works": "适用位置",
   "Your enabled macOS layouts": "您启用的 macOS 布局",
-  "Keyboard Layout": "键盘布局"
+  "Keyboard Layout": "键盘布局",
+  "Translating with ChatGPT…": "正在使用 ChatGPT 翻译…",
+  "Refining with your local server…": "正在使用您的本地服务器润色…",
+  "Translating with your local server…": "正在使用您的本地服务器翻译…"
 }

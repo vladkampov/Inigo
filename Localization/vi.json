@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "Mở khóa Keychain để sử dụng ChatGPT.",
   "Where it works": "Nơi nó hoạt động",
   "Your enabled macOS layouts": "Các bố cục macOS đã bật của bạn",
-  "Keyboard Layout": "Bố cục bàn phím"
+  "Keyboard Layout": "Bố cục bàn phím",
+  "Translating with ChatGPT…": "Đang dịch với ChatGPT…",
+  "Refining with your local server…": "Đang tinh chỉnh với máy chủ cục bộ của bạn…",
+  "Translating with your local server…": "Đang dịch với máy chủ cục bộ của bạn…"
 }

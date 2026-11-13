@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "Ontgrendel uw Keychain om ChatGPT te gebruiken.",
   "Where it works": "Waar het werkt",
   "Your enabled macOS layouts": "Uw ingeschakelde macOS-indelingen",
-  "Keyboard Layout": "Toetsenbordindeling"
+  "Keyboard Layout": "Toetsenbordindeling",
+  "Translating with ChatGPT…": "Vertalen met ChatGPT…",
+  "Refining with your local server…": "Verfijnen met uw lokale server…",
+  "Translating with your local server…": "Vertalen met uw lokale server…"
 }

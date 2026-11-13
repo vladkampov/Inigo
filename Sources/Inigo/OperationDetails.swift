@@ -4,6 +4,24 @@ import InigoCore
 enum ProcessingCategory: String {
     case managed2B = "Managed 2B", managed4B = "Managed 4B", managed9B = "Managed 9B"
     case customLocal = "Custom local model", externalLocal = "External local server", cloud = "Cloud", layout = "Keyboard layout"
+
+    static func local(_ configuration: LocalModelConfiguration) -> Self {
+        switch configuration.kind {
+        case .server: return .externalLocal
+        case .file: return .customLocal
+        case .managed: return ["2B": .managed2B, "4B": .managed4B, "9B": .managed9B][configuration.modelID] ?? .customLocal
+        }
+    }
+
+    func generationMessage(for action: RewriteAction) -> String {
+        switch self {
+        case .cloud: return action == .refine ? "Refining with ChatGPT…" : "Translating with ChatGPT…"
+        case .externalLocal: return action == .refine ? "Refining with your local server…" : "Translating with your local server…"
+        case .managed2B, .managed4B, .managed9B, .customLocal:
+            return action == .refine ? "Refining on your Mac…" : "Translating on your Mac…"
+        case .layout: return "Working on your selection…"
+        }
+    }
 }
 
 struct OperationDetails {

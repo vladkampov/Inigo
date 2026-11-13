@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "ปลดล็อก Keychain เพื่อใช้ ChatGPT",
   "Where it works": "สถานที่ที่ใช้ได้",
   "Your enabled macOS layouts": "การวางแบบ macOS ที่เปิดใช้งานของคุณ",
-  "Keyboard Layout": "การวางคีย์บอร์ด"
+  "Keyboard Layout": "การวางคีย์บอร์ด",
+  "Translating with ChatGPT…": "กำลังแปลด้วย ChatGPT…",
+  "Refining with your local server…": "กำลังปรับปรุงด้วยเซิร์ฟเวอร์ท้องถิ่นของคุณ…",
+  "Translating with your local server…": "กำลังแปลด้วยเซิร์ฟเวอร์ท้องถิ่นของคุณ…"
 }

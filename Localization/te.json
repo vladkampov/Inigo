@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "ChatGPT ను ఉపయోగించడానికి మీ కీచేయిని (Keychain) లాక్ చేయండి.",
   "Where it works": "ఇది ఎక్కడ పనిచేస్తుంది",
   "Your enabled macOS layouts": "మీ అనుమతించిన macOS లేవుట్స్",
-  "Keyboard Layout": "కీబోడ్ అమరిక"
+  "Keyboard Layout": "కీబోడ్ అమరిక",
+  "Translating with ChatGPT…": "ChatGPTతో అనువాదం చేస్తున్నాం…",
+  "Refining with your local server…": "మీ స్థానిక సర్వర్తో సుమార్పు చేస్తున్నాం…",
+  "Translating with your local server…": "మీ స్థానిక సర్వర్తో అనువాదం చేస్తున్నాం…"
 }

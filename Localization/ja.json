@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "ChatGPT を使用するにはキーチェーンをロック解除してください。",
   "Where it works": "動作する場所",
   "Your enabled macOS layouts": "有効な macOS レイアウト",
-  "Keyboard Layout": "キーボードレイアウト"
+  "Keyboard Layout": "キーボードレイアウト",
+  "Translating with ChatGPT…": "ChatGPT で翻訳中…",
+  "Refining with your local server…": "ローカルサーバーで精修中…",
+  "Translating with your local server…": "ローカルサーバーで翻訳中…"
 }

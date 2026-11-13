@@ -310,5 +310,8 @@
   "Unlock your Keychain to use ChatGPT.": "فك قفل Keychain لاستخدام ChatGPT.",
   "Where it works": "حيث يعمل",
   "Your enabled macOS layouts": "تخطيطات macOS المفعلة لديك",
-  "Keyboard Layout": "تخطيط لوحة المفاتيح"
+  "Keyboard Layout": "تخطيط لوحة المفاتيح",
+  "Translating with ChatGPT…": "ترجمة باستخدام ChatGPT…",
+  "Refining with your local server…": "تحسين باستخدام خادمك المحلي…",
+  "Translating with your local server…": "ترجمة باستخدام خادمك المحلي…"
 }

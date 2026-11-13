@@ -115,7 +115,7 @@ struct OnboardingView: View {
                 let result = try protected.restore(try await local.rewrite(request) { stage in
                     switch stage {
                     case .load: feedback = "Loading model…"
-                    case .generate: feedback = "Refining on your Mac…"
+                    case .generate: feedback = ProcessingCategory.local(local.configuration).generationMessage(for: .refine)
                     case .validate: feedback = "Checking the result…"
                     default: break
                     }
