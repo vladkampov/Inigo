@@ -1,5 +1,7 @@
 # Compatibility and validation
 
+Source additions updated 2026-11-13; automatic repair is not live-certified.
+
 Recorded 2026-11-06: Apple M5, 24 GiB unified memory, macOS 26.6.2.
 Deployment baseline is macOS 15 on Apple Silicon; other OS/hardware combinations
 remain unverified. Public release requires a clean-Mac test matrix.
@@ -16,7 +18,8 @@ remain unverified. Public release requires a clean-Mac test matrix.
 | TextEdit | Selection and Services exercised; in-place trust depends on signing |
 | Codex/ChatGPT | User confirmed picker translation/replacement works; earlier intermittent copy-only result remains unresolved (#21) |
 | Slack | Rich-content preservation not live-certified; protected rich content falls back |
-| Browser AX | Explicit selection only, including private windows; no surrounding context |
+| Manual browser AX | Explicit selection only, including private windows; no surrounding context |
+| Automatic layout repair | Opt-in source implementation; whole focused plain input only, direct AX value writes required. Native/browser live certification pending; no universal compatibility claim |
 | Google Docs | Structured rich editing not implemented; use copyable fallback |
 | Browser selections via macOS | Explicit selection only; editor-specific replacement must be verified; copyable fallback available |
 | RTL/interface locales | 24 machine-translated catalogs; human review required |

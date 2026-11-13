@@ -129,15 +129,18 @@ final class LocalEngine: NSObject, ObservableObject, URLSessionDownloadDelegate 
         }
         stop(); throw InigoError.message("The local model took too long to load.")
     }
-    func rewrite(_ request: RewriteRequest) async throws -> String {
+    func rewrite(_ request: RewriteRequest, onStage: ((OperationStage) -> Void)? = nil) async throws -> String {
         let revision = configurationRevision
         idleUnload?.cancel()
         defer { if !isExternal { idleUnload?.cancel(); idleUnload = Task { [weak self] in
             try? await Task.sleep(for:.seconds(120)); guard !Task.isCancelled else { return }; self?.stop()
         } } }
+        onStage?(.load)
         try await start(); try Task.checkCancellation(); idleUnload?.cancel()
         guard revision == configurationRevision else { throw CancellationError() }
+        onStage?(.generate)
         let result = try await complete(request,strict:false)
+        onStage?(.validate)
         guard revision == configurationRevision else { throw CancellationError() }
         let target: SupportedLanguage?
         switch request.action {
@@ -145,7 +148,9 @@ final class LocalEngine: NSObject, ObservableObject, URLSessionDownloadDelegate 
         case .refine: target = TranslationQuality.detectedLanguage(request.draft)
         }
         if let target, TranslationQuality.wrongLanguage(result,target:target) {
+            onStage?(.generate)
             let retry = try await complete(request,strict:true)
+            onStage?(.validate)
             guard revision == configurationRevision else { throw CancellationError() }
             guard !TranslationQuality.wrongLanguage(retry,target:target) else { throw InigoError.message("The model returned the wrong language. Your original text is unchanged.") }
             return retry
