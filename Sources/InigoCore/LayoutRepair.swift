@@ -1,40 +1,57 @@
 import Foundation
 
+/// Regex matches and characters/words are ordered, so each span is visited once.
+private struct ProtectedRangeCursor {
+    let ranges: [NSRange]
+    private var index = 0
+    init(_ ranges: [NSRange]) { self.ranges = ranges }
+    mutating func intersects(_ range: NSRange) -> Bool {
+        while index < ranges.count, NSMaxRange(ranges[index]) <= range.location { index += 1 }
+        return index < ranges.count && NSIntersectionRange(ranges[index], range).length > 0
+    }
+}
+
 /// A layout map contains only unambiguous, reversible single-character keys.
 public struct LayoutConversion: Sendable, Equatable {
     public let text: String
     public let caret: Int
     public init?(_ original: String, caret: Int, mapping: [Character: Character]) {
         guard TextSafety.valid(NSRange(location: caret, length: 0), in: original) else { return nil }
-        let protected = Self.protectedRanges(original)
+        var protected = ProtectedRangeCursor(Self.protectedRanges(original))
         var output = "", offset = 0, newCaret = 0
         for character in original {
             let length = String(character).utf16.count
-            let preserved = protected.contains { NSLocationInRange(offset, $0) }
+            let preserved = protected.intersects(NSRange(location: offset, length: length))
                 || character.unicodeScalars.allSatisfy { CharacterSet.whitespacesAndNewlines.contains($0) }
                 || character.unicodeScalars.contains { $0.properties.isEmojiPresentation || $0.value > 0xFFFF }
             let replacement: Character
             if preserved { replacement = character }
             else if let mapped = mapping[character] { replacement = mapped }
             else { return nil }
-            if offset < caret { newCaret += String(replacement).utf16.count }
+            if caret >= offset + length { newCaret += String(replacement).utf16.count }
+            else if caret > offset {
+                guard replacement == character else { return nil }
+                newCaret += caret - offset
+            }
             output.append(replacement); offset += length
         }
         guard output != original else { return nil }
         text = output; self.caret = newCaret
     }
 
+    private static let protectedPattern = try! NSRegularExpression(pattern: #"(?i:https?)://[^\s<>]+|[\p{L}\p{N}._%+-]+@[\p{L}\p{N}.-]+\.[\p{L}]{2,}|<[@#][^>]+>|(?<!\w)[@#][\p{L}\p{N}_][\p{L}\p{N}_.-]*|`[^`]*`"#)
+    private static let wordPattern = try! NSRegularExpression(pattern: #"[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*"#)
     public static func protectedRanges(_ text: String) -> [NSRange] {
-        let regex = try! NSRegularExpression(pattern: #"https?://[^\s<>]+|[\p{L}\p{N}._%+-]+@[\p{L}\p{N}.-]+\.[\p{L}]{2,}|<[@#][^>]+>|(?<!\w)[@#][\p{L}\p{N}_][\p{L}\p{N}_.-]*|`[^`]*`"#)
-        return regex.matches(in: text, range: NSRange(location: 0, length: text.utf16.count)).map(\.range)
+        protectedPattern.matches(in: text, range: NSRange(location: 0, length: text.utf16.count)).map(\.range)
     }
 
     public static func proseWords(_ text: String) -> [String] {
-        let ns = text as NSString, protected = protectedRanges(text)
-        let regex = try! NSRegularExpression(pattern: #"[\p{L}\p{M}]+(?:['’][\p{L}\p{M}]+)*"#)
-        return regex.matches(in: text, range: NSRange(location: 0, length: ns.length))
-            .filter { word in !protected.contains { NSIntersectionRange(word.range, $0).length > 0 } }
-            .map { ns.substring(with: $0.range) }
+        let ns = text as NSString
+        var protected = ProtectedRangeCursor(protectedRanges(text)), words: [String] = []
+        for match in wordPattern.matches(in: text, range: NSRange(location: 0, length: ns.length)) where !protected.intersects(match.range) {
+            words.append(ns.substring(with: match.range))
+        }
+        return words
     }
 }
 
