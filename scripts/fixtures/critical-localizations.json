@@ -1,0 +1,35 @@
+{
+  "note": "Curated regression copy for PR #41 meaning reversals. This locks explicit corrections; it is not proof of fluent-speaker review. Review fixture changes together with their catalogs.",
+  "messages": [
+    {
+      "locale": "de",
+      "source": "Unlock your Keychain to use ChatGPT.",
+      "expected": "Entsperren Sie Ihren Schlüsselbund, um ChatGPT zu verwenden.",
+      "meaning": "Instruct unlocking, never locking or closing, Keychain."
+    },
+    {
+      "locale": "ta",
+      "source": "Unlock your Keychain to use ChatGPT.",
+      "expected": "ChatGPT-ஐப் பயன்படுத்த உங்கள் Keychain-இன் பூட்டைத் திறக்கவும்.",
+      "meaning": "Instruct unlocking, never locking or closing, Keychain."
+    },
+    {
+      "locale": "te",
+      "source": "Unlock your Keychain to use ChatGPT.",
+      "expected": "ChatGPTను ఉపయోగించడానికి మీ Keychain‌ను అన్‌లాక్ చేయండి.",
+      "meaning": "Instruct unlocking, never locking or closing, Keychain."
+    },
+    {
+      "locale": "ta",
+      "source": "ChatGPT returned no completed rewrite.",
+      "expected": "ChatGPT முழுமையான மறுஎழுத்தாக்கத்தை வழங்கவில்லை.",
+      "meaning": "Explicitly state that ChatGPT did not return a completed rewrite."
+    },
+    {
+      "locale": "te",
+      "source": "ChatGPT returned no completed rewrite.",
+      "expected": "ChatGPT పూర్తి పునర్రచనను అందించలేదు.",
+      "meaning": "Explicitly state that ChatGPT did not return a completed rewrite."
+    }
+  ]
+}
