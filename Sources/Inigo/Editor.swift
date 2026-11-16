@@ -38,7 +38,54 @@ struct InvocationSource {
 }
 
 @MainActor
+protocol EditorAccessibility {
+    var isTrusted: Bool { get }
+    var secureInputEnabled: Bool { get }
+    var frontmostApplication: (pid: pid_t, id: String?)? { get }
+    func focusedElement() -> AXUIElement?
+    func read(_ element: AXUIElement, _ name: String) -> CFTypeRef?
+    func attributedText(_ element: AXUIElement, range: NSRange) -> NSAttributedString?
+    func isSettable(_ element: AXUIElement, _ name: String) -> Bool
+    func write(_ element: AXUIElement, _ name: String, _ value: CFTypeRef) -> AXError
+}
+
+@MainActor
+struct SystemEditorAccessibility: EditorAccessibility {
+    var isTrusted: Bool { AXIsProcessTrusted() }
+    var secureInputEnabled: Bool { IsSecureEventInputEnabled() }
+    var frontmostApplication: (pid: pid_t, id: String?)? {
+        NSWorkspace.shared.frontmostApplication.map { ($0.processIdentifier, $0.bundleIdentifier) }
+    }
+    func focusedElement() -> AXUIElement? {
+        guard let value = read(AXUIElementCreateSystemWide(), kAXFocusedUIElementAttribute), CFGetTypeID(value) == AXUIElementGetTypeID() else { return nil }
+        return (value as! AXUIElement)
+    }
+    func read(_ element: AXUIElement, _ name: String) -> CFTypeRef? {
+        var value: CFTypeRef?
+        guard AXUIElementCopyAttributeValue(element, name as CFString, &value) == .success else { return nil }
+        return value
+    }
+    func attributedText(_ element: AXUIElement, range: NSRange) -> NSAttributedString? {
+        var range = CFRange(location: range.location, length: range.length)
+        guard let parameter = AXValueCreate(.cfRange, &range) else { return nil }
+        var result: CFTypeRef?
+        guard AXUIElementCopyParameterizedAttributeValue(element, kAXAttributedStringForRangeParameterizedAttribute as CFString, parameter, &result) == .success else { return nil }
+        return result as? NSAttributedString
+    }
+    func isSettable(_ element: AXUIElement, _ name: String) -> Bool {
+        var settable: DarwinBoolean = false
+        return AXUIElementIsAttributeSettable(element, name as CFString, &settable) == .success && settable.boolValue
+    }
+    func write(_ element: AXUIElement, _ name: String, _ value: CFTypeRef) -> AXError {
+        AXUIElementSetAttributeValue(element, name as CFString, value)
+    }
+}
+
+@MainActor
 final class AccessibilityEditor {
+    private let accessibility: any EditorAccessibility
+    init(accessibility: any EditorAccessibility) { self.accessibility = accessibility }
+    convenience init() { self.init(accessibility: SystemEditorAccessibility()) }
     func invocationSource(exclusions: Set<String>) throws -> InvocationSource {
         guard AXIsProcessTrusted() else { throw InigoError.message("Allow Inigo in System Settings → Privacy & Security → Accessibility, then try again.") }
         guard let app = NSWorkspace.shared.frontmostApplication,
@@ -73,9 +120,7 @@ final class AccessibilityEditor {
     }
 
     private func attribute(_ element: AXUIElement, _ name: String) -> CFTypeRef? {
-        var value: CFTypeRef?
-        guard AXUIElementCopyAttributeValue(element, name as CFString, &value) == .success else { return nil }
-        return value
+        accessibility.read(element, name)
     }
     private func range(_ element: AXUIElement, _ name: String) -> NSRange? {
         guard let raw = attribute(element, name), CFGetTypeID(raw) == AXValueGetTypeID() else { return nil }
@@ -83,8 +128,7 @@ final class AccessibilityEditor {
         return NSRange(location: value.location, length: value.length)
     }
     private func focused() -> AXUIElement? {
-        guard let value = attribute(AXUIElementCreateSystemWide(), kAXFocusedUIElementAttribute), CFGetTypeID(value) == AXUIElementGetTypeID() else { return nil }
-        return (value as! AXUIElement)
+        accessibility.focusedElement()
     }
     /// AX uses global top-left coordinates; AppKit uses bottom-left coordinates.
     func focusedFrame() -> NSRect? {
@@ -133,40 +177,34 @@ final class AccessibilityEditor {
     }
     /// Metadata only: no field value is read until the opt-in idle capture.
     func automaticFocus(exclusions: Set<String>) -> EditorFocus? {
-        guard AXIsProcessTrusted(), !IsSecureEventInputEnabled(),
-              let app = NSWorkspace.shared.frontmostApplication,
-              InvocationPolicy.allowsSource(app.bundleIdentifier, ownAppID: Bundle.main.bundleIdentifier, exclusions: exclusions),
+        guard accessibility.isTrusted, !accessibility.secureInputEnabled,
+              let app = accessibility.frontmostApplication,
+              InvocationPolicy.allowsSource(app.id, ownAppID: Bundle.main.bundleIdentifier, exclusions: exclusions),
               let element = focused(),
               attribute(element, kAXSubroleAttribute) as? String != kAXSecureTextFieldSubrole,
               let role = attribute(element, kAXRoleAttribute) as? String,
               [kAXTextAreaRole, kAXTextFieldRole, kAXComboBoxRole].contains(role) else { return nil }
-        return EditorFocus(element: element, pid: app.processIdentifier)
+        return EditorFocus(element: element, pid: app.pid)
     }
     /// Separate consent boundary; never relax the manual browser-selection policy.
     func captureForLayoutRepair(exclusions: Set<String>) -> EditorSnapshot? {
         guard let focus = automaticFocus(exclusions: exclusions),
-              let app = NSRunningApplication(processIdentifier: focus.pid), let appID = app.bundleIdentifier,
+              let app = accessibility.frontmostApplication, app.pid == focus.pid, let appID = app.id,
+              canRestoreWholeValue(focus.element),
               let selection = range(focus.element, kAXSelectedTextRangeAttribute), selection.length == 0,
               let text = attribute(focus.element, kAXValueAttribute) as? String,
               !text.isEmpty, text.utf16.count <= LayoutRepairPolicy.maximumLength,
               TextSafety.valid(selection, in: text) else { return nil }
         let target = NSRange(location: 0, length: text.utf16.count)
         guard plainText(focus.element, range: target) else { return nil }
-        var settable: DarwinBoolean = false
-        AXUIElementIsAttributeSettable(focus.element, kAXValueAttribute as CFString, &settable)
         // Automatic whole-draft repair must not select the entire draft while a user resumes typing.
         // Editors requiring a clipboard/selection transaction remain manual-only.
-        guard settable.boolValue else { return nil }
         let slackObjects = appID == "com.tinyspeck.slackmacgap" && (text.contains("@") || text.contains("#") || text.contains("http") || text.contains("\u{FFFC}"))
         guard !slackObjects else { return nil }
         return EditorSnapshot(element: focus.element, pid: focus.pid, appID: appID, fullText: text, selection: selection, target: target, context: "", canReplace: true, fallbackReason: nil, insertion: .wholeValue)
     }
     private func plainText(_ element: AXUIElement, range: NSRange) -> Bool {
-        var cfRange = CFRange(location: range.location, length: range.length)
-        guard let parameter = AXValueCreate(.cfRange, &cfRange) else { return false }
-        var result: CFTypeRef?
-        guard AXUIElementCopyParameterizedAttributeValue(element, kAXAttributedStringForRangeParameterizedAttribute as CFString, parameter, &result) == .success,
-              let attributed = result as? NSAttributedString, attributed.length == range.length else { return false }
+        guard let attributed = accessibility.attributedText(element, range: range), attributed.length == range.length else { return false }
         var safe = true
         var baseline: NSDictionary?
         attributed.enumerateAttributes(in: NSRange(location: 0, length: attributed.length)) { attrs, _, _ in
@@ -182,7 +220,7 @@ final class AccessibilityEditor {
         return safe
     }
     func unchanged(_ snapshot: EditorSnapshot, selection: Bool = true) -> Bool {
-        guard NSWorkspace.shared.frontmostApplication?.processIdentifier == snapshot.pid, let current = focused(), CFEqual(current, snapshot.element), let text = attribute(current, kAXValueAttribute) as? String, text == snapshot.fullText else { return false }
+        guard accessibility.frontmostApplication?.pid == snapshot.pid, let current = focused(), CFEqual(current, snapshot.element), let text = attribute(current, kAXValueAttribute) as? String, text == snapshot.fullText else { return false }
         return !selection || range(current, kAXSelectedTextRangeAttribute) == snapshot.selection
     }
     enum ReplacementError: LocalizedError {
@@ -197,8 +235,11 @@ final class AccessibilityEditor {
         var mayHaveChanged: Bool { if case .unconfirmed = self { return true }; return false }
     }
     private func sameFocusedTarget(_ snapshot: EditorSnapshot) -> Bool {
-        guard NSWorkspace.shared.frontmostApplication?.processIdentifier == snapshot.pid, let current = focused() else { return false }
+        guard accessibility.frontmostApplication?.pid == snapshot.pid, let current = focused() else { return false }
         return CFEqual(current, snapshot.element)
+    }
+    private func canRestoreWholeValue(_ element: AXUIElement) -> Bool {
+        accessibility.isSettable(element, kAXValueAttribute) && accessibility.isSettable(element, kAXSelectedTextRangeAttribute)
     }
     func replace(_ snapshot: EditorSnapshot, with text: String, restoringSelection: NSRange? = nil, allowed: () -> Bool = { true }) async throws -> EditorSnapshot {
         guard allowed() else { throw CancellationError() }
@@ -208,7 +249,7 @@ final class AccessibilityEditor {
         }
         if snapshot.insertion != .wholeValue {
             var selected = CFRange(location: snapshot.target.location, length: snapshot.target.length)
-            guard let value = AXValueCreate(.cfRange, &selected), AXUIElementSetAttributeValue(snapshot.element, kAXSelectedTextRangeAttribute as CFString, value) == .success else {
+            guard let value = AXValueCreate(.cfRange, &selected), accessibility.write(snapshot.element, kAXSelectedTextRangeAttribute, value) == .success else {
                 throw ReplacementError.notWritten("The editor did not accept the selection. Your draft is unchanged.")
             }
             // Electron/WebKit may acknowledge the request before exposing the updated selection.
@@ -252,11 +293,12 @@ final class AccessibilityEditor {
             } catch { throw ReplacementError.notWritten(error.localizedDescription) }
         } else if snapshot.insertion == .wholeValue {
             guard allowed(), !Task.isCancelled, unchanged(snapshot), snapshot.target == NSRange(location: 0, length: snapshot.fullText.utf16.count) else { throw CancellationError() }
+            guard canRestoreWholeValue(snapshot.element) else { throw ReplacementError.notWritten("The editor's selection could not be read safely.") }
             clipboard = nil
-            _ = AXUIElementSetAttributeValue(snapshot.element, kAXValueAttribute as CFString, text as CFString)
+            _ = accessibility.write(snapshot.element, kAXValueAttribute, text as CFString)
         } else {
             clipboard = nil
-            _ = AXUIElementSetAttributeValue(snapshot.element, kAXSelectedTextAttribute as CFString, text as CFString)
+            _ = accessibility.write(snapshot.element, kAXSelectedTextAttribute, text as CFString)
         }
         defer { clipboard?.restore() }
         let intermediate = try TextSafety.replacing(snapshot.fullText, range:snapshot.target, with:"")
@@ -276,7 +318,8 @@ final class AccessibilityEditor {
                   let currentSelection = range(snapshot.element, kAXSelectedTextRangeAttribute),
                   currentSelection == snapshot.selection || currentSelection == NSRange(location: snapshot.target.location, length: text.utf16.count) || currentSelection == NSRange(location: snapshot.target.location + text.utf16.count, length: 0) else { throw ReplacementError.unconfirmed }
             var desired = CFRange(location: restoringSelection.location, length: restoringSelection.length)
-            guard let value = AXValueCreate(.cfRange, &desired), AXUIElementSetAttributeValue(snapshot.element, kAXSelectedTextRangeAttribute as CFString, value) == .success,
+            guard accessibility.isSettable(snapshot.element, kAXSelectedTextRangeAttribute),
+                  let value = AXValueCreate(.cfRange, &desired), accessibility.write(snapshot.element, kAXSelectedTextRangeAttribute, value) == .success,
                   range(snapshot.element, kAXSelectedTextRangeAttribute) == restoringSelection else { throw ReplacementError.unconfirmed }
         }
         let newSelection = range(snapshot.element, kAXSelectedTextRangeAttribute) ?? NSRange(location: snapshot.target.location + text.utf16.count, length: 0)

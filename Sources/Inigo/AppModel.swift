@@ -11,12 +11,13 @@ final class AppModel: ObservableObject {
     let local = LocalEngine()
     let cloud = CloudEngine()
     let editor = AccessibilityEditor()
+    lazy var inputSources = InputSourceCatalog()
     lazy var automaticLayout = AutomaticLayoutRepairController(model: self)
     @Published var lastOperationDetails = ""
     var pickerOpen = false
     private(set) var isAutomaticOperation = false
     var permitsAutomaticOperation: Bool { !working && !pickerOpen && preferences.onboarding && !NSApp.isActive }
-    private var layoutUndo: (source: String, target: String, caret: NSRange)?
+    private var layoutUndo: LayoutUndoState?
     private var timing: OperationTiming?
     private var processing: ProcessingCategory = .customLocal
     let shortcut = GlobalShortcut()
@@ -196,7 +197,7 @@ final class AppModel: ObservableObject {
                 _ = try await editor.replace(snapshot, with: savedOriginal, restoringSelection: layout?.caret)
                 guard generation == runID else { return }
                 if let layout {
-                    if automaticLayout.catalog.selectedID == layout.target { automaticLayout.selectSource(layout.source) }
+                    automaticLayout.restoreSource(for: layout)
                     automaticLayout.suppress(snapshot, original: savedOriginal)
                 }
                 message = "Original restored"; hudSucceeded?()
@@ -232,8 +233,8 @@ final class AppModel: ObservableObject {
                 isAutomaticOperation = false; working = false
                 guard applied.canReplace else { throw AccessibilityEditor.ReplacementError.unconfirmed }
                 undoSnapshot = applied; original = snapshot.draft; canUndo = true
-                layoutUndo = (sourceID, candidate.sourceID, snapshot.selection)
                 let switched = editor.unchanged(applied) && automaticLayout.mayWrite(sourceID: sourceID) && automaticLayout.selectSource(candidate.sourceID)
+                layoutUndo = automaticLayout.undoState(sourceID: sourceID, targetID: candidate.sourceID, switched: switched, caret: snapshot.selection)
                 message = switched ? "Layout corrected" : "Text corrected. Switch your keyboard layout to continue."
                 finishTiming(.replaced); hudAnchor = editor.focusedFrame(); showHUD?(); hudSucceeded?(); expireFallback()
             } catch {

@@ -29,18 +29,6 @@ final class LayoutDetectionTests: XCTestCase {
         preferences.automaticLayoutRepair = false
         XCTAssertFalse(Preferences(defaults: defaults).automaticLayoutRepair)
     }
-    @MainActor func testFocusTypingAndSourceChangesInvalidatePendingDetection() async {
-        for _ in ["typing", "focus", "layout", "excluded", "permission", "disabled"] {
-            let recognizer = DelayedRecognizer()
-            var current = true
-            recognizer.afterCheck = { current = false }
-            let result = await LayoutRepairDetector.detect("ghsdbn", caret: 6, language: "en",
-                targets: [LayoutDetectionTarget(id: "uk", language: "uk", mapping: Dictionary(uniqueKeysWithValues: zip(Array("ghsdbn"), Array("привіт"))))],
-                recognizer: recognizer, isCurrent: { current })
-            XCTAssertNil(result)
-            XCTAssertEqual(recognizer.calls, 1)
-        }
-    }
     @MainActor func testCancellationDuringCandidateCheckNeverReturnsARepair() async {
         let recognizer = DelayedRecognizer()
         var current = true

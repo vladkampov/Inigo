@@ -42,7 +42,7 @@ struct SettingsView: View {
                     case "Writing Style": style
                     case "Support": support
                     case "Translation": translation
-                    case "Keyboard Layout": LayoutRepairSettings(preferences: preferences, controller: model.automaticLayout, catalog: model.automaticLayout.catalog)
+                    case "Keyboard Layout": LayoutRepairSettings(preferences: preferences, controller: model.automaticLayout, catalog: model.inputSources)
                     default: processing
                     }
                     Spacer(minLength:20)
