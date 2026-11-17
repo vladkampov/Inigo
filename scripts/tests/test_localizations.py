@@ -67,3 +67,15 @@ class CriticalLocalizationTests(unittest.TestCase):
         errors = self.check()
         self.assertTrue(any('pl: 1 missing keys' in issue for issue in errors))
         self.assertTrue(any('pl: placeholder %@ differs' in issue for issue in errors))
+
+    def test_privacy_eligibility_and_recovery_meaning_regressions_are_rejected(self):
+        cases = [item for item in self.messages if 'rejected' in item]
+        self.assertTrue(cases)
+        for item in cases:
+            with self.subTest(locale=item['locale'], source=item['source']):
+                self.change(item['locale'], item['source'], item['rejected'])
+                self.assertTrue(any(
+                    f"{item['locale']}: critical message" in issue and repr(item['source']) in issue
+                    for issue in self.check()))
+                self.change(item['locale'], item['source'], item['expected'])
+                self.assertEqual(self.check(), [])

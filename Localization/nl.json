@@ -298,7 +298,7 @@
   "Review these content-free details before sharing them with a bug report.": "Beoordeel deze inhoudsvrije details voordat u deze deelt in een foutrapport.",
   "Sign-in cancelled": "Inloggen geannuleerd",
   "Sign-out could not complete. Check your connection and retry.": "Uitloggen kon niet worden voltooid. Controleer uw verbinding en probeer opnieuw.",
-  "Supported text fields allow replacement and guarded Undo. Some rich editors offer a copyable result instead.": "Ondersteunde tekstvelden maken vervanging en beveiligde Ophalen mogelijk. Sommige rijke editors bieden een kopieerbaar resultaat in plaats daarvan.",
+  "Supported text fields allow replacement and guarded Undo. Some rich editors offer a copyable result instead.": "Ondersteunde tekstvelden bieden vervanging en veilig ongedaan maken. Sommige editors met uitgebreide opmaak bieden in plaats daarvan een kopieerbaar resultaat.",
   "Text corrected. Switch your keyboard layout to continue.": "Tekst gecorrigeerd. Schakel uw toetsenbordindeling om te doorgaan.",
   "The ChatGPT connection stopped. Please retry.": "De verbinding met ChatGPT is gestopt. Probeer opnieuw.",
   "The local server did not return a model list.": "De lokale server heeft geen lijst met modellen teruggegeven.",

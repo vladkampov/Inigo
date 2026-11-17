@@ -298,7 +298,7 @@
   "Review these content-free details before sharing them with a bug report.": "راجع هذه التفاصيل الخالية من المحتوى قبل مشاركتها مع تقرير خطأ.",
   "Sign-in cancelled": "تم إلغاء تسجيل الدخول",
   "Sign-out could not complete. Check your connection and retry.": "تعذر إكمال تسجيل الخروج. تحقق من اتصالك وأعد المحاولة.",
-  "Supported text fields allow replacement and guarded Undo. Some rich editors offer a copyable result instead.": "حقول النص المدعومة تسمح بالاستبدال وإلغاء التراجع المحمي. بعض المحررات الغنية تقدم نتيجة قابلة للنسخ بدلاً من ذلك.",
+  "Supported text fields allow replacement and guarded Undo. Some rich editors offer a copyable result instead.": "تسمح حقول النص المدعومة باستبدال النص والتراجع الآمن عن التغييرات. وتوفر بعض المحررات ذات التنسيق الغني نتيجة قابلة للنسخ بدلاً من ذلك.",
   "Text corrected. Switch your keyboard layout to continue.": "تم تصحيح النص. قم بتبديل تخطيط لوحة المفاتيح للمتابعة.",
   "The ChatGPT connection stopped. Please retry.": "تم قطع اتصال ChatGPT. يرجى إعادة المحاولة.",
   "The local server did not return a model list.": "لم يعيد الخادم المحلي قائمة النماذج.",

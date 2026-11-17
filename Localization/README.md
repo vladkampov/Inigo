@@ -6,7 +6,7 @@ Run `python3 scripts/translate-catalogs.py` to fill missing keys (uses the works
 
 `package-localizations.py` rejects incomplete catalogs and writes the combined runtime resource plus localized Services names. UI language is resolved from an explicit override or macOS preferred-language order, with English fallback. The preference never changes the language of the draft or the translation target.
 
-Five critical recovery/error messages are pinned in
+Critical privacy, compatibility and recovery/error messages are pinned in
 `scripts/fixtures/critical-localizations.json` after review found inverted actions
 and missing failure negations. `scripts/check-localizations.py` checks their exact
 curated copy as well as catalog completeness and placeholders. Review intentional
