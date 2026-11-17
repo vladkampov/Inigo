@@ -13,6 +13,13 @@ Versions follow Semantic Versioning. Pre-1.0 releases are experimental.
   manually copyable, content-free operation timings.
 - Structured optional feedback fields and refreshed privacy/test documentation.
 
+## [0.2.0-beta.9](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.8...v0.2.0-beta.9) (2026-11-17)
+
+
+### Features
+
+* **macos:** add automatic layout repair and clearer rewrite feedback ([#41](https://github.com/vladkampov/Inigo/issues/41)) ([e92fbcf](https://github.com/vladkampov/Inigo/commit/e92fbcf9a7253822b30c857bd31937f447fd2810))
+
 ## [0.2.0-beta.8](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.7...v0.2.0-beta.8) (2026-11-11)
 
 
