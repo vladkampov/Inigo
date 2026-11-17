@@ -2,6 +2,17 @@
 
 Versions follow Semantic Versioning. Pre-1.0 releases are experimental.
 
+## Unreleased
+
+- Optional whole-draft keyboard-layout recovery after typing pauses, using enabled
+  macOS layouts and conservative local spelling evidence; disabled by default.
+- Dedicated consent, pause/exclusion controls, source switching and guarded Undo.
+  Automatic repair requires direct Accessibility value writes; paste-only editors
+  retain manual rewriting. Signed-app/editor validation remains pending.
+- Compatibility guidance, more specific text-access errors, processing stages and
+  manually copyable, content-free operation timings.
+- Structured optional feedback fields and refreshed privacy/test documentation.
+
 ## [0.2.0-beta.8](https://github.com/vladkampov/Inigo/compare/v0.2.0-beta.7...v0.2.0-beta.8) (2026-11-11)
 
 

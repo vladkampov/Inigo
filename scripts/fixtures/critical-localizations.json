@@ -1,0 +1,119 @@
+{
+  "note": "Curated regression copy for PR #41 meaning reversals. This locks explicit corrections; it is not proof of fluent-speaker review. Review fixture changes together with their catalogs.",
+  "messages": [
+    {
+      "locale": "de",
+      "source": "Unlock your Keychain to use ChatGPT.",
+      "expected": "Entsperren Sie Ihren Schlüsselbund, um ChatGPT zu verwenden.",
+      "meaning": "Instruct unlocking, never locking or closing, Keychain."
+    },
+    {
+      "locale": "ta",
+      "source": "Unlock your Keychain to use ChatGPT.",
+      "expected": "ChatGPT-ஐப் பயன்படுத்த உங்கள் Keychain-இன் பூட்டைத் திறக்கவும்.",
+      "meaning": "Instruct unlocking, never locking or closing, Keychain."
+    },
+    {
+      "locale": "te",
+      "source": "Unlock your Keychain to use ChatGPT.",
+      "expected": "ChatGPTను ఉపయోగించడానికి మీ Keychain‌ను అన్‌లాక్ చేయండి.",
+      "meaning": "Instruct unlocking, never locking or closing, Keychain."
+    },
+    {
+      "locale": "ta",
+      "source": "ChatGPT returned no completed rewrite.",
+      "expected": "ChatGPT முழுமையான மறுஎழுத்தாக்கத்தை வழங்கவில்லை.",
+      "meaning": "Explicitly state that ChatGPT did not return a completed rewrite."
+    },
+    {
+      "locale": "te",
+      "source": "ChatGPT returned no completed rewrite.",
+      "expected": "ChatGPT పూర్తి పునర్రచనను అందించలేదు.",
+      "meaning": "Explicitly state that ChatGPT did not return a completed rewrite."
+    },
+    {
+      "locale": "mr",
+      "source": "Unavailable for automatic repair",
+      "expected": "स्वयंचलित दुरुस्तीसाठी उपलब्ध नाही",
+      "meaning": "Explicitly mark unsupported layouts unavailable for automatic repair.",
+      "rejected": "स्वयंचलित मर्यादा"
+    },
+    {
+      "locale": "te",
+      "source": "Invalid Keychain reference.",
+      "expected": "చెల్లని Keychain సూచన.",
+      "meaning": "Describe an invalid, not genuine, Keychain reference.",
+      "rejected": "అసలైన కీచేయి నిర్దేశకం."
+    },
+    {
+      "locale": "te",
+      "source": "Invalid credential operation.",
+      "expected": "చెల్లని క్రెడెన్షియల్ చర్య.",
+      "meaning": "Describe an invalid, not genuine, credential operation.",
+      "rejected": "అసలైన సాక్ష్యాల ఆపరేషన్."
+    },
+    {
+      "locale": "uk",
+      "source": "Resume automatic repair",
+      "expected": "Відновити автоматичне виправлення",
+      "meaning": "Use the action resume, not a résumé or summary.",
+      "rejected": "Резюме автоматичного виправлення"
+    },
+    {
+      "locale": "hi",
+      "source": "For manual rewriting in browsers, select text first. Password fields and excluded apps are always skipped.",
+      "expected": "ब्राउज़र में मैन्युअल रूप से दोबारा लिखने के लिए पहले टेक्स्ट चुनें। पासवर्ड फ़ील्ड और बाहर रखे गए ऐप हमेशा छोड़ दिए जाते हैं।",
+      "meaning": "Selection is required for manual rewriting, not the separately opted-in automatic mode.",
+      "rejected": "ब्राउज़र में स्वचालित पुनर्लिखित करने के लिए, पहले टेक्स्ट चुनें। पासवर्ड फ़ील्ड और निरस्त किए गए ऐप हमेशा छोड़ दिए जाते हैं।"
+    },
+    {
+      "locale": "hi",
+      "source": "Layouts need a reversible key map and a matching macOS spelling language. Short, ambiguous, or mixed-language drafts are left unchanged. Editors requiring Paste support manual rewriting only.",
+      "expected": "लेआउट के लिए उलटने योग्य कुंजी मैप और उससे मेल खाने वाली macOS वर्तनी-जाँच भाषा चाहिए। छोटे, अस्पष्ट या कई भाषाओं वाले ड्राफ़्ट बिना बदलाव के छोड़ दिए जाते हैं। जिन एडिटर में पेस्ट करना ज़रूरी है, उनमें केवल मैन्युअल रूप से दोबारा लिखा जा सकता है।",
+      "meaning": "Paste-dependent editors support manual rewriting only.",
+      "rejected": "लेआउट्स को एक उल्टा करने योग्य की मैप और मिलान करने वाला macOS वर्तनी भाषा की आवश्यकता होती है। छोटे, अस्पष्ट या मिश्रित भाषा वाले ड्राफ्ट्स बिना बदले रह जाते हैं। पेस्ट सहायता चाहने वाले एडिटर केवल स्वचालित पुनर्लिखित करने की अनुमति देते हैं।"
+    },
+    {
+      "locale": "ar",
+      "source": "Supported text fields allow replacement and guarded Undo. Some rich editors offer a copyable result instead.",
+      "expected": "تسمح حقول النص المدعومة باستبدال النص والتراجع الآمن عن التغييرات. وتوفر بعض المحررات ذات التنسيق الغني نتيجة قابلة للنسخ بدلاً من ذلك.",
+      "meaning": "Describe guarded Undo, not cancelling Undo or Redo.",
+      "rejected": "حقول النص المدعومة تسمح بالاستبدال وإلغاء التراجع المحمي. بعض المحررات الغنية تقدم نتيجة قابلة للنسخ بدلاً من ذلك."
+    },
+    {
+      "locale": "nl",
+      "source": "Supported text fields allow replacement and guarded Undo. Some rich editors offer a copyable result instead.",
+      "expected": "Ondersteunde tekstvelden bieden vervanging en veilig ongedaan maken. Sommige editors met uitgebreide opmaak bieden in plaats daarvan een kopieerbaar resultaat.",
+      "meaning": "Describe safely undoing changes, not fetching or retrieving.",
+      "rejected": "Ondersteunde tekstvelden maken vervanging en beveiligde Ophalen mogelijk. Sommige rijke editors bieden een kopieerbaar resultaat in plaats daarvan."
+    },
+    {
+      "locale": "tr",
+      "source": "Finish signing in in your browser…",
+      "expected": "Tarayıcınızda oturum açmayı tamamlayın…",
+      "meaning": "Instruct completing sign-in rather than announcing completion.",
+      "rejected": "Tarayıcınızda giriş tamamlandı…"
+    },
+    {
+      "locale": "tr",
+      "source": "Layouts need a reversible key map and a matching macOS spelling language. Short, ambiguous, or mixed-language drafts are left unchanged. Editors requiring Paste support manual rewriting only.",
+      "expected": "Düzenler, tersine çevrilebilir bir tuş eşlemesi ve eşleşen bir macOS yazım denetimi dili gerektirir. Kısa, belirsiz veya birden fazla dil içeren taslaklar değiştirilmez. Yapıştırma desteği gerektiren düzenleyiciler yalnızca manuel yeniden yazmayı destekler.",
+      "meaning": "Require a reversible key map, not an irreversible one.",
+      "rejected": "Düzenler geri alınamaz bir anahtar haritası ve eşleşen bir macOS yazım dilini gerektirir. Kısa, belirsiz veya karışık dil taslakları değiştirilmez. Yapıştırma desteği gerektiren editörler sadece manuel yeniden yazımı destekler."
+    },
+    {
+      "locale": "uk",
+      "source": "Review these content-free details before sharing them with a bug report.",
+      "expected": "Перш ніж додавати ці діагностичні відомості до звіту про помилку, перегляньте їх. Вони не містять тексту вашої чернетки.",
+      "meaning": "Content-free means no draft text, not free of charge.",
+      "rejected": "Перегляньте ці безкоштовні деталі перед тим, як надіслати їх у звіт про баг."
+    },
+    {
+      "locale": "uk",
+      "source": "Supported text fields allow replacement and guarded Undo. Some rich editors offer a copyable result instead.",
+      "expected": "Підтримувані текстові поля дозволяють заміну тексту та безпечне скасування змін. Деякі редактори з розширеним форматуванням натомість пропонують результат, який можна скопіювати.",
+      "meaning": "Describe guarded restoration of changes, not grammatical declension.",
+      "rejected": "Підтримувані поля тексту дозволяють заміну та захищене відмінювання. Деякі багаті редактори пропонують копіюваний результат замість цього."
+    }
+  ]
+}

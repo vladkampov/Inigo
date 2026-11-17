@@ -20,19 +20,27 @@ Download the [public beta](https://github.com/vladkampov/Inigo/releases/tag/v0.2
 - Replaces text only when the editor can be checked safely. Read-only selections
   and unsupported editors get a small copyable result.
 - Protects mentions and link destinations; guarded Undo avoids overwriting later edits.
+- Optional automatic keyboard-layout repair checks the focused draft after a pause,
+  converts a clear mismatch using your enabled macOS layouts, and switches the input
+  source. It starts off and requires separate consent in Keyboard Layout settings.
 - Runs Qwen 3.5 locally, or connects a compatible GGUF file/local server.
 - Never sends your message, captures screenshots or collects conversation history.
 
 ## Model choice
-Our [multilingual benchmark](benchmarks/report.md) on an M5 with 24 GB found 9B most
+Our historical [multilingual benchmark](benchmarks/report.md) on an M5 with 24 GB found 9B most
 faithful on the tested language sample at about four seconds per short request. 4B had a median of roughly two seconds;
-2B roughly one, with more quality errors. These are median timings, not guarantees.
+2B roughly one, with more quality errors. These measurements used a retired corpus
+and exclude application retries and editor insertion. They are historical medians,
+not current end-to-end guarantees; the fictional replacement fixtures need a new run.
 Existing model selections do not switch automatically. Review wording before sending.
 
 ## Compatibility
 Apple Silicon, macOS 15+, full Xcode for building. Measured hardware: M5/24 GB.
-Accessibility access is required for most in-place editing. Browser use requires
-explicit selected text. Rich mentions, tables, smart chips and suggestion-mode
+Accessibility access is required for most in-place editing. Manual browser use requires
+explicit selected text. Opted-in automatic layout repair can inspect the focused
+browser input, including private windows; it requires a verifiable plain field
+with direct Accessibility value writes. Paste-only editors remain manual-only.
+Rich mentions, tables, smart chips and suggestion-mode
 editing can fall back to Copy. Google Docs and Slack rich-content replacement are
 not broadly certified. [Compatibility matrix](docs/compatibility.md).
 
@@ -59,6 +67,8 @@ No usage analytics. Optional handled-error reports are off by default and contai
 only fixed error categories and version information; no endpoint is configured yet.
 Signed updates use Sparkle, with hourly checks while running and manual installation.
 Update hosting receives connection metadata but no writing.
+Support settings can show and copy the last operation's content-free timing details;
+these stay in memory until you explicitly copy and share them.
 [Privacy policy](PRIVACY.md) · [Security reporting](SECURITY.md).
 
 ## Help build it

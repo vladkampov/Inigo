@@ -33,6 +33,50 @@
       "validations": {
         "required": false
       }
+    },
+    {
+      "type": "textarea",
+      "id": "apps",
+      "attributes": {
+        "label": "Apps and versions",
+        "description": "Where did replacement, copy-only output, or automatic layout repair work?"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "processing",
+      "attributes": {
+        "label": "Mac, macOS and model",
+        "description": "Optional chip/memory, macOS version, and built-in model size; omit paths or endpoints."
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "speed",
+      "attributes": {
+        "label": "Speed and outcome",
+        "description": "Approximate first/warm latency; replacement or copy-only. Did layout repair choose the intended layout?"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "quality",
+      "attributes": {
+        "label": "Meaning and voice",
+        "description": "Did the rewrite keep your meaning and voice? Describe corrections using synthetic examples only."
+      },
+      "validations": {
+        "required": false
+      }
     }
   ]
 }

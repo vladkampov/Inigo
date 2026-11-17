@@ -18,7 +18,7 @@ enum InigoApp {
     }
 }
 @MainActor
-final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMenuItemValidation {
+final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMenuItemValidation, NSMenuDelegate {
     let model = AppModel()
     private var restoringTranslation = false
     private var translationExpiry: Task<Void,Never>?
@@ -48,6 +48,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         hudChanges = model.objectWillChange.sink { [weak self] _ in DispatchQueue.main.async { self?.resizeHUD() } }
         model.showSettings = { [weak self] in self?.openSettings() }; model.showHUD = { [weak self] in self?.presentHUD() }
         model.hudSucceeded = { [weak self] in self?.scheduleHUDDismissal() }
+        model.automaticLayout.start()
         if !model.preferences.onboarding || CommandLine.arguments.contains("--settings") { openSettings() }
     }
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -55,6 +56,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
     }
     private func rebuildMenu() {
         let menu = NSMenu()
+        menu.delegate = self
         menu.addItem(NSMenuItem(title:"Inigo",action:nil,keyEquivalent:""))
         let settingsItem = NSMenuItem(title:L("Settings…"),action:#selector(openSettings),keyEquivalent:","); settingsItem.target = self; menu.addItem(settingsItem)
         let update = NSMenuItem(title:L("Check for Updates…"),action:#selector(checkForUpdates),keyEquivalent:"")
@@ -62,6 +64,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         menu.addItem(NSMenuItem.separator())
         let translation = NSMenuItem(title:L("Translate next selection…"),action:#selector(openTranslation),keyEquivalent:"")
         translation.target = self; menu.addItem(translation)
+        let pause = NSMenuItem(title: L("Pause automatic layout repair"), action: #selector(toggleAutomaticRepair), keyEquivalent: "")
+        pause.target = self; menu.addItem(pause)
+        let exclude = NSMenuItem(title: L("Ignore current app"), action: #selector(excludeCurrentApp(_:)), keyEquivalent: "")
+        exclude.target = self; menu.addItem(exclude)
         menu.addItem(NSMenuItem.separator())
         let help = NSMenuItem(title:L("Help & Feedback"),action:nil,keyEquivalent:"")
         let helpMenu = NSMenu(); helpMenu.autoenablesItems = false
@@ -95,7 +101,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         NSApp.activate(ignoringOtherApps:true); settings?.makeKeyAndOrderFront(nil)
     }
     func windowWillClose(_ notification: Notification) {
-        if let window = notification.object as? NSWindow, window === translationWindow { translationExpiry?.cancel(); translationExpiry = nil; window.contentView = nil; translationWindow = nil }
+        if let window = notification.object as? NSWindow, window === translationWindow { translationExpiry?.cancel(); translationExpiry = nil; window.contentView = nil; translationWindow = nil; model.pickerOpen = false }
         if let window = notification.object as? NSWindow, window === settings { NSApp.setActivationPolicy(.accessory) }
     }
     private func resizeHUD() {
@@ -121,7 +127,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
             try? await Task.sleep(for:.seconds(3))
             guard !Task.isCancelled else { return }
             guard let self, !self.model.working, self.model.fallback.isEmpty,
-                  ["Refined", "Translated", "Already clear · no changes", "Original restored", "Copied · paste it where you need it"].contains(self.model.message) else { return }
+                  ["Refined", "Translated", "Already clear · no changes", "Original restored", "Copied · paste it where you need it", "Layout corrected", "Text corrected. Switch your keyboard layout to continue."].contains(self.model.message) else { return }
             if !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion {
                 // Smoothstep easing; cancellation prevents an old fade hiding a new invocation.
                 for step in 1...15 {
@@ -148,18 +154,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         resizeHUD(); hud?.orderFrontRegardless()
     }
     @objc func refineService(_ pasteboard: NSPasteboard, userData: String?, error: AutoreleasingUnsafeMutablePointer<NSString?>) {
-        guard let source = try? model.editor.invocationSource(exclusions: model.preferences.excludedApps) else {
-            error.pointee = L("This app is excluded, or no editable field is focused.") as NSString; return
-        }
+        let source: InvocationSource
+        do { source = try model.editor.invocationSource(exclusions: model.preferences.excludedApps) }
+        catch let failure { error.pointee = L(failure.localizedDescription) as NSString; return }
         guard let text = pasteboard.string(forType:.string), text.utf16.count <= 20_000 else { error.pointee = L("Select up to 20,000 characters.") as NSString; return }
         if let snapshot = try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste), snapshot.pid == source.pid, snapshot.appID == source.appID, snapshot.draft == text, snapshot.canReplace {
             model.refine()
         } else { model.rewriteReference(text,action:.refine,source:source) }
     }
     @objc func translateService(_ pasteboard: NSPasteboard, userData: String?, error: AutoreleasingUnsafeMutablePointer<NSString?>) {
-        guard let source = try? model.editor.invocationSource(exclusions: model.preferences.excludedApps) else {
-            error.pointee = L("This app is excluded, or no editable field is focused.") as NSString; return
-        }
+        let source: InvocationSource
+        do { source = try model.editor.invocationSource(exclusions: model.preferences.excludedApps) }
+        catch let failure { error.pointee = L(failure.localizedDescription) as NSString; return }
         guard let text = pasteboard.string(forType:.string), text.utf16.count <= 20_000 else { error.pointee = L("Select up to 20,000 characters.") as NSString; return }
         showTranslation(text:text, snapshot:try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste),source:source)
     }
@@ -167,7 +173,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         showTranslation(text:model.editor.selectedReference(exclusions:model.preferences.excludedApps),snapshot:try? model.editor.capture(exclusions:model.preferences.excludedApps,compatibilityPaste:model.preferences.compatibilityPaste),source:try? model.editor.invocationSource(exclusions:model.preferences.excludedApps))
     }
     private func showTranslation(text: String?, snapshot: EditorSnapshot?, source: InvocationSource?) {
+        model.cancelAutomaticOperation(); model.automaticLayout.cancelPending()
         translationWindow?.close()
+        model.pickerOpen = true
         let window = NSWindow(contentRect:NSRect(x:0,y:0,width:520,height:510),styleMask:[.titled,.closable],backing:.buffered,defer:false)
         window.title = L("Translate"); window.isReleasedWhenClosed = false; window.delegate = self
         window.contentView = NSHostingView(rootView:TranslationPicker(preferences:model.preferences,hasSelection:text != nil || snapshot != nil) { [weak self] language in
@@ -209,7 +217,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
     }
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if menuItem.action == #selector(checkForUpdates) { return model.updates.canCheck }
+        if menuItem.action == #selector(toggleAutomaticRepair) { menuItem.state = model.automaticLayout.paused ? .on : .off; return model.preferences.automaticLayoutRepair }
+        if menuItem.action == #selector(excludeCurrentApp(_:)) { return menuItem.representedObject is String }
         return true
+    }
+    func menuWillOpen(_ menu: NSMenu) {
+        let appID = NSWorkspace.shared.frontmostApplication?.bundleIdentifier
+        for entry in menu.items where entry.action == #selector(excludeCurrentApp(_:)) {
+            entry.representedObject = appID != Bundle.main.bundleIdentifier ? appID : nil
+        }
+    }
+    @objc func toggleAutomaticRepair() { model.automaticLayout.togglePaused() }
+    @objc func excludeCurrentApp(_ sender: NSMenuItem) {
+        if let id = sender.representedObject as? String { model.automaticLayout.exclude(id) }
     }
     @objc func checkForUpdates() { model.updates.check() }
     @objc func quitApp() { model.stop(); NSApp.terminate(nil) }

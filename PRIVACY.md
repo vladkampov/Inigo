@@ -1,7 +1,16 @@
 # Privacy
 
-Inigo reads text only when invoked. It never uses screenshots, OCR or background
-clipboard monitoring. Built-in and imported GGUF models process writing on your Mac.
+Manual refinement and translation read text when invoked. Optional automatic
+keyboard-layout repair is off by default. Enabling it explicitly permits reading
+the whole focused draft after typing pauses in native and browser inputs, including
+private windows. A passive keyboard listener uses event timing and key metadata;
+Inigo does not extract or save keystroke text. Automatic repair uses macOS keyboard
+maps and spelling services, without calling a model or inference server. Secure
+input, excluded apps and unverifiable fields are skipped. Disable the feature to
+stop listening, cancel pending repair, and clear its transient result state.
+
+Inigo never uses screenshots, OCR or background clipboard monitoring.
+Built-in and imported GGUF models process writing on your Mac.
 A separately managed local server can forward data elsewhere; its policy is yours
 to verify. Inigo only connects to loopback addresses for that integration.
 
@@ -11,9 +20,15 @@ cross-device synchronization is kept. Compatibility paste briefly uses the
 clipboard and restores it only if ownership remains unchanged; clipboard managers
 may retain that temporary content.
 
-Browser processing requires an explicit selection, including in private windows.
+Manual browser processing requires an explicit selection, including in private windows.
 Surrounding browser conversation text is not sent to a model. Editor values may
 be read locally to validate replacement. Secure fields and excluded apps are skipped.
+
+Content-free last-operation details (version, macOS version, memory/processor count,
+fixed model category, outcome and stage durations) stay in memory. They are not
+uploaded automatically. Copying them is an explicit clipboard action; sharing them
+in a report is your choice. They contain no writing, target app identifier,
+custom model name, path, endpoint or raw exception.
 
 ## Network activity
 Model downloads contact Hugging Face and its file hosts. Signed app-update checks
