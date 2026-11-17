@@ -118,7 +118,7 @@ final class AppModel: ObservableObject {
                     else if snapshot.canReplace {
                         do {
                             self.stage(.insert, action: action)
-                            let applied = try await self.editor.replace(snapshot,with:result, allowed: { InvocationPolicy.allowsSource(snapshot.appID, ownAppID: Bundle.main.bundleIdentifier, exclusions: self.preferences.excludedApps) })
+                            let applied = try await self.editor.replace(snapshot,with:result, allowed: { snapshot.allowed(exclusions: self.preferences.excludedApps) })
                             guard self.generation == runID else { return }
                             self.undoSnapshot = applied.canReplace ? applied : nil; self.original = applied.canReplace ? snapshot.draft : ""; self.canUndo = applied.canReplace; self.message = action == .refine ? "Refined" : "Translated"
                             self.hudSucceeded?()
@@ -176,7 +176,7 @@ final class AppModel: ObservableObject {
         retention = Task { [weak self] in
             try? await Task.sleep(for:.seconds(20)); guard !Task.isCancelled, let self else { return }
             // Only an unchanged, still-focused result is weak evidence. No background reading after this check.
-            if let undo = self.undoSnapshot, self.preferences.learning, self.editor.unchanged(undo,selection:false) {
+            if let undo = self.undoSnapshot, self.preferences.learning, undo.allowed(exclusions: self.preferences.excludedApps), self.editor.unchanged(undo,selection:false) {
                 self.preferences.profile.observe(original:snapshot.draft, revision:result, language:language)
             }
             try? await Task.sleep(for:.seconds(100)); guard !Task.isCancelled else { return }; self.clearResult()
@@ -194,8 +194,10 @@ final class AppModel: ObservableObject {
         let runID = generation
         task = Task {
             do {
-                _ = try await editor.replace(snapshot, with: savedOriginal, restoringSelection: layout?.caret)
+                _ = try await editor.replace(snapshot, with: savedOriginal, restoringSelection: layout?.caret,
+                    allowed: { snapshot.allowed(exclusions: self.preferences.excludedApps) })
                 guard generation == runID else { return }
+                guard snapshot.allowed(exclusions: preferences.excludedApps) else { throw CancellationError() }
                 if let layout {
                     automaticLayout.restoreSource(for: layout)
                     automaticLayout.suppress(snapshot, original: savedOriginal)
@@ -227,7 +229,7 @@ final class AppModel: ObservableObject {
                 let applied = try await editor.replace(snapshot, with: candidate.conversion.text,
                     restoringSelection: NSRange(location: candidate.conversion.caret, length: 0), allowed: {
                         self.generation == runID && self.automaticLayout.mayWrite(sourceID: sourceID)
-                            && !self.preferences.excludedApps.contains(snapshot.appID)
+                            && snapshot.allowed(exclusions: self.preferences.excludedApps)
                     })
                 guard generation == runID else { return }
                 isAutomaticOperation = false; working = false

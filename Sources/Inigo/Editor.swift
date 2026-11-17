@@ -19,6 +19,9 @@ struct EditorSnapshot {
     let fallbackReason: String?
     var insertion: InsertionMethod = .accessibility
     var draft: String { (fullText as NSString).substring(with: target) }
+    func allowed(exclusions: Set<String>) -> Bool {
+        InvocationPolicy.allowsSource(appID, ownAppID: Bundle.main.bundleIdentifier, exclusions: exclusions)
+    }
 }
 
 struct EditorFocus: Equatable {
@@ -304,7 +307,7 @@ final class AccessibilityEditor {
         let intermediate = try TextSafety.replacing(snapshot.fullText, range:snapshot.target, with:"")
         var observedText = expected
         let result = await WriteVerification.verify(attempts: clipboard == nil ? 12 : 40, read: {
-            guard self.sameFocusedTarget(snapshot) else { return .different }
+            guard allowed(), self.sameFocusedTarget(snapshot) else { return .different }
             guard let current = self.attribute(snapshot.element, kAXValueAttribute) as? String else { return .unavailable }
             let observation = EditorTextEquivalence.observation(current:current,original:snapshot.fullText,expected:expected,deletionIntermediate:intermediate)
             if observation == .expected { observedText = current }

@@ -112,6 +112,37 @@ final class EditorCapabilityTests: XCTestCase {
         XCTAssertEqual(access.text, "привіт EXTRA")
         XCTAssertEqual(access.valueWrites, 1)
     }
+    @MainActor func testUndoInNewlyExcludedAppDoesNotReadOrWrite() async throws {
+        let access = FakeEditorAccessibility()
+        let actualEditor = AccessibilityEditor(accessibility: access)
+        let snapshot = try XCTUnwrap(actualEditor.captureForLayoutRepair(exclusions: []))
+        let applied = try await actualEditor.replace(snapshot, with: "привіт", restoringSelection: snapshot.selection)
+        let exclusions: Set<String> = [snapshot.appID]
+        let reads = access.valueReads, writes = access.valueWrites
+        do {
+            _ = try await actualEditor.replace(applied, with: snapshot.draft, restoringSelection: snapshot.selection,
+                allowed: { applied.allowed(exclusions: exclusions) })
+            XCTFail("Excluded app accepted Undo")
+        } catch is CancellationError {} catch { XCTFail("Unexpected rejection: \(error)") }
+        XCTAssertEqual(access.valueReads, reads)
+        XCTAssertEqual(access.valueWrites, writes)
+        XCTAssertEqual(access.text, "привіт")
+    }
+    @MainActor func testPolicyChangeDuringWriteStopsReadbackAndCaretWrites() async throws {
+        let access = FakeEditorAccessibility()
+        let editor = AccessibilityEditor(accessibility: access)
+        let snapshot = try XCTUnwrap(editor.captureForLayoutRepair(exclusions: []))
+        var exclusions: Set<String> = [], readsAtWrite = 0
+        access.afterValueWrite = { exclusions.insert(snapshot.appID); readsAtWrite = access.valueReads }
+        do {
+            _ = try await editor.replace(snapshot, with: "привіт", restoringSelection: snapshot.selection,
+                allowed: { snapshot.allowed(exclusions: exclusions) })
+            XCTFail("Policy revocation was ignored")
+        } catch { XCTAssertTrue((error as? AccessibilityEditor.ReplacementError)?.mayHaveChanged ?? false) }
+        XCTAssertEqual(access.valueReads, readsAtWrite)
+        XCTAssertEqual(access.selectionWrites, 0)
+        XCTAssertEqual(access.valueWrites, 1)
+    }
     @MainActor func testCaretCapabilityLostAfterWriteRemainsUnconfirmedWithoutRollback() async throws {
         let access = FakeEditorAccessibility()
         let editor = AccessibilityEditor(accessibility: access)

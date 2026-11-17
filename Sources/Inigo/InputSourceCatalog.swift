@@ -139,12 +139,21 @@ final class SystemLayoutRecognizer: LayoutRecognizing {
         guard !Task.isCancelled, let results else { return nil }
         let misspelled = results.filter { $0.resultType == .spelling }.map(\.range)
         guard misspelled.contains(where: { NSIntersectionRange($0, NSRange(location: 0, length: probe.utf16.count)).length > 0 }) else { return nil }
-        var offset = probe.utf16.count + 1, total = 0, recognized = 0
+        return SpellingRecognition.score(words: words, misspelled: misspelled, offset: probe.utf16.count + 1)
+    }
+}
+
+enum SpellingRecognition {
+    static func score(words: [String], misspelled: [NSRange], offset: Int = 0) -> Double? {
+        let ordered = misspelled.sorted { $0.location < $1.location }
+        var offset = offset, cursor = 0, total = 0, recognized = 0
         for word in words {
             let range = NSRange(location: offset, length: word.utf16.count)
             let letters = word.unicodeScalars.filter { CharacterSet.letters.contains($0) }.count
             total += letters
-            if !misspelled.contains(where: { NSIntersectionRange($0, range).length > 0 }) { recognized += letters }
+            while cursor < ordered.count, NSMaxRange(ordered[cursor]) <= range.location { cursor += 1 }
+            let isMisspelled = cursor < ordered.count && NSIntersectionRange(ordered[cursor], range).length > 0
+            if !isMisspelled { recognized += letters }
             offset += range.length + 1
         }
         return total > 0 ? Double(recognized) / Double(total) : nil
