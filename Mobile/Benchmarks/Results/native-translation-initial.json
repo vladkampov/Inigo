@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-07",
+  "device": "iPhone 17 Pro Max",
+  "strategy": "lowLatency",
+  "results": [
+    {
+      "source": "en",
+      "status": "supported",
+      "target": "uk"
+    },
+    {
+      "source": "en",
+      "status": "supported",
+      "target": "pl"
+    },
+    {
+      "source": "uk",
+      "status": "supported",
+      "target": "en"
+    },
+    {
+      "source": "pl",
+      "status": "supported",
+      "target": "en"
+    },
+    {
+      "source": "uk",
+      "status": "supported",
+      "target": "pl"
+    },
+    {
+      "source": "pl",
+      "status": "supported",
+      "target": "uk"
+    }
+  ],
+  "note": "Capability probe only. Packs were not installed; no inference or timings measured."
+}

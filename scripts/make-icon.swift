@@ -1,5 +1,6 @@
 import AppKit
 let root = CommandLine.arguments[1]
+let ios = CommandLine.arguments.contains("--ios")
 func mark() -> NSBezierPath {
  let p = NSBezierPath()
  p.move(to:NSPoint(x:500,y:570)); p.curve(to:NSPoint(x:640,y:800),controlPoint1:NSPoint(x:630,y:580),controlPoint2:NSPoint(x:650,y:690))
@@ -20,11 +21,21 @@ func render(_ size:Int, symbol:Bool = false) -> Data {
  NSGraphicsContext.saveGraphicsState(); NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep:rep)
  let ctx = NSGraphicsContext.current!.cgContext; ctx.scaleBy(x:CGFloat(size)/1024,y:CGFloat(size)/1024)
  if !symbol {
-  let tile = NSBezierPath(roundedRect:NSRect(x:62,y:62,width:900,height:900),xRadius:200,yRadius:200)
+  let tile = NSBezierPath(roundedRect:ios ? NSRect(x:0,y:0,width:1024,height:1024) : NSRect(x:62,y:62,width:900,height:900),xRadius:ios ? 0 : 200,yRadius:ios ? 0 : 200)
   NSGradient(starting:NSColor(calibratedRed:0.66,green:0.65,blue:0.94,alpha:1),ending:NSColor(calibratedRed:0.87,green:0.89,blue:1,alpha:1))!.draw(in:tile,angle:45)
   NSColor(calibratedRed:0.08,green:0.07,blue:0.12,alpha:1).setFill()
  } else { ctx.translateBy(x:-170,y:-130); ctx.scaleBy(x:1.35,y:1.35); NSColor.black.setFill() }
- mark().fill(); NSGraphicsContext.restoreGraphicsState(); return rep.representation(using:.png,properties:[:])!
+ mark().fill(); NSGraphicsContext.restoreGraphicsState()
+ if ios {
+  let rgb = CGContext(data:nil,width:size,height:size,bitsPerComponent:8,bytesPerRow:size*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.noneSkipLast.rawValue)!
+  rgb.draw(rep.cgImage!,in:CGRect(x:0,y:0,width:size,height:size))
+  return NSBitmapImageRep(cgImage:rgb.makeImage()!).representation(using:.png,properties:[:])!
+ }
+ return rep.representation(using:.png,properties:[:])!
+}
+if ios {
+ try render(1024).write(to:URL(fileURLWithPath:root+"/Inigo.png"))
+ exit(0)
 }
 let fm = FileManager.default
 let folder = root + "/Inigo.iconset"
